@@ -1,0 +1,63 @@
+#!/bin/bash
+
+echo "Creating Mageia container on Docker Hub"
+
+# Workdir
+GITDIR=$HOME/prj/mageia-docker
+WORKDIR=$HOME/tmp
+
+# What is our current date
+DATE=`date "+%Y-%m-%d"`
+
+# Mageia version to consider
+# Other value could be 4 or cauldron
+MGAVER=5
+
+MGAMIRROR="ftp://ftp.home.musique-ancienne.org/pub/mageia/distrib"
+#MGAMIRROR="ftp://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib"
+MGAARCH=x86_64
+
+# Accept CLI param to overwrite default version of Mageia
+if [ _"$1" != _"" ]; then
+	MGAVER=$1
+fi
+
+echo "Cleanup $WORKDIR/$MGAVER and $GITDIR first for idempotence"
+sudo rm -rf $WORKDIR/$MGAVER
+
+cd $GITDIR
+git checkout master
+git branch -D $MGAVER
+git checkout --orphan $MGAVER
+git rm --cached -r mageia-*xz Dockerfile
+rm -f mageia-*xz Dockerfile
+
+echo "Creating the appropriate Docker file"
+cat > Dockerfile << EOF
+FROM scratch
+MAINTAINER bcornec@mageia.org
+ADD mageia-$MGAVER-$DATE.tar.xz /
+LABEL name="Mageia $MGAVER Base Image" \
+    vendor="Mageia" \
+    license="GPLv2" \
+    build-date="$DATE"
+CMD /bin/bash
+EOF
+
+echo "Creating the chroot with latest Mageia content"
+sudo /usr/sbin/urpmi.addmedia --distrib --urpmi-root $WORKDIR/$MGAVER $MGAMIRROR/$MGAVER/$MGAARCH 2>&1 >/dev/null
+sudo /usr/sbin/urpmi --auto --no-recommends --urpmi-root $WORKDIR/$MGAVER basesystem urpmi 2>&1 >/dev/null
+
+echo "Capturing that chroot content into mageia-$MGAVER-$DATE.tar.xz"
+sudo rm -f mageia-$MGAVER-$DATE.tar.xz
+sudo tar -C $WORKDIR/$MGAVER -cJf mageia-$MGAVER-$DATE.tar.xz .
+sudo chmod 644 mageia-$MGAVER-$DATE.tar.xz
+
+echo "Generating the docker image mageiaofficial:$MGAVER from it"
+docker build -t mageiaofficial:$MGAVER . 2>&1 >/dev/null
+docker images mageiaofficial:$MGAVER
+
+echo "Commiting into our git repo"
+git add mageia-$MGAVER-$DATE.tar.xz Dockerfile
+git commit -m “update Mageia $MGAVER - $DATE"
+git push -f origin $MGAVER
