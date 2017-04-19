@@ -73,17 +73,14 @@ if [ _"$MGAMIRROR" = _"" ]; then
 	MGAMIRROR="https://mirrors.mageia.org/api/mageia.$MGAVER.x86_64.list"
 fi
 
-echo "Cleanup $WORKDIR/$MGAVER and $GITDIR first for idempotence"
-sudo rm -rf $WORKDIR/$MGAVER
-
-cd $GITDIR
+cd $GITDIR 2>&1 > /dev/null
 if [ $? -ne 0 ]; then
 	echo "$GITDIR doesn't exist, creating it"
 	mkdir -p $GITDIR
-	git clone https://github.com/bcornec/mageia-docker .
 	cd $GITDIR
+	git clone https://github.com/bcornec/mageia-docker .
 fi
-git checkout master
+git checkout master 2>/dev/null 1>/dev/null
 if [ $? -ne 0 ]; then
 	echo "Unable to checkout branch master"
 	exit -1
@@ -98,7 +95,7 @@ if [ $? -ne 0 ]; then
 	 echo "Unable to create branch $MGAVER"
 	exit -1
 fi
-git rm --cached -r .
+git rm --cached -r . 2>/dev/null 1>/dev/null
 
 echo "Creating the appropriate Docker file"
 cat > Dockerfile << EOF
@@ -112,32 +109,37 @@ LABEL name="Mageia $MGAVER Base Image" \
 CMD /bin/bash
 EOF
 
+TARGETDIR="$WORKDIR/$MGAVER"
+
+echo "Cleanup $TARGETDIR and $GITDIR first for idempotence"
+sudo rm -rf $TARGETDIR
+
 echo "Creating the chroot with latest Mageia content"
-sudo /usr/sbin/urpmi.addmedia --distrib --urpmi-root $WORKDIR/$MGAVER $MGAMIRROR/$MGAVER/$MGAARCH 2>&1 > /dev/null
-sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root $WORKDIR/$MGAVER basesystem urpmi 2>&1 > /dev/null
+sudo /usr/sbin/urpmi.addmedia --distrib --urpmi-root "$TARGETDIR" $MGAMIRROR/$MGAVER/$MGAARCH 2>/dev/null 1>/dev/null
+sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root "$TARGETDIR" basesystem urpmi 2>/dev/null 1>/dev/null
 
 #
-if [ -d "$WORKDIR/$MGAVER/etc/sysconfig" ]; then
+if [ -d "$TARGETDIR/etc/sysconfig" ]; then
         # allow networking init scripts inside the container to work without extra steps
-        echo 'NETWORKING=yes' > "$WORKDIR/$MGAVER/etc/sysconfig/network"
+        sudo echo 'NETWORKING=yes' > "$TARGETDIR"/etc/sysconfig/network
 fi
 
 #
 # Docker mounts tmpfs at /dev and procfs at /proc so we can remove them
-sudo rm -rf "$WORKDIR/$MGAVER/dev" "$WORKDIR/$MGAVER/proc"
-sudo mkdir -p "$WORKDIR/$MGAVER/dev" "$WORKDIR/$MGAVER/proc"
+sudo rm -rf "$TARGETDIR/dev" "$TARGETDIR/proc"
+sudo mkdir -p "$TARGETDIR/dev" "$TARGETDIR/proc"
 
 # make sure /etc/resolv.conf has something useful in it
-sudo mkdir -p "$WORKDIR/$MGAVER/etc"
-sudo cat > "$WORKDIR/$MGAVER/etc/resolv.conf" <<'EOF'
+cat > "$TARGETDIR/tmp/resolv.conf" << EOF
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
+sudo cp "$TARGETDIR/tmp/resolv.conf" "$TARGETDIR/etc/resolv.conf"
 
 # Needs root access for dev files e.g.
 echo "Capturing that chroot content into mageia-$MGAVER-$DATE.tar.xz"
 sudo rm -f mageia-$MGAVER-$DATE.tar.xz
-sudo tar -C $WORKDIR/$MGAVER -cJf mageia-$MGAVER-$DATE.tar.xz .
+sudo tar -C $TARGETDIR -cJf mageia-$MGAVER-$DATE.tar.xz .
 sudo chmod 644 mageia-$MGAVER-$DATE.tar.xz
 
 echo "Generating the docker image mageiaofficial:$MGAVER from it"
@@ -148,20 +150,19 @@ docker images mageiaofficial:$MGAVER
 echo "Commiting into our git repo"
 git lfs track "*.tar.xz"
 git add .gitattributes
-git add mageia-$MGAVER-$DATE.tar.xz Dockerfile mageia-docker
+git add mageia-$MGAVER-$DATE.tar.xz Dockerfile mageia-docker LICENSE README.md run-mageia
 git commit -m "update Mageia $MGAVER - $DATE"
 CID=`git show | head -1 | cut -d' ' -f2`
 echo "New commit ID for latest commit is $CID"
 git push -f --set-upstream origin $MGAVER
-rm -f LICENSE README.md run-mageia
 git checkout master
 
 cd $OFFDIR/library
 if [ $? -ne 0 ]; then
 	echo "$OFFDIR doesn't exist, creating it"
 	mkdir -p $OFFDIR
-	git clone https://github.com/bcornec/official-images .
 	cd $OFFDIR/library
+	git clone https://github.com/bcornec/official-images .
 fi
 
 git remote update
