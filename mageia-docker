@@ -3,7 +3,12 @@
 echo "Creating Mageia container on Docker Hub"
 
 # Workdir
+if [ _"$HOME" = _"" ]; then
+	echo "Please define HOME to a sensible value"
+	exit -1
+fi
 GITDIR=$HOME/prj/mageia-docker
+OFFDIR=$HOME/prj/official-images
 WORKDIR=$HOME/tmp
 
 # What is our current date
@@ -26,11 +31,10 @@ echo "Cleanup $WORKDIR/$MGAVER and $GITDIR first for idempotence"
 sudo rm -rf $WORKDIR/$MGAVER
 
 cd $GITDIR
-git checkout master
-git branch -D $MGAVER
-git checkout --orphan $MGAVER
-git rm --cached -r mageia-*xz Dockerfile
-rm -f mageia-*xz Dockerfile
+git checkout master || echo "Unable to checkout branch master" && exit -1
+git branch -D $MGAVER || echo "Unable to delete branch $MGAVER" && exit -1
+git checkout --orphan $MGAVER || echo "Unable to create branch $MGAVER" && exit -1
+git rm --cached -r .
 
 echo "Creating the appropriate Docker file"
 cat > Dockerfile << EOF
@@ -46,7 +50,7 @@ EOF
 
 echo "Creating the chroot with latest Mageia content"
 sudo /usr/sbin/urpmi.addmedia --distrib --urpmi-root $WORKDIR/$MGAVER $MGAMIRROR/$MGAVER/$MGAARCH 2>&1 >/dev/null
-sudo /usr/sbin/urpmi --auto --no-recommends --urpmi-root $WORKDIR/$MGAVER basesystem urpmi 2>&1 >/dev/null
+sudo /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root $WORKDIR/$MGAVER basesystem urpmi 2>&1 >/dev/null
 
 echo "Capturing that chroot content into mageia-$MGAVER-$DATE.tar.xz"
 sudo rm -f mageia-$MGAVER-$DATE.tar.xz
@@ -58,6 +62,18 @@ docker build -t mageiaofficial:$MGAVER . 2>&1 >/dev/null
 docker images mageiaofficial:$MGAVER
 
 echo "Commiting into our git repo"
-git add mageia-$MGAVER-$DATE.tar.xz Dockerfile
-git commit -m “update Mageia $MGAVER - $DATE"
-git push -f origin $MGAVER
+git lfs track "*.tar.xz"
+git add .gitattributes
+git add mageia-$MGAVER-$DATE.tar.xz Dockerfile mageia-docker
+git commit -m "update Mageia $MGAVER - $DATE"
+CID=`git show | head -1 | cut -d' ' -f2`
+echo "New commit ID for latest commit is $CID"
+git push -f --set-upstream origin $MGAVER
+git checkout master
+
+cd $OFFDIR/library
+git remote update
+perl -p -e 'undef $/; s|(/5\nGitCommit:) [a-f0-9]+|$1 '$CID'|' mageia
+git add mageia
+git commit -m "update Mageia commit ID to $CID"
+git push origin
