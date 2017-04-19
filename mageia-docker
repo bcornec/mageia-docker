@@ -31,9 +31,21 @@ echo "Cleanup $WORKDIR/$MGAVER and $GITDIR first for idempotence"
 sudo rm -rf $WORKDIR/$MGAVER
 
 cd $GITDIR
-git checkout master || echo "Unable to checkout branch master" && exit -1
-git branch -D $MGAVER || echo "Unable to delete branch $MGAVER" && exit -1
-git checkout --orphan $MGAVER || echo "Unable to create branch $MGAVER" && exit -1
+git checkout master
+if [ $? -ne 0 ]; then
+	echo "Unable to checkout branch master"
+	exit -1
+fi
+git branch -D $MGAVER 
+if [ $? -ne 0 ]; then
+	echo "Unable to delete branch $MGAVER"
+	exit -1
+fi
+git checkout --orphan $MGAVER
+if [ $? -ne 0 ]; then
+	 echo "Unable to create branch $MGAVER"
+	exit -1
+fi
 git rm --cached -r .
 
 echo "Creating the appropriate Docker file"
