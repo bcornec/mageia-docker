@@ -132,7 +132,7 @@ echo "Capturing that chroot content into mageia-$MGAVER-$DATE.tar.xz"
 sudo rm -f mageia-$MGAVER-$DATE.tar.xz
 sudo tar -C $TARGETDIR -cJf mageia-$MGAVER-$DATE.tar.xz .
 sudo chmod 644 mageia-$MGAVER-$DATE.tar.xz
-sudo chroot $TARGETDIR rpm -aq > $WORKDIR/rpm-qa
+sudo chroot $TARGETDIR rpm -qa | sort -u > $WORKDIR/rpm-qa
 if [ -r rpm-qa-$MGAVER ]; then
 	diff -q rpm-qa-$MGAVER $WORKDIR/rpm-qa
 	if [ $? -eq 0 ]; then
@@ -164,7 +164,7 @@ docker images mageiaofficial:$MGAVER
 
 # Automatic build in Docker Hub do not support Git LFS yet
 # Cf: https://github.com/docker/hub-feedback/issues/500
-perl -pi -e 's|ADD mageia-|ADD $MGAURL/blob/$MGAVER/mageia-|' Dockerfile
+perl -pi -e "s|ADD mageia-|ADD $MGAURL/blob/$MGAVER/mageia-|" Dockerfile
 
 # This requires git-lfs for managing large files
 echo "Commiting into our git repo"
@@ -174,7 +174,10 @@ git add mageia-$MGAVER-$DATE.tar.xz Dockerfile mageia-docker LICENSE README.md r
 git commit -m "update Mageia $MGAVER - $DATE"
 CID=`git show | head -1 | cut -d' ' -f2`
 echo "New commit ID for latest commit is $CID"
-git push -f --set-upstream origin $MGAVER
+git remote set-branches --add origin $MGAVER
+git push -f
+# Seems we need to do it twice for everything to be pushed
+git push
 git checkout master
 # Backup rpm list for next run
 cp $WORKDIR/rpm-qa rpm-qa-$MGAVER
