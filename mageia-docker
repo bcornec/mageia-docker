@@ -85,11 +85,7 @@ if [ $? -ne 0 ]; then
 	echo "Unable to checkout branch master"
 	exit -1
 fi
-git branch -D $MGAVER 
-if [ $? -ne 0 ]; then
-	echo "Unable to delete branch $MGAVER"
-	exit -1
-fi
+git branch -D $MGAVER 2>/dev/null 1>/dev/null 
 git checkout --orphan $MGAVER
 if [ $? -ne 0 ]; then
 	 echo "Unable to create branch $MGAVER"
@@ -120,8 +116,10 @@ sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root "$
 
 #
 if [ -d "$TARGETDIR/etc/sysconfig" ]; then
-        # allow networking init scripts inside the container to work without extra steps
-        sudo echo 'NETWORKING=yes' > "$TARGETDIR"/etc/sysconfig/network
+	# allow networking init scripts inside the container to work without extra steps
+	echo 'NETWORKING=yes' > $WORKDIR/network
+	sudo install -m 644 $WORKDIR/network "$TARGETDIR"/etc/sysconfig/network
+	rm $WORKDIR/network
 fi
 
 #
@@ -130,11 +128,12 @@ sudo rm -rf "$TARGETDIR/dev" "$TARGETDIR/proc"
 sudo mkdir -p "$TARGETDIR/dev" "$TARGETDIR/proc"
 
 # make sure /etc/resolv.conf has something useful in it
-cat > "$TARGETDIR/tmp/resolv.conf" << EOF
+cat > $WORKDIR/resolv.conf << EOF
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
-sudo cp "$TARGETDIR/tmp/resolv.conf" "$TARGETDIR/etc/resolv.conf"
+sudo install -m 644 $WORKDIR/resolv.conf "$TARGETDIR/etc/resolv.conf"
+rm $WORKDIR/resolv.conf
 
 # Needs root access for dev files e.g.
 echo "Capturing that chroot content into mageia-$MGAVER-$DATE.tar.xz"
@@ -166,7 +165,7 @@ if [ $? -ne 0 ]; then
 fi
 
 git remote update
-perl -p -e 'undef $/; s|(/'$MGAVER'\nGitCommit:) [a-f0-9]+|$1 '$CID'|' mageia
+perl -pi -e 'undef $/; s|(/'$MGAVER'\nGitCommit:) [a-f0-9]+|$1 '$CID'|' mageia
 git add mageia
 git commit -m "update Mageia commit ID to $CID"
 git push origin
