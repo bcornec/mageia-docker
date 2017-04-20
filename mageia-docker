@@ -5,8 +5,6 @@
 # Based on work done by Fedora and Juan Luis Baptiste
 # at https://github.com/juanluisbaptiste/docker-brew-mageia
 
-echo "Creating Mageia container on Docker Hub"
-
 # Workdirs
 if [ _"$HOME" = _"" ]; then
 	echo "Please define HOME to a sensible value"
@@ -67,6 +65,8 @@ if [ _"$MGAVER" = _"" ]; then
 	echo "Please provide a Mageia version such as with -v 5 e.g."
 	exit -1
 fi
+
+echo "Creating Mageia $MGAVER container on Docker Hub"
 
 # Reset mirror now we have the version, i case none was given
 if [ _"$MGAMIRROR" = _"" ]; then
@@ -174,10 +174,9 @@ git add mageia-$MGAVER-$DATE.tar.xz Dockerfile mageia-docker LICENSE README.md r
 git commit -m "update Mageia $MGAVER - $DATE"
 CID=`git show | head -1 | cut -d' ' -f2`
 echo "New commit ID for latest commit is $CID"
-git remote set-branches --add origin $MGAVER
-git push -f
-# Seems we need to do it twice for everything to be pushed
-git push
+git push -f --set-upstream origin $MGAVER
+# Seems we need to do it twice for everything to be pushed with LFS
+git push -f --set-upstream origin $MGAVER
 git checkout master
 # Backup rpm list for next run
 cp $WORKDIR/rpm-qa rpm-qa-$MGAVER
