@@ -164,7 +164,7 @@ docker images mageiaofficial:$MGAVER
 
 # Automatic build in Docker Hub do not support Git LFS yet
 # Cf: https://github.com/docker/hub-feedback/issues/500
-perl -pi -e "s|ADD mageia-|ADD $MGAURL/blob/$MGAVER/mageia-|" Dockerfile
+perl -pi -e "s|ADD mageia-$DATE.tar.xz|ADD $MGAURL/raw/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
 
 # This requires git-lfs for managing large files
 echo "Commiting into our git repo"
