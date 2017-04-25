@@ -1,2 +1,3 @@
 # mageia-docker
-Tools for Mageia conatiners for Docker
+
+Tools for Mageia containers for Docker
