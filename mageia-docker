@@ -11,8 +11,13 @@ if [ _"$HOME" = _"" ]; then
 	exit -1
 fi
 GITDIR=$HOME/tmp/mageia-docker
+GITURL=https://github.com/myaccount
 OFFDIR=$HOME/tmp/official-images
 WORKDIR=$HOME/tmp
+# By default we host ourselves
+MGAMODE="hosted"
+SCPURL=localhost:/tmp
+BIGURL=http://localhost/mageia-docker
 
 # What is our current date
 DATE=`date "+%Y-%m-%d"`
@@ -29,11 +34,11 @@ usage() {
 # Mageia version to consider
 # By default the running version if on Mageia
 # else generating for cauldron
-# Other value could be 4 or cauldron
+# Other value could be a number or cauldron
 if [ -r /etc/mageia-release ]; then
 	MGAVER=`pbdistrocheck | grep Ver: | cut -f2`
 	# Install deps in case they missing
-	sudo urpmi git-lfs docker
+	sudo urpmi docker
 else
 	MGAVER=cauldron
 fi
@@ -78,9 +83,9 @@ if [ $? -ne 0 ]; then
 	echo "$GITDIR doesn't exist, creating it"
 	mkdir -p $GITDIR
 	cd $GITDIR
-	git clone $MGAURL .
+	git clone $GITURL/mageia-docker .
 	if [ $? -ne 0 ]; then
-		echo "Unable to clone $MGAURL"
+		echo "Unable to clone $GITURL"
 		exit -1
 	fi
 fi
@@ -92,15 +97,20 @@ fi
 git branch -D $MGAVER 2>/dev/null 1>/dev/null 
 git checkout --orphan $MGAVER
 if [ $? -ne 0 ]; then
-	 echo "Unable to create branch $MGAVER"
+	echo "Unable to create branch $MGAVER"
 	exit -1
 fi
-git rm --cached -r . 2>/dev/null 1>/dev/null
 
-TARGETDIR="$WORKDIR/$MGAVER"
+if [ _"$WORKDIR" != _"" ]; then
+	TARGETDIR="$WORKDIR/$MGAVER"
+else
+	echo "Work directory is an empty string"
+	exit -1
+fi
 
 echo "Cleanup $TARGETDIR and $GITDIR first for idempotence"
 sudo rm -rf $TARGETDIR
+git rm --cached -r . 2>/dev/null 1>/dev/null
 
 echo "Creating the chroot with latest Mageia content"
 sudo /usr/sbin/urpmi.addmedia --distrib --urpmi-root "$TARGETDIR" $MGAMIRROR/$MGAVER/$MGAARCH 2>/dev/null 1>/dev/null
@@ -162,20 +172,41 @@ docker images mageiaofficial:$MGAVER
 #docker login -u $MGAAC -p $MGAPWD
 #docker push bcornec/mageia:$MGAVER
 
-# Automatic build in Docker Hub do not support Git LFS yet
-# Cf: https://github.com/docker/hub-feedback/issues/500
-perl -pi -e "s|ADD mageia-$DATE.tar.xz|ADD $MGAURL/raw/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
+if [ _"$MGAMODE" = _"hosted" ]; then
+	# We host ourselves somewhere on $BIGURL
+	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $BIGURL/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
+	SSHHOST=`echo $SCPURL | cut -d: -f1`
+	SSHDIR=`echo $SCPURL | cut -d: -f2`
+	echo "Transferring the big file onto $SCPURL"
+	ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER"
+	scp -p mageia-$MGAVER-$DATE.tar.xz $SCPURL/$MGAVER
+else
+	# We host on github
 
-# This requires git-lfs for managing large files
+	# Automatic build in Docker Hub do not support Git LFS yet
+	# Cf: https://github.com/docker/hub-feedback/issues/500
+	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $GITURL/mageia-docker/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
+
+	# This requires git-lfs for managing large files
+	sudo urpmi git-lfs
+	git lfs track "*.tar.xz"
+	git add .gitattributes
+	git add mageia-$MGAVER-$DATE.tar.xz
+fi
+
+
 echo "Commiting into our git repo"
-git lfs track "*.tar.xz"
-git add .gitattributes
-git add mageia-$MGAVER-$DATE.tar.xz Dockerfile mageia-docker LICENSE README.md run-mageia rpm-qa-$MGAVER
+git add Dockerfile mageia-docker LICENSE README.md run-mageia rpm-qa-$MGAVER
 git commit -m "update Mageia $MGAVER - $DATE"
+
 CID=`git show | head -1 | cut -d' ' -f2`
 echo "New commit ID for latest commit is $CID"
-git push -f --set-upstream origin $MGAVER
-# Seems we need to do it twice for everything to be pushed with LFS
+
+if [ _"$MGAMODE" != _"hosted" ]; then
+	# Seems we need to do it twice for everything to be pushed with LFS
+	git push -f --set-upstream origin $MGAVER
+fi
+
 git push -f --set-upstream origin $MGAVER
 git checkout master
 # Backup rpm list for next run
@@ -189,7 +220,7 @@ if [ $? -ne 0 ]; then
 	echo "$OFFDIR doesn't exist, creating it"
 	mkdir -p $OFFDIR
 	cd $OFFDIR/library
-	git clone https://github.com/bcornec/official-images .
+	git clone $GITURL/official-images .
 fi
 
 git remote update
