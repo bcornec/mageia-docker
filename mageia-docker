@@ -179,7 +179,7 @@ if [ _"$MGAMODE" = _"hosted" ]; then
 	SSHDIR=`echo $SCPURL | cut -d: -f2`
 	echo "Transferring the big file onto $SCPURL"
 	ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER"
-	scp -p mageia-$MGAVER-$DATE.tar.xz $SCPURL/$MGAVER
+	scp -p mageia-$MGAVER-$DATE.tar.xz $SCPURL/$MGAVER/mageia-$DATE.tar.xz
 else
 	# We host on github
 
