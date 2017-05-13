@@ -172,14 +172,20 @@ docker images mageiaofficial:$MGAVER
 #docker login -u $MGAAC -p $MGAPWD
 #docker push bcornec/mageia:$MGAVER
 
-if [ _"$MGAMODE" = _"hosted" ]; then
+if [ _"$MGAMODE" = _"hosted" ] || [ _"$MGAMODE" = _"local" ]; then
 	# We host ourselves somewhere on $BIGURL
 	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $BIGURL/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
-	SSHHOST=`echo $SCPURL | cut -d: -f1`
 	SSHDIR=`echo $SCPURL | cut -d: -f2`
-	echo "Transferring the big file onto $SCPURL"
-	ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER"
-	scp -p mageia-$MGAVER-$DATE.tar.xz $SCPURL/$MGAVER/mageia-$DATE.tar.xz
+	if [ _"$MGAMODE" = _"hosted" ]; then
+		SSHHOST=`echo $SCPURL | cut -d: -f1`
+		echo "Transferring the big file onto $SCPURL"
+		ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER"
+		scp -p mageia-$MGAVER-$DATE.tar.xz $SCPURL/$MGAVER/mageia-$DATE.tar.xz
+	else
+		echo "Transferring the big file onto $SCPURL"
+		mkdir -p $SSHDIR/$MGAVER
+		mv mageia-$MGAVER-$DATE.tar.xz $SSHDIR/$MGAVER/mageia-$DATE.tar.xz
+	fi
 else
 	# We host on github
 
