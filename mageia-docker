@@ -193,6 +193,7 @@ else
 	git add .gitattributes
 	git add mageia-$MGAVER-$DATE.tar.xz
 fi
+sudo rm -f mageia-$MGAVER-$DATE.tar.xz
 
 
 echo "Commiting into our git repo"
