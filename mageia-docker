@@ -114,7 +114,15 @@ git rm --cached -r . 2>/dev/null 1>/dev/null
 
 echo "Creating the chroot with latest Mageia content"
 sudo /usr/sbin/urpmi.addmedia --distrib --urpmi-root "$TARGETDIR" $MGAMIRROR/$MGAVER/$MGAARCH 2>/dev/null 1>/dev/null
+if [ $? -ne 0 ]; then
+	echo "Unable to prepare chroot"
+	exit -1
+fi
 sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root "$TARGETDIR" basesystem urpmi 2>/dev/null 1>/dev/null
+if [ $? -ne 0 ]; then
+	echo "Unable to prepare install dependencies in chroot"
+	exit -1
+fi
 
 #
 if [ -d "$TARGETDIR/etc/sysconfig" ]; then
@@ -179,7 +187,7 @@ if [ _"$MGAMODE" = _"hosted" ] || [ _"$MGAMODE" = _"local" ]; then
 	if [ _"$MGAMODE" = _"hosted" ]; then
 		SSHHOST=`echo $SCPURL | cut -d: -f1`
 		echo "Transferring the big file onto $SCPURL"
-		ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER"
+		ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER ; rm -f "
 		scp -p mageia-$MGAVER-$DATE.tar.xz $SCPURL/$MGAVER/mageia-$DATE.tar.xz
 	else
 		echo "Transferring the big file onto $SCPURL"
@@ -222,10 +230,10 @@ git add rpm-qa-$MGAVER
 git commit -m "update Mageia $MGAVER RPM list"
 git push
 
-cd $OFFDIR/library
+cd $OFFDIR/library 2>/dev/null 1>/dev/null
 if [ $? -ne 0 ]; then
 	echo "$OFFDIR doesn't exist, creating it"
-	mkdir -p $OFFDIR
+	mkdir -p $OFFDIR/library
 	cd $OFFDIR/library
 	git clone $GITURL/official-images .
 fi
