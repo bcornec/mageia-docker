@@ -89,13 +89,13 @@ if [ $? -ne 0 ]; then
 		exit -1
 	fi
 fi
-git checkout master 2>/dev/null 1>/dev/null
+git checkout -f master 2>/dev/null 1>/dev/null
 if [ $? -ne 0 ]; then
 	echo "Unable to checkout branch master"
 	exit -1
 fi
 git branch -D $MGAVER 2>/dev/null 1>/dev/null 
-git checkout --orphan $MGAVER
+git checkout -f --orphan $MGAVER
 if [ $? -ne 0 ]; then
 	echo "Unable to create branch $MGAVER"
 	exit -1
@@ -215,7 +215,7 @@ if [ _"$MGAMODE" != _"hosted" ]; then
 fi
 
 git push -f --set-upstream origin $MGAVER
-git checkout master
+git checkout -f master
 # Backup rpm list for next run
 cp $WORKDIR/rpm-qa rpm-qa-$MGAVER
 git add rpm-qa-$MGAVER
