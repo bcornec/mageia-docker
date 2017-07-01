@@ -148,12 +148,12 @@ lib64user1-0.62-8.mga6
 lib64uuid1-2.28.2-2.mga6
 lib64verto1-0.2.6-6.mga6
 lib64wbclient0-4.6.5-1.mga6
-lib64xml2_2-2.9.4-6.mga6
+lib64xml2_2-2.9.4-7.mga6
 lib64zlib1-1.2.11-4.mga6
-libgcc1-5.4.0-4.mga6
+libgcc1-5.4.0-5.mga6
 libgpg-error-common-1.24-1.mga6
 libnl3-config-3.3.0-1.mga6
-libstdc++6-5.4.0-4.mga6
+libstdc++6-5.4.0-5.mga6
 libuser-0.62-8.mga6
 libutempter-1.1.6-5.mga6
 lockdev-1.0.4-0.120111007git.12.mga6
