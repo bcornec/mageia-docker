@@ -19,7 +19,7 @@ diffutils-3.3-6.mga6
 dmidecode-3.1-1.mga6
 dmsetup-1.02.137-1.mga6
 dracut-044-11.mga6
-drakxtools-backend-17.85-1.mga6
+drakxtools-backend-17.88-1.mga6
 e2fsprogs-1.43.4-1.mga6
 elfutils-0.169-1.mga6
 etcskel-1.63-34.mga6
@@ -158,12 +158,12 @@ libuser-0.62-8.mga6
 libutempter-1.1.6-5.mga6
 lockdev-1.0.4-0.120111007git.12.mga6
 logrotate-3.12.2-1.mga6
-lsb-release-2.0-51.mga6
-mageia-release-common-6-0.19.mga6
-mageia-release-Default-6-0.19.mga6
-mageia-repos-6-0.1.1.mga6
-mageia-repos-keys-6-0.1.1.mga6
-mageia-repos-pkgprefs-6-0.1.1.mga6
+lsb-release-2.0-52.mga6
+mageia-release-common-6-1.mga6
+mageia-release-Default-6-1.mga6
+mageia-repos-6-1.mga6
+mageia-repos-keys-6-1.mga6
+mageia-repos-pkgprefs-6-1.mga6
 makedev-4.4-21.mga6
 meta-task-6-0.39.mga6
 multiarch-utils-1.0.13-7.mga6
@@ -225,7 +225,7 @@ tcb-1.1-7.mga6
 time-1.7-45.mga6
 timezone-2017b-1.mga6
 traceroute-2.1.0-1.mga6
-urpmi-8.109-1.mga6
+urpmi-8.110-1.mga6
 util-linux-2.28.2-2.mga6
 vim-minimal-8.0.388-1.mga6
 which-2.21-3.mga6
