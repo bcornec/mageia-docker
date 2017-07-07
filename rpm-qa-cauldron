@@ -76,7 +76,7 @@ lib64expat1-2.2.1-1.mga6
 lib64ext2fs2-1.43.4-1.mga6
 lib64fdisk1-2.28.2-2.mga6
 lib64ffi6-3.2.1-5.mga6
-lib64freetype6-2.7.1-1.mga6
+lib64freetype6-2.7.1-2.mga6
 lib64fuse2-2.9.7-1.mga6
 lib64gcrypt20-1.7.8-1.mga6
 lib64gdbm4-1.12-1.mga6
@@ -148,7 +148,7 @@ lib64user1-0.62-8.mga6
 lib64uuid1-2.28.2-2.mga6
 lib64verto1-0.2.6-6.mga6
 lib64wbclient0-4.6.5-1.mga6
-lib64xml2_2-2.9.4-7.mga6
+lib64xml2_2-2.9.4-8.mga6
 lib64zlib1-1.2.11-4.mga6
 libgcc1-5.4.0-5.mga6
 libgpg-error-common-1.24-1.mga6
@@ -159,13 +159,13 @@ libutempter-1.1.6-5.mga6
 lockdev-1.0.4-0.120111007git.12.mga6
 logrotate-3.12.2-1.mga6
 lsb-release-2.0-52.mga6
-mageia-release-common-6-1.mga6
-mageia-release-Default-6-1.mga6
+mageia-release-common-6-3.mga6
+mageia-release-Default-6-3.mga6
 mageia-repos-6-1.mga6
 mageia-repos-keys-6-1.mga6
 mageia-repos-pkgprefs-6-1.mga6
 makedev-4.4-21.mga6
-meta-task-6-0.39.mga6
+meta-task-6-1.mga6
 multiarch-utils-1.0.13-7.mga6
 ncurses-6.0-8.mga6
 net-tools-2.0-0.20150915git.4.mga6
