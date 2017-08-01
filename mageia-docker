@@ -160,6 +160,7 @@ if [ -r $HOME/rpm-qa-$MGAVER ]; then
 fi
 
 cp $WORKDIR/rpm-qa $HOME/rpm-qa-$MGAVER
+cp $WORKDIR/rpm-qa rpm-qa-$MGAVER
 
 echo "Creating the appropriate Docker file"
 cat > Dockerfile << EOF
@@ -187,7 +188,7 @@ if [ _"$MGAMODE" = _"hosted" ] || [ _"$MGAMODE" = _"local" ]; then
 	if [ _"$MGAMODE" = _"hosted" ]; then
 		SSHHOST=`echo $SCPURL | cut -d: -f1`
 		echo "Transferring the big file onto $SCPURL"
-		ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER ; rm -f "
+		ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER ; rm -f $SSHDIR/$MGAVER/mageia-$DATE.tar.xz"
 		scp -p mageia-$MGAVER-$DATE.tar.xz $SCPURL/$MGAVER/mageia-$DATE.tar.xz
 	else
 		echo "Transferring the big file onto $SCPURL"
@@ -207,7 +208,9 @@ else
 	git add .gitattributes
 	git add mageia-$MGAVER-$DATE.tar.xz
 fi
-sudo rm -f mageia-$MGAVER-$DATE.tar.xz
+if [ -f mageia-$MGAVER-$DATE.tar.xz ]; then
+	sudo rm -f mageia-$MGAVER-$DATE.tar.xz
+fi
 
 
 echo "Commiting into our git repo"
@@ -230,6 +233,9 @@ cp $WORKDIR/rpm-qa $HOME/rpm-qa-$MGAVER
 git add rpm-qa-$MGAVER
 git commit -m "update Mageia $MGAVER RPM list"
 git push
+
+# done in caller
+#rm -rf $WORKDIR
 
 exit 0
 # Not sure wether it's still useful
