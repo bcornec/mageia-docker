@@ -231,6 +231,8 @@ git add rpm-qa-$MGAVER
 git commit -m "update Mageia $MGAVER RPM list"
 git push
 
+exit 0
+# Not sure wether it's still useful
 cd $OFFDIR/library 2>/dev/null 1>/dev/null
 if [ $? -ne 0 ]; then
 	echo "$OFFDIR doesn't exist, creating it"
