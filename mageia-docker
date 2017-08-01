@@ -38,7 +38,7 @@ usage() {
 if [ -r /etc/mageia-release ]; then
 	MGAVER=`pbdistrocheck | grep Ver: | cut -f2`
 	# Install deps in case they missing
-	sudo urpmi docker
+	sudo urpmi -q docker
 else
 	MGAVER=cauldron
 fi
@@ -202,7 +202,7 @@ else
 	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $GITURL/mageia-docker/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
 
 	# This requires git-lfs for managing large files
-	sudo urpmi git-lfs
+	sudo urpmi -q git-lfs
 	git lfs track "*.tar.xz"
 	git add .gitattributes
 	git add mageia-$MGAVER-$DATE.tar.xz
