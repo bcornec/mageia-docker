@@ -108,7 +108,7 @@ else
 	exit -1
 fi
 
-echo "Cleanup $TARGETDIR and $GITDIR first for idempotence"
+echo "Cleanup $TARGETDIR first for idempotence"
 sudo rm -rf $TARGETDIR
 git rm --cached -r . 2>/dev/null 1>/dev/null
 
@@ -151,15 +151,15 @@ sudo rm -f mageia-$MGAVER-$DATE.tar.xz
 sudo tar -C $TARGETDIR -cJf mageia-$MGAVER-$DATE.tar.xz .
 sudo chmod 644 mageia-$MGAVER-$DATE.tar.xz
 sudo chroot $TARGETDIR rpm -qa | sort -u > $WORKDIR/rpm-qa
-if [ -r rpm-qa-$MGAVER ]; then
-	diff -q rpm-qa-$MGAVER $WORKDIR/rpm-qa
+if [ -r $HOME/rpm-qa-$MGAVER ]; then
+	diff -q $HOME/rpm-qa-$MGAVER $WORKDIR/rpm-qa
 	if [ $? -eq 0 ]; then
 		echo "The list of RPMs packages didn't change so no need to build a new Docker image"
 		exit 1
 	fi
 fi
 
-cp $WORKDIR/rpm-qa rpm-qa-$MGAVER
+cp $WORKDIR/rpm-qa $HOME/rpm-qa-$MGAVER
 
 echo "Creating the appropriate Docker file"
 cat > Dockerfile << EOF
@@ -192,7 +192,7 @@ if [ _"$MGAMODE" = _"hosted" ] || [ _"$MGAMODE" = _"local" ]; then
 	else
 		echo "Transferring the big file onto $SCPURL"
 		mkdir -p $SSHDIR/$MGAVER
-		mv mageia-$MGAVER-$DATE.tar.xz $SSHDIR/$MGAVER/mageia-$DATE.tar.xz
+		sudo mv mageia-$MGAVER-$DATE.tar.xz $SSHDIR/$MGAVER/mageia-$DATE.tar.xz
 	fi
 else
 	# We host on github
@@ -226,6 +226,7 @@ git push -f --set-upstream origin $MGAVER
 git checkout -f master
 # Backup rpm list for next run
 cp $WORKDIR/rpm-qa rpm-qa-$MGAVER
+cp $WORKDIR/rpm-qa $HOME/rpm-qa-$MGAVER
 git add rpm-qa-$MGAVER
 git commit -m "update Mageia $MGAVER RPM list"
 git push
