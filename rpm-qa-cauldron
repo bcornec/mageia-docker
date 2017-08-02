@@ -11,6 +11,7 @@ cpio-2.12-3.mga6
 cracklib-dicts-2.9.6-5.mga6
 cronie-1.5.1-1.mga6
 crontabs-1.10-22.mga6
+crypto-policies-20170606-1.mga7
 curl-7.54.1-2.mga6
 dash-0.5.9-1.mga6
 dash-static-0.5.9-1.mga6
@@ -40,12 +41,12 @@ icu58-data-58.2-3.mga6
 ifmetric-0.3-17.mga6
 ifplugd-0.28-20.mga6
 info-install-6.1-1.mga6
-initscripts-9.55-26.mga7
+initscripts-9.55-27.mga7
 iproute2-4.9.0-1.mga6
 iputils-20161105-2.mga6
 kbd-2.0.3-1.mga6
-kernel-desktop-4.9.40-1.mga7-1-1.mga7
 kernel-firmware-20170531-1.mga6
+kernel-linus-4.12.4-1.mga7-1-1.mga7
 kmod-24-2.mga6
 krb5-1.15.1-3.mga7
 ldetect-lst-0.3.7-1.mga6
@@ -106,6 +107,7 @@ lib64nghttp2_14-1.9.2-1.mga6
 lib64nl3_200-3.3.0-1.mga6
 lib64nl-genl3_200-3.3.0-1.mga6
 lib64openssl1.0.0-1.0.2l-2.mga7
+lib64openssl1.1-1.1.0f-1.mga7
 lib64openssl-engines1.0.0-1.0.2l-2.mga7
 lib64p11-kit0-0.23.2-2.mga6
 lib64pam0-1.3.0-5.mga6
@@ -167,7 +169,7 @@ meta-task-6-1.mga6
 multiarch-utils-1.0.13-7.mga6
 ncurses-6.0-8.mga6
 net-tools-2.0-0.20150915git.4.mga6
-nmap-7.40-1.mga6
+nmap-7.40-2.mga7
 nss-myhostname-230-12.mga6
 nss_tcb-1.1-7.mga6
 openldap-2.4.45-2.mga6
