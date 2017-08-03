@@ -46,7 +46,7 @@ initscripts-9.55-13.mga5
 iproute2-4.4.0-1.mga5
 iputils-20140620-3.mga5
 kbd-2.0.2-3.mga5
-kernel-desktop-4.4.74-1.mga5-1-1.mga5
+kernel-desktop-4.4.79-1.mga5-1-1.mga5
 kernel-firmware-20160409-1.mga5
 keyutils-1.5.9-3.mga5
 kmod-18-4.mga5
@@ -125,7 +125,7 @@ lib64sasl2_3-2.1.26-10.mga5
 lib64selinux1-2.3-4.mga5
 lib64sigsegv2-2.10-5.mga5
 lib64smartcols1-2.25.2-3.5.mga5
-lib64sqlite3_0-3.10.2-1.mga5
+lib64sqlite3_0-3.10.2-1.1.mga5
 lib64ssh2_1-1.4.3-6.1.mga5
 lib64sysfs2-2.1.0-20.mga5
 lib64systemd0-217-11.2.mga5
