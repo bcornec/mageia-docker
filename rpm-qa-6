@@ -63,7 +63,7 @@ lib64cap2-2.25-1.mga6
 lib64cap-ng0-0.7.8-1.mga6
 lib64crack2-2.9.6-5.mga6
 lib64cryptsetup4-1.7.5-1.mga6
-lib64cups2-2.2.3-2.mga6
+lib64cups2-2.2.4-1.mga6
 lib64curl4-7.54.1-2.mga6
 lib64daemon0-0.14-10.mga6
 lib64db5.3-5.3.28-10.mga6
@@ -133,7 +133,7 @@ lib64sasl2_3-2.1.26-12.mga6
 lib64sigsegv2-2.10-7.mga6
 lib64smartcols1-2.28.2-2.mga6
 lib64smbclient0-4.6.5-1.mga6
-lib64sqlite3_0-3.17.0-2.mga6
+lib64sqlite3_0-3.17.0-2.1.mga6
 lib64ssh2_1-1.7.0-2.mga6
 lib64sysfs2-2.1.0-22.mga6
 lib64systemd0-230-12.mga6
