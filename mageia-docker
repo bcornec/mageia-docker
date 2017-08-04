@@ -38,7 +38,7 @@ usage() {
 if [ -r /etc/mageia-release ]; then
 	MGAVER=`pbdistrocheck | grep Ver: | cut -f2`
 	# Install deps in case they missing
-	sudo urpmi -q docker
+	sudo urpmi -q docker 1>/dev/null
 else
 	MGAVER=cauldron
 fi
@@ -112,7 +112,7 @@ echo "Cleanup $TARGETDIR first for idempotence"
 sudo rm -rf $TARGETDIR
 git rm --cached -r . 2>/dev/null 1>/dev/null
 
-echo "Creating the chroot with latest Mageia content"
+echo "Creating the chroot with latest Mageia $MGAVER content"
 sudo /usr/sbin/urpmi.addmedia --distrib --urpmi-root "$TARGETDIR" $MGAMIRROR/$MGAVER/$MGAARCH 2>/dev/null 1>/dev/null
 if [ $? -ne 0 ]; then
 	echo "Unable to prepare chroot"
@@ -203,7 +203,7 @@ else
 	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $GITURL/mageia-docker/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
 
 	# This requires git-lfs for managing large files
-	sudo urpmi -q git-lfs
+	sudo urpmi -q git-lfs 1>/dev/null
 	git lfs track "*.tar.xz"
 	git add .gitattributes
 	git add mageia-$MGAVER-$DATE.tar.xz
