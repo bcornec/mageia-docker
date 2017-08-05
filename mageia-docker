@@ -212,6 +212,8 @@ else
 	git lfs track "*.tar.xz"
 	git add .gitattributes
 	git add mageia-$MGAVER-$DATE.tar.xz
+	# Remove old cached files
+	git lfs prune
 fi
 if [ -f mageia-$MGAVER-$DATE.tar.xz ]; then
 	sudo rm -f mageia-$MGAVER-$DATE.tar.xz
