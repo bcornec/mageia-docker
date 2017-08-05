@@ -51,15 +51,17 @@ if [ -r $HOME/.$APPNAME ]; then
 	. $HOME/.$APPNAME
 fi
 
-opt=$(getopt --options 'w:,v:,m:,h' --longoptions 'workdir:,version:,mirror:,help' --name $APPNAME -- "$@")
+opt=$(getopt --options 'w:,v:,m:,h,f' --longoptions 'workdir:,version:,mirror:,help,force' --name $APPNAME -- "$@")
 eval set -- "$opt"
 unset opt
+FORCE="false"
 
 while true; do
         case "$1" in
                 -w|--workdir) WORKDIR=$2 ; shift 2 ;;
                 -v|--version) MGAVER="$2" ; shift 2 ;;
                 -m|--mirror) MGAMIRROR="$2" ; shift 2 ;;
+                -f|--force) FORCE="true" ; shift ;;
                 -h|--help) usage ;;
                  --) shift ; break ;;
         esac
@@ -155,7 +157,9 @@ if [ -r $HOME/rpm-qa-$MGAVER ]; then
 	diff -q $HOME/rpm-qa-$MGAVER $WORKDIR/rpm-qa
 	if [ $? -eq 0 ]; then
 		echo "The list of RPMs packages didn't change so no need to build a new Docker image"
-		exit 1
+		if [ $FORCE = "false" ]; then
+			exit 1
+		fi
 	fi
 fi
 
@@ -166,7 +170,9 @@ echo "Creating the appropriate Docker file"
 cat > Dockerfile << EOF
 FROM scratch
 MAINTAINER bcornec@mageia.org
-ADD mageia-$MGAVER-$DATE.tar.xz /
+COPY mageia-$MGAVER-$DATE.tar.xz /
+RUN tar xf /mageia-$MGAVER-$DATE.tar.xz
+RUN rm -f /mageia-$MGAVER-$DATE.tar.xz
 LABEL name="Mageia $MGAVER Base Image" \
     vendor="Mageia" \
     license="GPLv2" \
@@ -183,7 +189,7 @@ docker images mageiaofficial:$MGAVER
 
 if [ _"$MGAMODE" = _"hosted" ] || [ _"$MGAMODE" = _"local" ]; then
 	# We host ourselves somewhere on $BIGURL
-	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $BIGURL/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
+	perl -pi -e "s|COPY mageia-$MGAVER-$DATE.tar.xz|COPY $BIGURL/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
 	SSHDIR=`echo $SCPURL | cut -d: -f2`
 	if [ _"$MGAMODE" = _"hosted" ]; then
 		SSHHOST=`echo $SCPURL | cut -d: -f1`
@@ -200,7 +206,7 @@ else
 
 	# Automatic build in Docker Hub do not support Git LFS yet
 	# Cf: https://github.com/docker/hub-feedback/issues/500
-	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $GITURL/mageia-docker/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
+	perl -pi -e "s|COPY mageia-$MGAVER-$DATE.tar.xz|COPY $GITURL/mageia-docker/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
 
 	# This requires git-lfs for managing large files
 	sudo urpmi -q git-lfs 1>/dev/null
