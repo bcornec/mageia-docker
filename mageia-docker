@@ -170,6 +170,7 @@ echo "Creating the appropriate Docker file"
 cat > Dockerfile << EOF
 FROM scratch
 MAINTAINER bcornec@mageia.org
+WORKDIR /
 COPY mageia-$MGAVER-$DATE.tar.xz /
 RUN tar xf /mageia-$MGAVER-$DATE.tar.xz
 RUN rm -f /mageia-$MGAVER-$DATE.tar.xz
