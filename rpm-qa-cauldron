@@ -66,8 +66,8 @@ lib64cryptsetup4-1.7.5-1.mga6
 lib64cups2-2.2.4-2.mga7
 lib64curl4-7.54.1-2.mga6
 lib64daemon0-0.14-10.mga6
-lib64db5.3-5.3.28-10.mga6
-lib64dbnss5.3-5.3.28-10.mga6
+lib64db5.3-5.3.28-11.mga7
+lib64dbnss5.3-5.3.28-11.mga7
 lib64dbus1_3-1.10.16-1.mga6
 lib64devmapper1.02-1.02.137-1.mga6
 lib64devmapper-event1.02-1.02.137-1.mga6
