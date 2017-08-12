@@ -50,7 +50,7 @@ kernel-desktop-4.4.79-1.mga5-1-1.mga5
 kernel-firmware-20160409-1.mga5
 keyutils-1.5.9-3.mga5
 kmod-18-4.mga5
-krb5-1.12.5-1.1.mga5
+krb5-1.12.5-1.2.mga5
 ldetect-lst-0.1.346.6-1.mga5
 less-458-5.mga5
 lib64acl1-2.2.52-5.mga5
@@ -88,7 +88,7 @@ lib64idn11-1.33-1.mga5
 lib64intl8-0.19.4-1.mga5
 lib64keyutils1-1.5.9-3.mga5
 lib64kmod2-18-4.mga5
-lib64krb53-1.12.5-1.1.mga5
+lib64krb53-1.12.5-1.2.mga5
 lib64ldap2.4_2-2.4.40-3.1.mga5
 lib64ldetect0.12-0.12.8-1.mga5
 lib64lockdev1-1.0.4-0.120111007git.10.mga5
