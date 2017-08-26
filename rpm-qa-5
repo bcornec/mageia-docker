@@ -16,7 +16,7 @@ crontabs-1.10-20.mga5
 curl-7.40.0-3.5.mga5
 dash-0.5.7-6.mga5
 dash-static-0.5.7-6.mga5
-dbus-1.8.20-1.mga5
+dbus-1.8.22-1.1.mga5
 diffutils-3.3-4.mga5
 dmidecode-3.0-1.mga5
 dmsetup-1.02.90-6.mga5
@@ -67,7 +67,7 @@ lib64curl4-7.40.0-3.5.mga5
 lib64daemon0-0.14-8.mga5
 lib64db5.3-5.3.28-4.mga5
 lib64dbnss5.3-5.3.28-4.mga5
-lib64dbus1_3-1.8.20-1.mga5
+lib64dbus1_3-1.8.22-1.1.mga5
 lib64devmapper1.02-1.02.90-6.mga5
 lib64devmapper-event1.02-1.02.90-6.mga5
 lib64elfutils1-0.160-4.mga5
