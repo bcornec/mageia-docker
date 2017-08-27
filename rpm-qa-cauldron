@@ -61,6 +61,7 @@ lib64blkid1-2.28.2-2.mga6
 lib64bzip2_1-1.0.6-10.mga6
 lib64cap2-2.25-1.mga6
 lib64cap-ng0-0.7.8-2.mga7
+lib64compat-openssl10_1.1-1.0.2j-9.mga7
 lib64crack2-2.9.6-5.mga6
 lib64cryptsetup4-1.7.5-1.mga6
 lib64cups2-2.2.4-2.mga7
@@ -203,7 +204,7 @@ python-2.7.13-3.mga7
 python2-rpm-macros-3-5.mga7
 python-rpm-macros-3-5.mga7
 resolvconf-1.79-1.mga6
-rmt-0.4b46-1.mga6
+rmt-0.4b46-2.mga7
 rootcerts-20170718.00-1.mga7
 rootfiles-11.0-14.mga6
 rpm-4.13.0.1-11.mga7
