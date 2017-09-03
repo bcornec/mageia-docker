@@ -12,7 +12,7 @@ cracklib-dicts-2.9.6-5.mga6
 cronie-1.5.1-1.mga6
 crontabs-1.10-22.mga6
 crypto-policies-20170606-2.mga7
-curl-7.55.1-1.mga7
+curl-7.55.1-2.mga7
 dash-0.5.9-2.mga7
 dash-static-0.5.9-2.mga7
 dbus-1.10.16-1.mga6
@@ -28,7 +28,7 @@ file-5.25-6.mga7
 filesystem-2.1.9-28.mga6
 findutils-4.6.0-1.mga6
 gawk-4.1.4-1.mga6
-genhdlist2-7.00-6.mga6
+genhdlist2-7.01-1.mga7
 gettext-base-0.19.8.1-1.mga6
 glibc-2.22-25.mga6
 gpg-pubkey-80420f66-4d4fe123
@@ -65,7 +65,7 @@ lib64compat-openssl10_1.1-1.0.2j-9.mga7
 lib64crack2-2.9.6-5.mga6
 lib64cryptsetup4-1.7.5-1.mga6
 lib64cups2-2.2.4-2.mga7
-lib64curl4-7.55.1-1.mga7
+lib64curl4-7.55.1-2.mga7
 lib64daemon0-0.14-10.mga6
 lib64db5.3-5.3.28-11.mga7
 lib64dbnss5.3-5.3.28-11.mga7
