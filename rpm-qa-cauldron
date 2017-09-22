@@ -54,7 +54,7 @@ less-487-2.mga7
 lib64acl1-2.2.52-7.mga6
 lib64archive13-3.3.2-3.mga7
 lib64attr1-2.4.47-7.mga6
-lib64audit1-2.7.7-2.mga7
+lib64audit1-2.7.8-1.mga7
 lib64avahi-client3-0.6.32-1.mga6
 lib64avahi-common3-0.6.32-1.mga6
 lib64blkid1-2.30.1-2.mga7
@@ -79,7 +79,7 @@ lib64freetype6-2.7.1-2.mga6
 lib64fuse2-2.9.7-1.mga6
 lib64gcrypt20-1.7.8-2.mga7
 lib64gdbm4-1.12-1.mga6
-lib64glib2.0_0-2.54.0-2.mga7
+lib64glib2.0_0-2.54.0-4.mga7
 lib64gmp10-6.1.2-1.mga6
 lib64gnutls30-3.6.0-1.mga7
 lib64gpg-error0-1.24-1.mga6
