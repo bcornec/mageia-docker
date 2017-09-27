@@ -63,7 +63,7 @@ lib64cap2-2.25-1.mga6
 lib64cap-ng0-0.7.8-2.mga7
 lib64crack2-2.9.6-5.mga6
 lib64cryptsetup4-1.7.5-1.mga6
-lib64cups2-2.2.4-2.mga7
+lib64cups2-2.2.4-3.mga7
 lib64curl4-7.55.1-2.mga7
 lib64daemon0-0.14-10.mga6
 lib64db5.3-5.3.28-13.mga7
@@ -174,8 +174,8 @@ p11-kit-0.23.2-2.mga6
 pam-1.3.0-6.mga7
 pam_tcb-1.1-7.mga6
 passwd-0.79-6.mga6
-perl-5.26.1-0.4.mga7
-perl-base-5.26.1-0.4.mga7
+perl-5.26.1-1.mga7
+perl-base-5.26.1-1.mga7
 perl-Config-IniFiles-2.940.0-1.mga7
 perl-File-FnMatch-0.20.0-21.mga7
 perl-File-Sync-0.110.0-21.mga7
