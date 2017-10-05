@@ -106,8 +106,8 @@ lib64nettle6-3.3-1.mga6
 lib64nghttp2_14-1.9.2-1.mga6
 lib64nl3_200-3.3.0-1.mga6
 lib64nl-genl3_200-3.3.0-1.mga6
-lib64nspr4-4.16-1.mga6
-lib64nss3-3.28.5-1.1.mga6
+lib64nspr4-4.17-1.mga6
+lib64nss3-3.28.6-1.mga6
 lib64openssl1.0.0-1.0.2l-1.mga6
 lib64openssl-engines1.0.0-1.0.2l-1.mga6
 lib64p11-kit0-0.23.2-2.mga6
@@ -170,7 +170,7 @@ multiarch-utils-1.0.13-7.mga6
 ncurses-6.0-8.mga6
 net-tools-2.0-0.20150915git.4.mga6
 nmap-7.40-1.mga6
-nss-3.28.5-1.1.mga6
+nss-3.28.6-1.mga6
 nss-myhostname-230-12.1.mga6
 nss_tcb-1.1-7.mga6
 openldap-2.4.45-2.mga6
