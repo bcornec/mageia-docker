@@ -12,7 +12,7 @@ cracklib-dicts-2.9.6-5.mga6
 cronie-1.5.1-1.mga6
 crontabs-1.10-22.mga6
 crypto-policies-20170606-2.mga7
-curl-7.55.1-2.mga7
+curl-7.56.0-2.mga7
 dash-0.5.9-2.mga7
 dash-static-0.5.9-2.mga7
 dbus-1.10.16-1.mga6
@@ -64,7 +64,7 @@ lib64cap-ng0-0.7.8-2.mga7
 lib64crack2-2.9.6-5.mga6
 lib64cryptsetup4-1.7.5-1.mga6
 lib64cups2-2.2.4-5.mga7
-lib64curl4-7.55.1-2.mga7
+lib64curl4-7.56.0-2.mga7
 lib64daemon0-0.14-10.mga6
 lib64db5.3-5.3.28-13.mga7
 lib64dbus1_3-1.10.16-1.mga6
@@ -81,11 +81,12 @@ lib64gcrypt20-1.7.8-2.mga7
 lib64gdbm4-1.12-1.mga6
 lib64glib2.0_0-2.54.1-1.mga7
 lib64gmp10-6.1.2-1.mga6
-lib64gnutls30-3.6.0-1.mga7
+lib64gnutls30-3.6.0-2.mga7
 lib64gpg-error0-1.24-1.mga6
 lib64hogweed4-3.3-1.mga6
 lib64icu58-58.2-3.mga6
 lib64idn11-1.33-3.mga7
+lib64idn2_0-2.0.4-1.mga7
 lib64intl8-0.19.8.1-1.mga6
 lib64kdc-samba4_2-4.6.8-1.mga7
 lib64kmod2-24-2.mga6
@@ -116,6 +117,7 @@ lib64pcre1-8.40-2.mga6
 lib64png16_16-1.6.29-1.mga6
 lib64popt0-1.16-13.mga6
 lib64procps6-3.3.12-1.mga6
+lib64psl5-0.18.0-4.mga7
 lib64pytalloc-util2-2.1.9-1.mga6
 lib64python2.7-2.7.13-3.mga7
 lib64python2.7-stdlib-2.7.13-3.mga7
@@ -195,6 +197,7 @@ perl-XML-SAX-Base-1.90.0-1.mga7
 popt-data-1.16-13.mga6
 procps-ng-3.3.12-1.mga6
 psmisc-22.21-7.mga6
+publicsuffix-list-dafsa-20170828-2.mga7
 python-2.7.13-3.mga7
 python2-rpm-macros-3-5.mga7
 python-rpm-macros-3-5.mga7
