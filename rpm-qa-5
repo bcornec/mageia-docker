@@ -65,8 +65,8 @@ lib64crack2-2.9.2-2.2.mga5
 lib64cryptsetup4-1.6.6-4.mga5
 lib64curl4-7.40.0-3.5.mga5
 lib64daemon0-0.14-8.mga5
-lib64db5.3-5.3.28-4.mga5
-lib64dbnss5.3-5.3.28-4.mga5
+lib64db5.3-5.3.28-4.1.mga5
+lib64dbnss5.3-5.3.28-4.1.mga5
 lib64dbus1_3-1.8.22-1.1.mga5
 lib64devmapper1.02-1.02.90-6.mga5
 lib64devmapper-event1.02-1.02.90-6.mga5
