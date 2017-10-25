@@ -12,7 +12,7 @@ cracklib-dicts-2.9.6-5.mga6
 cronie-1.5.1-1.mga6
 crontabs-1.10-22.mga6
 crypto-policies-20170606-2.mga7
-curl-7.56.0-2.mga7
+curl-7.56.1-1.mga7
 dash-0.5.9-2.mga7
 dash-static-0.5.9-2.mga7
 dbus-1.10.16-1.mga6
@@ -64,7 +64,7 @@ lib64cap-ng0-0.7.8-2.mga7
 lib64crack2-2.9.6-5.mga6
 lib64cryptsetup4-1.7.5-1.mga6
 lib64cups2-2.2.5-1.mga7
-lib64curl4-7.56.0-2.mga7
+lib64curl4-7.56.1-1.mga7
 lib64daemon0-0.14-10.mga6
 lib64db5.3-5.3.28-13.mga7
 lib64dbus1_3-1.10.16-1.mga6
