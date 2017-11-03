@@ -146,7 +146,7 @@ lib64user1-0.62-9.mga7
 lib64uuid1-2.30.1-2.mga7
 lib64verto1-0.2.6-7.mga7
 lib64wbclient0-4.6.8-1.mga7
-lib64xml2_2-2.9.6-1.mga7
+lib64xml2_2-2.9.7-1.mga7
 lib64zlib1-1.2.11-4.mga6
 libgcc1-7.2.1-20170831.1.mga7
 libgpg-error-common-1.27-1.mga7
@@ -190,7 +190,7 @@ perl-MDV-Packdrakeng-1.130.0-3.mga6
 perl-String-ShellQuote-1.40.0-10.mga6
 perl-Time-ZoneInfo-0.300.0-8.mga6
 perl-URPM-5.15-1.mga7
-perl-XML-LibXML-2.13.200-1.mga7
+perl-XML-LibXML-2.13.200-2.mga7
 perl-XML-NamespaceSupport-1.120.0-1.mga7
 perl-XML-SAX-0.990.0-9.mga6
 perl-XML-SAX-Base-1.90.0-1.mga7
