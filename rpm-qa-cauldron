@@ -117,7 +117,7 @@ lib64pcre1-8.40-2.mga6
 lib64png16_16-1.6.34-1.mga7
 lib64popt0-1.16-13.mga6
 lib64procps6-3.3.12-1.mga6
-lib64psl5-0.18.0-4.mga7
+lib64psl5-0.19.1-1.mga7
 lib64pytalloc-util2-2.1.9-1.mga6
 lib64python2.7-2.7.13-3.mga7
 lib64python2.7-stdlib-2.7.13-3.mga7
@@ -197,7 +197,7 @@ perl-XML-SAX-Base-1.90.0-1.mga7
 popt-data-1.16-13.mga6
 procps-ng-3.3.12-1.mga6
 psmisc-22.21-7.mga6
-publicsuffix-list-dafsa-20170910-1.mga7
+publicsuffix-list-dafsa-20171028-1.mga7
 python-2.7.13-3.mga7
 python2-rpm-macros-3-5.mga7
 python-rpm-macros-3-5.mga7
