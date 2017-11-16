@@ -37,7 +37,7 @@ grub2-2.02-0.git10463.8.mga6
 grub2-common-2.02-0.git10463.8.mga6
 gzip-1.8-1.mga6
 hostname-3.18-1.mga6
-icu58-data-58.2-3.mga6
+icu58-data-58.2-3.1.mga6
 ifmetric-0.3-17.mga6
 ifplugd-0.28-20.mga6
 info-install-6.1-1.mga6
@@ -63,7 +63,7 @@ lib64cap2-2.25-1.mga6
 lib64cap-ng0-0.7.8-1.mga6
 lib64crack2-2.9.6-5.mga6
 lib64cryptsetup4-1.7.5-1.mga6
-lib64cups2-2.2.4-1.mga6
+lib64cups2-2.2.6-1.mga6
 lib64curl4-7.54.1-2.2.mga6
 lib64daemon0-0.14-10.mga6
 lib64db5.3-5.3.28-10.1.mga6
@@ -85,7 +85,7 @@ lib64gmp10-6.1.2-1.mga6
 lib64gnutls30-3.5.13-1.mga6
 lib64gpg-error0-1.24-1.mga6
 lib64hogweed4-3.3-1.mga6
-lib64icu58-58.2-3.mga6
+lib64icu58-58.2-3.1.mga6
 lib64idn11-1.33-1.1.mga6
 lib64intl8-0.19.8.1-1.mga6
 lib64kdc-samba4_2-4.6.7-1.mga6
