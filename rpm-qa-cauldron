@@ -95,7 +95,7 @@ lib64ldap2.4_2-2.4.45-3.mga7
 lib64ldb1-1.1.29-1.mga6
 lib64ldetect0.12-0.12.8-3.mga6
 lib64lockdev1-1.0.4-0.120111007git.12.mga6
-lib64lua5.3-5.3.4-2.mga7
+lib64lua5.3-5.3.4-3.mga7
 lib64lzma5-5.2.3-2.mga7
 lib64magic1-5.32-1.mga7
 lib64microhttpd12-0.9.55-1.mga6
@@ -123,6 +123,7 @@ lib64python2.7-2.7.13-3.mga7
 lib64python2.7-stdlib-2.7.13-3.mga7
 lib64qrencode3-3.4.4-5.mga6
 lib64readline6-6.3-9.mga6
+lib64readline7-7.0-1.mga7
 lib64rpm8-4.14.0-5.mga7
 lib64rpmbuild8-4.14.0-5.mga7
 lib64samba1-4.6.8-1.mga7
