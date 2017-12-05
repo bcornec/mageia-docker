@@ -149,10 +149,10 @@ lib64verto1-0.2.6-7.mga7
 lib64wbclient0-4.6.8-1.mga7
 lib64xml2_2-2.9.7-1.mga7
 lib64zlib1-1.2.11-4.mga6
-libgcc1-7.2.1-20170831.1.mga7
+libgcc1-7.2.2-20171130.1.mga7
 libgpg-error-common-1.27-1.mga7
 libnl3-config-3.3.0-1.mga6
-libstdc++6-7.2.1-20170831.1.mga7
+libstdc++6-7.2.2-20171130.1.mga7
 libuser-0.62-9.mga7
 libutempter-1.1.6-5.mga6
 lockdev-1.0.4-0.120111007git.12.mga6
