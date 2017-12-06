@@ -33,8 +33,8 @@ gettext-base-0.19.8.1-1.mga6
 glibc-2.22-25.mga6
 gpg-pubkey-80420f66-4d4fe123
 grep-3.0-1.mga6
-grub2-2.02-0.git10463.8.mga6
-grub2-common-2.02-0.git10463.8.mga6
+grub2-2.02.0-1.mga6
+grub2-common-2.02.0-1.mga6
 gzip-1.8-1.mga6
 hostname-3.18-1.mga6
 icu58-data-58.2-3.1.mga6
