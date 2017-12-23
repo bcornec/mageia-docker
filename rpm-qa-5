@@ -46,7 +46,7 @@ initscripts-9.55-13.mga5
 iproute2-4.4.0-1.mga5
 iputils-20140620-3.mga5
 kbd-2.0.2-3.mga5
-kernel-desktop-4.4.92-1.mga5-1-1.mga5
+kernel-desktop-4.4.105-1.mga5-1-1.mga5
 kernel-firmware-20160409-1.mga5
 keyutils-1.5.9-3.mga5
 kmod-18-4.mga5
@@ -104,16 +104,16 @@ lib64nettle4-2.7.1-6.2.mga5
 lib64nl3_200-3.2.25-3.1.mga5
 lib64nl-genl3_200-3.2.25-3.1.mga5
 lib64nspr4-4.17-1.mga5
-lib64nss3-3.28.6-1.1.mga5
-lib64openssl1.0.0-1.0.2m-1.mga5
-lib64openssl-engines1.0.0-1.0.2m-1.mga5
+lib64nss3-3.28.6-1.2.mga5
+lib64openssl1.0.0-1.0.2n-1.mga5
+lib64openssl-engines1.0.0-1.0.2n-1.mga5
 lib64p11-kit0-0.20.6-6.mga5
 lib64pam0-1.1.8-10.1.mga5
 lib64pam_userpass1-1.0.2-10.mga5
 lib64parted2-3.2-3.mga5
 lib64pcap1-1.8.1-1.mga5
 lib64pci3-3.2.1-5.mga5
-lib64pcre1-8.38-1.mga5
+lib64pcre1-8.41-1.mga5
 lib64png16_16-1.6.27-1.mga5
 lib64popt0-1.16-7.mga5
 lib64procps3-3.3.9-5.mga5
@@ -158,7 +158,7 @@ multiarch-utils-1.0.13-5.mga5
 ncurses-5.9-21.mga5
 net-tools-2.0-0.20140707git.6.mga5
 nmap-6.47-4.mga5
-nss-3.28.6-1.1.mga5
+nss-3.28.6-1.2.mga5
 nss-myhostname-217-11.2.mga5
 nss_tcb-1.1-5.mga5
 openldap-2.4.40-3.1.mga5
@@ -189,7 +189,7 @@ procps-ng-3.3.9-5.mga5
 psmisc-22.21-5.mga5
 resolvconf-1.75-3.mga5
 rmt-0.4b44-7.mga5
-rootcerts-20171025.00-1.mga5
+rootcerts-20171122.00-1.1.mga5
 rootfiles-11.0-12.mga5
 rpm-4.12.0.2-1.7.mga5
 rpm-helper-0.24.17-1.mga5
@@ -200,7 +200,7 @@ samba-common-3.6.25-2.7.mga5
 sash-3.8-3.mga5
 sed-4.2.2-6.mga5
 setup-2.7.21-5.mga5
-shadow-utils-4.2.1-6.mga5
+shadow-utils-4.2.1-6.1.mga5
 sysfsutils-2.1.0-20.mga5
 systemd-217-11.2.mga5
 systemd-units-217-11.2.mga5
