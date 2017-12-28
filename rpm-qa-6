@@ -30,7 +30,7 @@ findutils-4.6.0-1.mga6
 gawk-4.1.4-1.mga6
 genhdlist2-7.00-6.mga6
 gettext-base-0.19.8.1-1.mga6
-glibc-2.22-25.mga6
+glibc-2.22-26.mga6
 gpg-pubkey-80420f66-4d4fe123
 grep-3.0-1.mga6
 grub2-2.02.0-1.mga6
@@ -216,7 +216,7 @@ samba-common-4.6.7-1.mga6
 sash-3.8-6.mga6
 sed-4.2.2-9.mga6
 setup-2.7.24-1.mga6
-shadow-utils-4.4-1.mga6
+shadow-utils-4.4-1.1.mga6
 sysfsutils-2.1.0-22.mga6
 systemd-230-12.1.mga6
 systemd-units-230-12.1.mga6
