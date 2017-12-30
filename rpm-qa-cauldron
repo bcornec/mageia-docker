@@ -19,7 +19,7 @@ dash-static-0.5.9-2.mga7
 dbus-1.10.16-1.mga6
 diffutils-3.6-1.mga7
 dmidecode-3.1-1.mga6
-dmsetup-1.02.137-1.mga6
+dmsetup-1.02.137-3.mga7
 dracut-044-11.mga6
 drakxtools-backend-17.90-1.mga7
 e2fsprogs-1.43.6-1.mga7
@@ -42,11 +42,12 @@ icu59-data-59.1-5.mga7
 ifmetric-0.3-17.mga6
 ifplugd-0.28-20.mga6
 info-install-6.1-1.mga6
-initscripts-9.55-27.mga7
+initscripts-9.78-1.mga7
+ipcalc-0.2.0-4.mga7
 iproute2-4.14.1-1.mga7
 iputils-20161105-2.mga6
 kbd-2.0.3-1.mga6
-kernel-desktop-4.14.9-2.mga7-1-1.mga7
+kernel-desktop-4.14.10-1.mga7-1-1.mga7
 kernel-firmware-20170531-1.mga6
 kmod-24-2.mga6
 krb5-1.15.2-1.mga7
@@ -71,8 +72,8 @@ lib64curl4-7.57.0-2.mga7
 lib64daemon0-0.14-10.mga6
 lib64db5.3-5.3.28-13.mga7
 lib64dbus1_3-1.10.16-1.mga6
-lib64devmapper1.02-1.02.137-1.mga6
-lib64devmapper-event1.02-1.02.137-1.mga6
+lib64devmapper1.02-1.02.137-3.mga7
+lib64devmapper-event1.02-1.02.137-3.mga7
 lib64elfutils1-0.170-1.mga7
 lib64expat1-2.2.5-1.mga7
 lib64ext2fs2-1.43.6-1.mga7
@@ -103,8 +104,8 @@ lib64lzma5-5.2.3-2.mga7
 lib64magic1-5.32-1.mga7
 lib64microhttpd12-0.9.58-1.mga7
 lib64mount1-2.30.1-2.mga7
-lib64ncurses6-6.0-9.mga7
-lib64ncursesw6-6.0-9.mga7
+lib64ncurses6-6.0-10.mga7
+lib64ncursesw6-6.0-10.mga7
 lib64nettle6-3.3-1.mga6
 lib64nghttp2_14-1.25.0-1.mga7
 lib64nl3_200-3.4.0-2.mga7
@@ -170,7 +171,7 @@ mageia-repos-pkgprefs-7-0.0.1.mga6
 makedev-4.4-21.mga6
 meta-task-6-1.mga6
 multiarch-utils-1.0.13-7.mga6
-ncurses-6.0-9.mga7
+ncurses-6.0-10.mga7
 net-tools-2.0-0.20150915git.4.mga6
 nmap-7.40-2.mga7
 nss-myhostname-230-12.mga6
