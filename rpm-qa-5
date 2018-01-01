@@ -98,8 +98,8 @@ lib64lzo2_2-2.09-1.mga5
 lib64magic1-5.19-10.1.mga5
 lib64microhttpd10-0.9.37-4.mga5
 lib64mount1-2.25.2-3.5.mga5
-lib64ncurses5-5.9-21.mga5
-lib64ncursesw5-5.9-21.mga5
+lib64ncurses5-5.9-21.1.mga5
+lib64ncursesw5-5.9-21.1.mga5
 lib64nettle4-2.7.1-6.2.mga5
 lib64nl3_200-3.2.25-3.1.mga5
 lib64nl-genl3_200-3.2.25-3.1.mga5
@@ -155,7 +155,7 @@ mageia-release-Default-5-2.2.mga5
 makedev-4.4-19.mga5
 meta-task-5-28.1.mga5
 multiarch-utils-1.0.13-5.mga5
-ncurses-5.9-21.mga5
+ncurses-5.9-21.1.mga5
 net-tools-2.0-0.20140707git.6.mga5
 nmap-6.47-4.mga5
 nss-3.28.6-1.2.mga5
