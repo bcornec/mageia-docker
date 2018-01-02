@@ -138,7 +138,7 @@ lib64udev1-217-11.2.mga5
 lib64user1-0.60-5.3.mga5
 lib64uuid1-2.25.2-3.5.mga5
 lib64verto1-0.2.6-3.mga5
-lib64wbclient0-3.6.25-2.7.mga5
+lib64wbclient0-3.6.25-2.8.mga5
 lib64xml2_2-2.9.4-1.1.mga5
 lib64zlib1-1.2.8-7.1.mga5
 libgcc1-4.9.2-4.1.mga5
@@ -195,8 +195,8 @@ rpm-4.12.0.2-1.7.mga5
 rpm-helper-0.24.17-1.mga5
 rpm-mageia-setup-2.7-1.mga5
 run-parts-4.4-4.mga5
-samba-client-3.6.25-2.7.mga5
-samba-common-3.6.25-2.7.mga5
+samba-client-3.6.25-2.8.mga5
+samba-common-3.6.25-2.8.mga5
 sash-3.8-3.mga5
 sed-4.2.2-6.mga5
 setup-2.7.21-5.mga5
