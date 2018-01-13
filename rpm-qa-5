@@ -20,7 +20,7 @@ dbus-1.8.22-1.1.mga5
 diffutils-3.3-4.mga5
 dmidecode-3.0-1.mga5
 dmsetup-1.02.90-6.mga5
-dracut-038-21.1.mga5
+dracut-038-21.2.mga5
 drakx-kbd-mouse-x11-text-1.8-1.mga5
 drakxtools-backend-16.105.1-1.mga5
 e2fsprogs-1.42.12-5.mga5
@@ -46,12 +46,12 @@ initscripts-9.55-13.mga5
 iproute2-4.4.0-1.mga5
 iputils-20140620-3.mga5
 kbd-2.0.2-3.mga5
-kernel-desktop-4.4.105-1.mga5-1-1.mga5
+kernel-desktop-4.4.111-1.mga5-1-1.mga5
 kernel-firmware-20160409-1.mga5
 keyutils-1.5.9-3.mga5
 kmod-18-4.mga5
 krb5-1.12.5-1.3.mga5
-ldetect-lst-0.1.346.9-1.mga5
+ldetect-lst-0.1.346.10-1.mga5
 less-458-5.mga5
 lib64acl1-2.2.52-5.mga5
 lib64archive13-3.2.2-1.4.mga5
