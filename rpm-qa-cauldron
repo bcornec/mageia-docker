@@ -50,7 +50,7 @@ kbd-2.0.3-1.mga6
 kernel-desktop-4.14.14-1.mga7-1-1.mga7
 kernel-firmware-20170531-1.mga6
 kmod-24-2.mga6
-krb5-1.15.2-1.mga7
+krb5-1.16-1.mga7
 ldetect-lst-0.4.2-1.mga7
 less-487-2.mga7
 lib64acl1-2.2.52-7.mga6
@@ -84,7 +84,7 @@ lib64fuse2-2.9.7-3.mga7
 lib64gcrypt20-1.8.1-1.mga7
 lib64gdbm4-1.13-1.mga7
 lib64glib2.0_0-2.54.3-1.mga7
-lib64gmp10-6.1.2-1.mga6
+lib64gmp10-6.1.2-2.mga7
 lib64gnutls30-3.6.1-3.mga7
 lib64gpg-error0-1.27-1.mga7
 lib64hogweed4-3.3-1.mga6
@@ -96,7 +96,7 @@ lib64ip4tc0-1.6.1-3.mga7
 lib64jansson4-2.7-4.mga6
 lib64kdc-samba4_2-4.7.3-1.mga7
 lib64kmod2-24-2.mga6
-lib64krb53-1.15.2-1.mga7
+lib64krb53-1.16-1.mga7
 lib64ldap2.4_2-2.4.45-3.mga7
 lib64ldb1-1.3.0-2.mga7
 lib64ldetect0.12-0.12.8-3.mga6
@@ -130,8 +130,8 @@ lib64python2.7-2.7.14-1.mga7
 lib64python2.7-stdlib-2.7.14-1.mga7
 lib64qrencode4-4.0.0-1.mga7
 lib64readline7-7.0-1.mga7
-lib64rpm8-4.14.0-7.mga7
-lib64rpmbuild8-4.14.0-7.mga7
+lib64rpm8-4.14.1-1.mga7
+lib64rpmbuild8-4.14.1-1.mga7
 lib64samba1-4.7.3-1.mga7
 lib64samba-dc0-4.7.3-1.mga7
 lib64sasl2_3-2.1.26-14.mga7
@@ -156,10 +156,10 @@ lib64verto1-0.2.6-7.mga7
 lib64wbclient0-4.7.3-1.mga7
 lib64xml2_2-2.9.7-2.mga7
 lib64zlib1-1.2.11-4.mga6
-libgcc1-7.2.2-20171221.1.mga7
+libgcc1-7.3.0-0.rc.20180117.1.mga7
 libgpg-error-common-1.27-1.mga7
 libnl3-config-3.4.0-2.mga7
-libstdc++6-7.2.2-20171221.1.mga7
+libstdc++6-7.3.0-0.rc.20180117.1.mga7
 libuser-0.62-12.mga7
 libutempter-1.1.6-5.mga6
 lockdev-1.0.4-0.120111007git.12.mga6
@@ -184,8 +184,8 @@ p11-kit-0.23.2-2.mga6
 pam-1.3.0-6.mga7
 pam_tcb-1.1-7.mga6
 passwd-0.79-6.mga6
-perl-5.26.1-1.mga7
-perl-base-5.26.1-1.mga7
+perl-5.26.1-2.mga7
+perl-base-5.26.1-2.mga7
 perl-Config-IniFiles-2.940.0-1.mga7
 perl-File-FnMatch-0.20.0-22.mga7
 perl-File-Sync-0.110.0-22.mga7
@@ -213,11 +213,11 @@ resolvconf-1.79-1.mga6
 rmt-0.4b46-4.mga7
 rootcerts-20171122.00-1.mga7
 rootfiles-11.0-14.mga6
-rpm-4.14.0-7.mga7
+rpm-4.14.1-1.mga7
 rpm-helper-0.24.17-4.mga6
 rpm-mageia-setup-2.25-2.mga7
-rpm-plugin-syslog-4.14.0-7.mga7
-rpm-plugin-systemd-inhibit-4.14.0-7.mga7
+rpm-plugin-syslog-4.14.1-1.mga7
+rpm-plugin-systemd-inhibit-4.14.1-1.mga7
 run-parts-4.4-7.mga6
 samba-client-4.7.3-1.mga7
 samba-common-4.7.3-1.mga7
