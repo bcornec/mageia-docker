@@ -21,7 +21,7 @@ diffutils-3.6-1.mga7
 dmidecode-3.1-1.mga6
 dmsetup-1.02.137-3.mga7
 dracut-046-3.mga7
-drakxtools-backend-17.90-1.mga7
+drakxtools-backend-17.93-1.mga7
 e2fsprogs-1.43.6-1.mga7
 etcskel-1.63-34.mga6
 ethtool-4.13-1.mga7
@@ -47,11 +47,11 @@ ipcalc-0.2.0-4.mga7
 iproute2-4.14.1-1.mga7
 iputils-20161105-2.mga6
 kbd-2.0.3-1.mga6
-kernel-desktop-4.14.14-1.mga7-1-1.mga7
+kernel-desktop-4.14.14-2.mga7-1-1.mga7
 kernel-firmware-20170531-1.mga6
 kmod-24-2.mga6
 krb5-1.16-1.mga7
-ldetect-lst-0.4.2-1.mga7
+ldetect-lst-0.4.3-1.mga7
 less-487-2.mga7
 lib64acl1-2.2.52-7.mga6
 lib64archive13-3.3.2-3.mga7
