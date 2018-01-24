@@ -13,7 +13,7 @@ cracklib-dicts-2.9.6-5.mga6
 cronie-1.5.1-1.mga6
 crontabs-1.10-22.mga6
 crypto-policies-20170606-2.mga7
-curl-7.57.0-2.mga7
+curl-7.58.0-1.mga7
 dash-0.5.9-2.mga7
 dash-static-0.5.9-2.mga7
 dbus-1.10.16-1.mga6
@@ -47,7 +47,7 @@ ipcalc-0.2.0-4.mga7
 iproute2-4.14.1-1.mga7
 iputils-20161105-2.mga6
 kbd-2.0.4-1.mga7
-kernel-desktop-4.14.14-3.mga7-1-1.mga7
+kernel-desktop-4.14.15-1.mga7-1-1.mga7
 kernel-firmware-20170531-1.mga6
 kmod-24-2.mga6
 krb5-1.16-1.mga7
@@ -68,7 +68,7 @@ lib64cap-ng0-0.7.8-2.mga7
 lib64crack2-2.9.6-5.mga6
 lib64cryptsetup4-1.7.5-1.mga6
 lib64cups2-2.2.6-1.mga7
-lib64curl4-7.57.0-2.mga7
+lib64curl4-7.58.0-1.mga7
 lib64daemon0-0.14-10.mga6
 lib64db5.3-5.3.28-14.mga7
 lib64dbus1_3-1.10.16-1.mga6
@@ -140,7 +140,6 @@ lib64sigsegv2-2.10-7.mga6
 lib64smartcols1-2.30.1-2.mga7
 lib64smbclient0-4.7.3-1.mga7
 lib64sqlite3_0-3.21.0-2.mga7
-lib64ssh2_1-1.8.0-1.mga7
 lib64sysfs2-2.1.0-22.mga6
 lib64systemd0-236-4.mga7
 lib64talloc2-2.1.10-1.mga7
@@ -156,10 +155,10 @@ lib64verto1-0.2.6-7.mga7
 lib64wbclient0-4.7.3-1.mga7
 lib64xml2_2-2.9.7-2.mga7
 lib64zlib1-1.2.11-4.mga6
-libgcc1-7.3.0-0.rc.20180117.1.mga7
+libgcc1-7.3.0-0.rc.20180122.1.mga7
 libgpg-error-common-1.27-1.mga7
 libnl3-config-3.4.0-2.mga7
-libstdc++6-7.3.0-0.rc.20180117.1.mga7
+libstdc++6-7.3.0-0.rc.20180122.1.mga7
 libuser-0.62-12.mga7
 libutempter-1.1.6-5.mga6
 lockdev-1.0.4-0.120111007git.12.mga6
