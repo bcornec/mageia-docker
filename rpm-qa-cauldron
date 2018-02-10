@@ -1,6 +1,6 @@
 basesystem-7-0.1.mga7
 basesystem-minimal-7-0.1.mga7
-bash-4.4-12.1.mga7
+bash-4.4-19.1.mga7
 bootloader-utils-1.16-6.mga6
 bridge-utils-1.6-1.mga6
 bzip2-1.0.6-11.mga7
@@ -21,7 +21,7 @@ diffutils-3.6-1.mga7
 dmidecode-3.1-1.mga6
 dmsetup-1.02.137-3.mga7
 dracut-046-3.mga7
-drakxtools-backend-17.93-1.mga7
+drakxtools-backend-17.95-1.mga7
 e2fsprogs-1.43.6-1.mga7
 etcskel-1.63-34.mga6
 ethtool-4.13-1.mga7
@@ -196,7 +196,7 @@ perl-MDV-Distribconf-4.100.0-2.mga6
 perl-MDV-Packdrakeng-1.130.0-3.mga6
 perl-String-ShellQuote-1.40.0-10.mga6
 perl-Time-ZoneInfo-0.300.0-8.mga6
-perl-URPM-5.15-1.mga7
+perl-URPM-5.16-1.mga7
 perl-XML-LibXML-2.13.200-2.mga7
 perl-XML-NamespaceSupport-1.120.0-1.mga7
 perl-XML-SAX-0.990.0-9.mga6
