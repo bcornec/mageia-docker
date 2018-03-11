@@ -29,7 +29,7 @@ file-5.32-1.mga7
 filesystem-2.1.9-28.mga6
 findutils-4.6.0-1.mga6
 gawk-4.2.1-1.mga7
-genhdlist2-7.01-1.mga7
+genhdlist2-7.02-1.mga7
 gettext-base-0.19.8.1-2.mga7
 glibc-2.22-28.mga7
 gpg-pubkey-80420f66-4d4fe123
@@ -60,8 +60,8 @@ lib64audit1-2.8.2-1.mga7
 lib64avahi-client3-0.7-1.mga7
 lib64avahi-common3-0.7-1.mga7
 lib64blkid1-2.30.1-2.mga7
-lib64brotlicommon1-1.0.2-1.mga7
-lib64brotlidec1-1.0.2-1.mga7
+lib64brotlicommon1-1.0.3-1.mga7
+lib64brotlidec1-1.0.3-1.mga7
 lib64bz2_1-1.0.6-11.mga7
 lib64cap2-2.25-1.mga6
 lib64cap-ng0-0.7.8-2.mga7
@@ -172,7 +172,7 @@ mageia-repos-keys-7-0.0.1.mga6
 mageia-repos-pkgprefs-7-0.0.1.mga6
 makedev-4.4-21.mga6
 meta-task-7-0.3.mga7
-multiarch-utils-1.0.13-7.mga6
+multiarch-utils-1.0.14-1.mga7
 ncurses-6.0-20171223.4.mga7
 net-tools-2.0-0.20150915git.4.mga6
 nmap-7.40-2.mga7
