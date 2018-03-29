@@ -37,7 +37,7 @@ grep-3.1-1.mga7
 grub2-2.02.0-4.mga7
 grub2-common-2.02.0-4.mga7
 gzip-1.9-2.mga7
-hostname-3.18-1.mga6
+hostname-3.20-1.mga7
 icu59-data-59.1-5.mga7
 ifmetric-0.3-17.mga6
 ifplugd-0.28-20.mga6
@@ -206,7 +206,7 @@ perl-XML-SAX-Base-1.90.0-1.mga7
 popt-data-1.16-13.mga6
 procps-ng-3.3.12-1.mga6
 psmisc-22.21-7.mga6
-publicsuffix-list-dafsa-20180111-1.mga7
+publicsuffix-list-dafsa-20180328-1.mga7
 python-2.7.14-1.mga7
 python2-rpm-macros-3-5.mga7
 python-rpm-macros-3-5.mga7
