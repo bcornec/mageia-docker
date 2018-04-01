@@ -51,7 +51,7 @@ kernel-firmware-20180211-1.mga7
 kernel-linus-4.15.13-1.mga7-1-1.mga7
 kmod-24-2.mga6
 krb5-1.16-2.mga7
-ldetect-lst-0.4.4-1.mga7
+ldetect-lst-0.4.5-1.mga7
 less-530-1.mga7
 lib64acl1-2.2.52-8.mga7
 lib64archive13-3.3.2-3.mga7
@@ -223,7 +223,7 @@ run-parts-4.4-7.mga6
 samba-client-4.7.3-1.mga7
 samba-common-4.7.3-1.mga7
 sash-3.8-6.mga6
-sed-4.4-1.mga7
+sed-4.5-1.mga7
 setup-2.7.24-1.mga6
 shadow-utils-4.4-3.mga7
 sysfsutils-2.1.0-22.mga6
