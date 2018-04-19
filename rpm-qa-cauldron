@@ -34,8 +34,8 @@ gettext-base-0.19.8.1-2.mga7
 glibc-2.22-28.mga7
 gpg-pubkey-80420f66-4d4fe123
 grep-3.1-1.mga7
-grub2-2.02.0-5.mga7
-grub2-common-2.02.0-5.mga7
+grub2-2.02.0-6.mga7
+grub2-common-2.02.0-6.mga7
 gzip-1.9-2.mga7
 hostname-3.20-1.mga7
 icu59-data-59.1-5.mga7
@@ -59,7 +59,7 @@ lib64attr1-2.4.48-1.mga7
 lib64audit1-2.8.3-1.mga7
 lib64avahi-client3-0.7-1.mga7
 lib64avahi-common3-0.7-1.mga7
-lib64blkid1-2.32-3.mga7
+lib64blkid1-2.32-4.mga7
 lib64brotlicommon1-1.0.3-1.mga7
 lib64brotlidec1-1.0.3-1.mga7
 lib64bz2_1-1.0.6-11.mga7
@@ -77,7 +77,7 @@ lib64devmapper-event1.02-1.02.137-3.mga7
 lib64elfutils1-0.170-1.mga7
 lib64expat1-2.2.5-1.mga7
 lib64ext2fs2-1.44.1-1.mga7
-lib64fdisk1-2.32-3.mga7
+lib64fdisk1-2.32-4.mga7
 lib64ffi6-3.2.1-5.mga6
 lib64freetype6-2.9-1.mga7
 lib64fuse2-2.9.7-3.mga7
@@ -107,7 +107,7 @@ lib64lz4_1-1.8.0-2.mga7
 lib64lzma5-5.2.3-2.mga7
 lib64magic1-5.33-1.mga7
 lib64microhttpd12-0.9.59-1.mga7
-lib64mount1-2.32-3.mga7
+lib64mount1-2.32-4.mga7
 lib64ncurses6-6.1-20180407.1.mga7
 lib64ncursesw6-6.1-20180407.1.mga7
 lib64nettle6-3.4-1.mga7
@@ -138,7 +138,7 @@ lib64samba-dc0-4.7.6-1.mga7
 lib64sasl2_3-2.1.26-15.mga7
 lib64seccomp2-2.3.2-1.mga6
 lib64sigsegv2-2.12-1.mga7
-lib64smartcols1-2.32-3.mga7
+lib64smartcols1-2.32-4.mga7
 lib64smbclient0-4.7.6-1.mga7
 lib64sqlite3_0-3.23.1-1.mga7
 lib64ssh2_1-1.8.0-1.mga7
@@ -152,7 +152,7 @@ lib64tevent0-0.9.36-1.mga7
 lib64udev1-236-6.mga7
 lib64unistring2-0.9.9-1.mga7
 lib64user1-0.62-12.mga7
-lib64uuid1-2.32-3.mga7
+lib64uuid1-2.32-4.mga7
 lib64verto1-0.3.0-2.mga7
 lib64wbclient0-4.7.6-1.mga7
 lib64xml2_2-2.9.7-2.mga7
@@ -219,7 +219,7 @@ rpm-helper-0.24.17-4.mga6
 rpm-mageia-setup-2.27-1.mga7
 rpm-plugin-syslog-4.14.1-3.mga7
 rpm-plugin-systemd-inhibit-4.14.1-3.mga7
-run-parts-4.4-7.mga6
+run-parts-4.8.4-1.mga7
 samba-client-4.7.6-1.mga7
 samba-common-4.7.6-1.mga7
 sash-3.8-6.mga6
@@ -235,7 +235,7 @@ time-1.9-1.mga7
 timezone-2018d-2.mga7
 traceroute-2.1.0-1.mga6
 urpmi-8.111-2.mga7
-util-linux-2.32-3.mga7
+util-linux-2.32-4.mga7
 vim-minimal-8.0.1630-1.mga7
 which-2.21-3.mga6
 xz-5.2.3-2.mga7
