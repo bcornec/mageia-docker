@@ -86,7 +86,7 @@ lib64gdbm4-1.14-1.mga7
 lib64glib2.0_0-2.56.1-1.mga7
 lib64gmp10-6.1.2-2.mga7
 lib64gnutls30-3.6.2-1.mga7
-lib64gpg-error0-1.29-2.mga7
+lib64gpg-error0-1.29-3.mga7
 lib64hogweed4-3.4-1.mga7
 lib64icu59-59.1-5.mga7
 lib64idn11-1.34-1.mga7
@@ -155,10 +155,10 @@ lib64user1-0.62-12.mga7
 lib64uuid1-2.32-4.mga7
 lib64verto1-0.3.0-2.mga7
 lib64wbclient0-4.7.6-1.mga7
-lib64xml2_2-2.9.7-2.mga7
+lib64xml2_2-2.9.8-1.mga7
 lib64zlib1-1.2.11-5.mga7
 libgcc1-7.3.0-3.mga7
-libgpg-error-common-1.29-2.mga7
+libgpg-error-common-1.29-3.mga7
 libnl3-config-3.4.0-2.mga7
 libstdc++6-7.3.0-3.mga7
 libuser-0.62-12.mga7
@@ -199,7 +199,7 @@ perl-MDV-Packdrakeng-1.130.0-3.mga6
 perl-String-ShellQuote-1.40.0-10.mga6
 perl-Time-ZoneInfo-0.300.0-8.mga6
 perl-URPM-5.16-1.mga7
-perl-XML-LibXML-2.13.200-2.mga7
+perl-XML-LibXML-2.13.200-3.mga7
 perl-XML-NamespaceSupport-1.120.0-1.mga7
 perl-XML-SAX-1.0.0-1.mga7
 perl-XML-SAX-Base-1.90.0-1.mga7
