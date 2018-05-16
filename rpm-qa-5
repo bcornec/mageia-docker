@@ -166,8 +166,8 @@ p11-kit-0.20.6-6.mga5
 pam-1.1.8-10.1.mga5
 pam_tcb-1.1-5.mga5
 passwd-0.79-4.mga5
-perl-5.20.1-8.7.mga5
-perl-base-5.20.1-8.7.mga5
+perl-5.20.1-8.8.mga5
+perl-base-5.20.1-8.8.mga5
 perl-Config-IniFiles-2.830.0-3.mga5
 perl-File-FnMatch-0.20.0-14.mga5
 perl-File-Sync-0.110.0-11.mga5
