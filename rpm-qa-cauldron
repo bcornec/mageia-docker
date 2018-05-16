@@ -10,10 +10,10 @@ console-setup-1.173-2.mga7
 coreutils-8.29-1.mga7
 cpio-2.12-3.mga6
 cracklib-dicts-2.9.6-5.mga6
-cronie-1.5.1-1.mga6
+cronie-1.5.2-1.mga7
 crontabs-1.10-22.mga6
 crypto-policies-20170606-2.mga7
-curl-7.59.0-2.mga7
+curl-7.60.0-1.mga7
 dash-0.5.9.1-1.mga7
 dash-static-0.5.9.1-1.mga7
 dbus-1.13.2-2.mga7
@@ -66,9 +66,9 @@ lib64bz2_1-1.0.6-11.mga7
 lib64cap2-2.25-1.mga6
 lib64cap-ng0-0.7.9-1.mga7
 lib64crack2-2.9.6-5.mga6
-lib64cryptsetup12-2.0.2-1.mga7
+lib64cryptsetup12-2.0.3-1.mga7
 lib64cups2-2.2.6-2.mga7
-lib64curl4-7.59.0-2.mga7
+lib64curl4-7.60.0-1.mga7
 lib64daemon0-0.14-10.mga6
 lib64db5.3-5.3.28-14.mga7
 lib64dbus1_3-1.13.2-2.mga7
