@@ -108,8 +108,8 @@ lib64lzma5-5.2.3-2.mga7
 lib64magic1-5.33-1.mga7
 lib64microhttpd12-0.9.59-1.mga7
 lib64mount1-2.32-5.mga7
-lib64ncurses6-6.1-20180407.1.mga7
-lib64ncursesw6-6.1-20180407.1.mga7
+lib64ncurses6-6.1-20180526.1.mga7
+lib64ncursesw6-6.1-20180526.1.mga7
 lib64nettle6-3.4-1.mga7
 lib64nghttp2_14-1.32.0-1.mga7
 lib64nl3_200-3.4.0-2.mga7
@@ -178,7 +178,7 @@ mageia-repos-pkgprefs-7-0.0.1.mga6
 makedev-4.4-21.mga6
 meta-task-7-0.4.mga7
 multiarch-utils-1.0.14-1.mga7
-ncurses-6.1-20180407.1.mga7
+ncurses-6.1-20180526.1.mga7
 net-tools-2.0-0.20150915git.4.mga6
 nmap-7.70-1.mga7
 nss-myhostname-236-7.mga7
