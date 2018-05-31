@@ -45,7 +45,7 @@ initscripts-9.55-24.mga6
 iproute2-4.14.1-1.mga6
 iputils-20161105-2.mga6
 kbd-2.0.3-1.mga6
-kernel-desktop-4.14.40-1.mga6-1-1.mga6
+kernel-desktop-4.14.44-2.mga6-1-1.mga6
 kernel-firmware-20170531-1.mga6
 kmod-24-2.mga6
 krb5-1.15.1-2.3.mga6
@@ -165,7 +165,7 @@ mageia-repos-6-1.mga6
 mageia-repos-keys-6-1.mga6
 mageia-repos-pkgprefs-6-1.mga6
 makedev-4.4-21.mga6
-meta-task-6-1.1.mga6
+meta-task-6-2.1.mga6
 multiarch-utils-1.0.13-7.mga6
 ncurses-6.0-8.1.mga6
 net-tools-2.0-0.20150915git.4.mga6
