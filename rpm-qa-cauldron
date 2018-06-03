@@ -69,8 +69,8 @@ lib64crack2-2.9.6-5.mga6
 lib64cryptsetup12-2.0.3-1.mga7
 lib64cups2-2.2.6-2.mga7
 lib64curl4-7.60.0-1.mga7
-lib64daemon0-0.14-10.mga6
-lib64db5.3-5.3.28-15.mga7
+lib64daemon0-0.14-11.mga7
+lib64db5.3-5.3.28-16.mga7
 lib64dbus1_3-1.13.2-2.mga7
 lib64devmapper1.02-1.02.137-3.mga7
 lib64devmapper-event1.02-1.02.137-3.mga7
@@ -175,7 +175,7 @@ mageia-repos-7-0.0.1.mga6
 mageia-repos-cauldron-7-0.0.1.mga6
 mageia-repos-keys-7-0.0.1.mga6
 mageia-repos-pkgprefs-7-0.0.1.mga6
-makedev-4.4-21.mga6
+makedev-4.4-22.mga7
 meta-task-7-0.4.mga7
 multiarch-utils-1.0.14-1.mga7
 ncurses-6.1-20180526.1.mga7
