@@ -81,12 +81,12 @@ lib64fdisk1-2.32-6.mga7
 lib64ffi6-3.2.1-6.mga7
 lib64freetype6-2.9.1-1.mga7
 lib64fuse2-2.9.7-5.mga7
-lib64gcrypt20-1.8.2-1.mga7
+lib64gcrypt20-1.8.3-1.mga7
 lib64gdbm4-1.14-1.mga7
 lib64glib2.0_0-2.56.1-1.mga7
 lib64gmp10-6.1.2-2.mga7
 lib64gnutls30-3.6.2-1.mga7
-lib64gpg-error0-1.29-3.mga7
+lib64gpg-error0-1.31-1.mga7
 lib64hogweed4-3.4-1.mga7
 lib64icu59-59.1-6.mga7
 lib64idn12-1.35-1.mga7
@@ -103,7 +103,7 @@ lib64ldb1-1.3.2-1.mga7
 lib64ldetect0.12-0.12.8-3.mga6
 lib64lockdev1-1.0.4-0.120111007git.12.mga6
 lib64lua5.3-5.3.4-5.mga7
-lib64lz4_1-1.8.0-2.mga7
+lib64lz4_1-1.8.2-1.mga7
 lib64lzma5-5.2.4-1.mga7
 lib64magic1-5.33-1.mga7
 lib64microhttpd12-0.9.59-1.mga7
@@ -160,7 +160,7 @@ lib64xml2_2-2.9.8-2.mga7
 lib64zlib1-1.2.11-6.mga7
 lib64zstd1-1.3.4-1.mga7
 libgcc1-7.3.0-5.mga7
-libgpg-error-common-1.29-3.mga7
+libgpg-error-common-1.31-1.mga7
 libidn2-i18n-2.0.5-1.mga7
 libnl3-config-3.4.0-2.mga7
 libstdc++6-7.3.0-5.mga7
@@ -201,7 +201,7 @@ perl-MDV-Distribconf-4.100.0-2.mga6
 perl-MDV-Packdrakeng-1.130.0-3.mga6
 perl-String-ShellQuote-1.40.0-10.mga6
 perl-Time-ZoneInfo-0.300.0-8.mga6
-perl-URPM-5.16-1.mga7
+perl-URPM-5.17-1.mga7
 perl-XML-LibXML-2.13.200-3.mga7
 perl-XML-NamespaceSupport-1.120.0-1.mga7
 perl-XML-SAX-1.0.0-1.mga7
@@ -237,7 +237,7 @@ tcb-1.1-7.mga6
 time-1.9-1.mga7
 timezone-2018d-2.mga7
 traceroute-2.1.0-1.mga6
-urpmi-8.111-2.mga7
+urpmi-8.112-1.mga7
 util-linux-2.32-6.mga7
 vim-minimal-8.1.022-1.mga7
 which-2.21-3.mga6
