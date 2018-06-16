@@ -26,7 +26,7 @@ e2fsprogs-1.44.1-1.mga7
 etcskel-1.63-34.mga6
 ethtool-4.16-1.mga7
 file-5.33-1.mga7
-filesystem-2.1.9-28.mga6
+filesystem-2.1.9-29.mga7
 findutils-4.6.0-1.mga6
 gawk-4.2.1-1.mga7
 genhdlist2-7.02-1.mga7
@@ -41,7 +41,7 @@ hostname-3.20-1.mga7
 icu59-data-59.1-6.mga7
 ifmetric-0.3-17.mga6
 ifplugd-0.28-20.mga6
-info-install-6.5-2.mga7
+info-install-6.5-3.mga7
 initscripts-9.78-5.mga7
 ipcalc-0.2.0-4.mga7
 iproute2-4.14.1-1.mga7
@@ -175,7 +175,7 @@ mageia-repos-7-0.0.2.mga7
 mageia-repos-cauldron-7-0.0.2.mga7
 mageia-repos-keys-7-0.0.2.mga7
 mageia-repos-pkgprefs-7-0.0.2.mga7
-makedev-4.4-22.mga7
+makedev-4.4-23.mga7
 meta-task-7-0.4.mga7
 multiarch-utils-1.0.14-1.mga7
 ncurses-6.1-20180526.1.mga7
@@ -228,7 +228,7 @@ samba-common-4.7.6-1.mga7
 sash-3.8-6.mga6
 sed-4.5-1.mga7
 setup-2.7.24-1.mga6
-shadow-utils-4.4-3.mga7
+shadow-utils-4.4-4.mga7
 sysfsutils-2.1.0-22.mga6
 systemd-236-7.mga7
 systemd-units-236-7.mga7
