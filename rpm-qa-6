@@ -24,13 +24,13 @@ e2fsprogs-1.43.4-1.mga6
 elfutils-0.169-1.mga6
 etcskel-1.63-34.mga6
 ethtool-4.8-1.mga6
-file-5.25-5.mga6
+file-5.25-5.1.mga6
 filesystem-2.1.9-28.mga6
 findutils-4.6.0-1.mga6
 gawk-4.1.4-1.mga6
 genhdlist2-7.00-6.mga6
 gettext-base-0.19.8.1-1.mga6
-glibc-2.22-28.mga6
+glibc-2.22-29.mga6
 gpg-pubkey-80420f66-4d4fe123
 grep-3.0-1.mga6
 grub2-2.02.0-1.mga6
@@ -45,7 +45,7 @@ initscripts-9.55-24.mga6
 iproute2-4.14.1-1.mga6
 iputils-20161105-2.mga6
 kbd-2.0.3-1.mga6
-kernel-desktop-4.14.44-2.mga6-1-1.mga6
+kernel-desktop-4.14.50-2.mga6-1-1.mga6
 kernel-firmware-20170531-1.mga6
 kmod-24-2.mga6
 krb5-1.15.1-2.3.mga6
@@ -97,7 +97,7 @@ lib64ldetect0.12-0.12.8-3.mga6
 lib64lockdev1-1.0.4-0.120111007git.12.mga6
 lib64lua5.2-5.2.4-1.mga6
 lib64lzma5-5.2.3-1.mga6
-lib64magic1-5.25-5.mga6
+lib64magic1-5.25-5.1.mga6
 lib64microhttpd12-0.9.55-1.mga6
 lib64mount1-2.28.2-2.1.mga6
 lib64ncurses6-6.0-8.1.mga6
