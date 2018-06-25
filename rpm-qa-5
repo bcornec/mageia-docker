@@ -26,7 +26,7 @@ drakxtools-backend-16.105.1-1.mga5
 e2fsprogs-1.42.12-5.mga5
 etcskel-1.63-32.mga5
 ethtool-3.15-3.mga5
-file-5.19-10.1.mga5
+file-5.19-10.2.mga5
 filesystem-2.1.9-25.1.mga5
 findutils-4.5.14-3.mga5
 gawk-4.1.1-4.mga5
@@ -95,7 +95,7 @@ lib64lockdev1-1.0.4-0.120111007git.10.mga5
 lib64lua5.2-5.2.3-6.mga5
 lib64lzma5-5.2.0-1.mga5
 lib64lzo2_2-2.09-1.mga5
-lib64magic1-5.19-10.1.mga5
+lib64magic1-5.19-10.2.mga5
 lib64microhttpd10-0.9.37-4.mga5
 lib64mount1-2.25.2-3.5.mga5
 lib64ncurses5-5.9-21.1.mga5
