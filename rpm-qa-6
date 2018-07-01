@@ -78,7 +78,7 @@ lib64fdisk1-2.28.2-2.1.mga6
 lib64ffi6-3.2.1-5.mga6
 lib64freetype6-2.7.1-2.2.mga6
 lib64fuse2-2.9.7-1.mga6
-lib64gcrypt20-1.7.8-1.1.mga6
+lib64gcrypt20-1.7.10-1.mga6
 lib64gdbm4-1.12-1.mga6
 lib64glib2.0_0-2.54.3-1.1.mga6
 lib64gmp10-6.1.2-1.mga6
@@ -100,8 +100,8 @@ lib64lzma5-5.2.3-1.mga6
 lib64magic1-5.25-5.1.mga6
 lib64microhttpd12-0.9.55-1.mga6
 lib64mount1-2.28.2-2.1.mga6
-lib64ncurses6-6.0-8.1.mga6
-lib64ncursesw6-6.0-8.1.mga6
+lib64ncurses6-6.0-8.3.mga6
+lib64ncursesw6-6.0-8.3.mga6
 lib64nettle6-3.3-1.mga6
 lib64nghttp2_14-1.9.2-1.mga6
 lib64nl3_200-3.3.0-1.mga6
@@ -167,7 +167,7 @@ mageia-repos-pkgprefs-6-1.mga6
 makedev-4.4-21.mga6
 meta-task-6-3.1.mga6
 multiarch-utils-1.0.13-7.mga6
-ncurses-6.0-8.1.mga6
+ncurses-6.0-8.3.mga6
 net-tools-2.0-0.20150915git.4.mga6
 nmap-7.40-1.1.mga6
 nss-3.28.6-1.4.mga6
@@ -192,7 +192,7 @@ perl-MDV-Packdrakeng-1.130.0-3.mga6
 perl-String-ShellQuote-1.40.0-10.mga6
 perl-Time-HiRes-1.973.300-1.mga6
 perl-Time-ZoneInfo-0.300.0-8.mga6
-perl-URPM-5.12.1-1.mga6
+perl-URPM-5.12.2-1.mga6
 perl-XML-LibXML-2.12.900-1.1.mga6
 perl-XML-NamespaceSupport-1.110.0-9.mga6
 perl-XML-SAX-0.990.0-9.mga6
