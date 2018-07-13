@@ -34,8 +34,8 @@ gettext-base-0.19.8.1-2.mga7
 glibc-2.27-9.mga7
 gpg-pubkey-80420f66-4d4fe123
 grep-3.1-1.mga7
-grub2-2.02.0-6.mga7
-grub2-common-2.02.0-6.mga7
+grub2-2.02.0-7.mga7
+grub2-common-2.02.0-7.mga7
 gzip-1.9-2.mga7
 hostname-3.20-1.mga7
 icu59-data-59.1-6.mga7
