@@ -1,0 +1,261 @@
+#!/bin/bash
+#
+# Generates automatically docker images for Mageia distributions
+#
+# Based on work done by Fedora and Juan Luis Baptiste
+# at https://github.com/juanluisbaptiste/docker-brew-mageia
+
+# Workdirs
+if [ _"$HOME" = _"" ]; then
+	echo "Please define HOME to a sensible value"
+	exit -1
+fi
+GITDIR=$HOME/tmp/mageia-docker
+GITURL=https://github.com/myaccount
+OFFDIR=$HOME/tmp/official-images
+WORKDIR=$HOME/tmp
+# By default we host ourselves
+MGAMODE="hosted"
+SCPURL=localhost:/tmp
+BIGURL=http://localhost/mageia-docker
+
+# What is our current date
+DATE=`date "+%Y-%m-%d"`
+
+MGAARCH=x86_64
+
+APPNAME=$(basename $0)
+
+usage() {
+	echo >&2 "Syntax: $APPNAME [-v Mageia-Version][-m Mageia-Mirror-URL][-w /path/to/workdir]"
+	exit 1
+}
+
+# Mageia version to consider
+# By default the running version if on Mageia
+# else generating for cauldron
+# Other value could be a number or cauldron
+if [ -r /etc/mageia-release ]; then
+	MGAVER=`pbdistrocheck | grep Ver: | cut -f2`
+	# Install deps in case they missing
+	sudo urpmi -q docker 1>/dev/null
+else
+	MGAVER=cauldron
+fi
+
+# Mirror to consider, by default mirrorlist
+MGAMIRROR="https://mirrors.mageia.org/api/mageia.$MGAVER.x86_64.list"
+
+# Get env var from the user home dir
+if [ -r $HOME/.$APPNAME ]; then
+	. $HOME/.$APPNAME
+fi
+
+opt=$(getopt --options 'w:,v:,m:,h,f' --longoptions 'workdir:,version:,mirror:,help,force' --name $APPNAME -- "$@")
+eval set -- "$opt"
+unset opt
+FORCE="false"
+
+while true; do
+        case "$1" in
+                -w|--workdir) WORKDIR=$2 ; shift 2 ;;
+                -v|--version) MGAVER="$2" ; shift 2 ;;
+                -m|--mirror) MGAMIRROR="$2" ; shift 2 ;;
+                -f|--force) FORCE="true" ; shift ;;
+                -h|--help) usage ;;
+                 --) shift ; break ;;
+        esac
+done
+
+# Accept CLI param to overwrite default version of Mageia
+if [ _"$MGAVER" = _"" ]; then
+	echo "Please provide a Mageia version such as with -v 5 e.g."
+	exit -1
+fi
+
+echo "Creating Mageia $MGAVER container on Docker Hub"
+
+# Reset mirror now we have the version, i case none was given
+if [ _"$MGAMIRROR" = _"" ]; then
+	MGAMIRROR="https://mirrors.mageia.org/api/mageia.$MGAVER.x86_64.list"
+fi
+
+cd $GITDIR 2>&1 > /dev/null
+if [ $? -ne 0 ]; then
+	echo "$GITDIR doesn't exist, creating it"
+	mkdir -p $GITDIR
+	cd $GITDIR
+	git clone $GITURL/mageia-docker .
+	if [ $? -ne 0 ]; then
+		echo "Unable to clone $GITURL"
+		exit -1
+	fi
+fi
+git checkout -f master 2>/dev/null 1>/dev/null
+if [ $? -ne 0 ]; then
+	echo "Unable to checkout branch master"
+	exit -1
+fi
+git branch -D $MGAVER 2>/dev/null 1>/dev/null 
+git checkout -f --orphan $MGAVER
+if [ $? -ne 0 ]; then
+	echo "Unable to create branch $MGAVER"
+	exit -1
+fi
+
+if [ _"$WORKDIR" != _"" ]; then
+	TARGETDIR="$WORKDIR/$MGAVER"
+else
+	echo "Work directory is an empty string"
+	exit -1
+fi
+
+echo "Cleanup $TARGETDIR first for idempotence"
+sudo rm -rf $TARGETDIR
+git rm --cached -r . 2>/dev/null 1>/dev/null
+
+echo "Creating the chroot with latest Mageia $MGAVER content"
+sudo /usr/sbin/urpmi.addmedia --distrib --urpmi-root "$TARGETDIR" $MGAMIRROR/$MGAVER/$MGAARCH 2>/dev/null 1>/dev/null
+if [ $? -ne 0 ]; then
+	echo "Unable to prepare chroot"
+	exit -1
+fi
+sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root "$TARGETDIR" basesystem urpmi 2>/dev/null 1>/dev/null
+if [ $? -ne 0 ]; then
+	echo "Unable to prepare install dependencies in chroot"
+	exit -1
+fi
+
+#
+if [ -d "$TARGETDIR/etc/sysconfig" ]; then
+	# allow networking init scripts inside the container to work without extra steps
+	echo 'NETWORKING=yes' > $WORKDIR/network
+	sudo install -m 644 $WORKDIR/network "$TARGETDIR"/etc/sysconfig/network
+	rm $WORKDIR/network
+fi
+
+#
+# Docker mounts tmpfs at /dev and procfs at /proc so we can remove them
+sudo rm -rf "$TARGETDIR/dev" "$TARGETDIR/proc"
+sudo mkdir -p "$TARGETDIR/dev" "$TARGETDIR/proc"
+
+# make sure /etc/resolv.conf has something useful in it
+cat > $WORKDIR/resolv.conf << EOF
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+EOF
+sudo install -m 644 $WORKDIR/resolv.conf "$TARGETDIR/etc/resolv.conf"
+rm $WORKDIR/resolv.conf
+
+# Needs root access for dev files e.g.
+echo "Capturing that chroot content into mageia-$MGAVER-$DATE.tar.xz"
+sudo rm -f mageia-$MGAVER-$DATE.tar.xz
+sudo tar -C $TARGETDIR -cJf mageia-$MGAVER-$DATE.tar.xz .
+sudo chmod 644 mageia-$MGAVER-$DATE.tar.xz
+sudo chroot $TARGETDIR rpm -qa | sort -u > $WORKDIR/rpm-qa
+if [ -r $HOME/rpm-qa-$MGAVER ]; then
+	diff -q $HOME/rpm-qa-$MGAVER $WORKDIR/rpm-qa
+	if [ $? -eq 0 ]; then
+		echo "The list of RPMs packages didn't change so no need to build a new Docker image"
+		if [ $FORCE = "false" ]; then
+			exit 1
+		fi
+	fi
+fi
+
+cp $WORKDIR/rpm-qa $HOME/rpm-qa-$MGAVER
+cp $WORKDIR/rpm-qa rpm-qa-$MGAVER
+
+echo "Creating the appropriate Docker file"
+cat > Dockerfile << EOF
+FROM scratch
+MAINTAINER bcornec@mageia.org
+WORKDIR /
+ADD mageia-$MGAVER-$DATE.tar.xz /
+LABEL name="Mageia $MGAVER Base Image" \
+    vendor="Mageia" \
+    license="GPLv2" \
+    build-date="$DATE"
+CMD /bin/bash
+EOF
+
+echo "Generating the docker image mageiaofficial:$MGAVER from it"
+docker build -t mageiaofficial:$MGAVER . 2>&1 >/dev/null
+docker images mageiaofficial:$MGAVER
+#docker tag mageiaofficial:$MGAVER bcornec/mageia:$MGAVER
+#docker login -u $MGAAC -p $MGAPWD
+#docker push bcornec/mageia:$MGAVER
+
+if [ _"$MGAMODE" = _"hosted" ] || [ _"$MGAMODE" = _"local" ]; then
+	# We host ourselves somewhere on $BIGURL
+	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $BIGURL/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
+	SSHDIR=`echo $SCPURL | cut -d: -f2`
+	if [ _"$MGAMODE" = _"hosted" ]; then
+		SSHHOST=`echo $SCPURL | cut -d: -f1`
+		echo "Transferring the big file onto $SCPURL"
+		ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER ; rm -f $SSHDIR/$MGAVER/mageia-$DATE.tar.xz"
+		scp -p mageia-$MGAVER-$DATE.tar.xz $SCPURL/$MGAVER/mageia-$DATE.tar.xz
+	else
+		echo "Transferring the big file onto $SCPURL"
+		mkdir -p $SSHDIR/$MGAVER
+		sudo mv mageia-$MGAVER-$DATE.tar.xz $SSHDIR/$MGAVER/mageia-$DATE.tar.xz
+	fi
+else
+	# We host on github
+
+	# Automatic build in Docker Hub does not support Git LFS yet
+	# Cf: https://github.com/docker/hub-feedback/issues/500
+	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $GITURL/mageia-docker/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
+
+	# This requires git-lfs for managing large files
+	sudo urpmi -q git-lfs 1>/dev/null
+	git lfs track "*.tar.xz"
+	git add .gitattributes
+	git add mageia-$MGAVER-$DATE.tar.xz
+	# Remove old cached files
+	git lfs prune
+fi
+if [ -f mageia-$MGAVER-$DATE.tar.xz ]; then
+	sudo rm -f mageia-$MGAVER-$DATE.tar.xz
+fi
+
+
+echo "Commiting into our git repo"
+git add Dockerfile mageia-docker LICENSE README.md run-mageia rpm-qa-$MGAVER
+git commit -m "update Mageia $MGAVER - $DATE"
+
+CID=`git show | head -1 | cut -d' ' -f2`
+echo "New commit ID for latest commit is $CID"
+
+if [ _"$MGAMODE" != _"hosted" ]; then
+	# Seems we need to do it twice for everything to be pushed with LFS
+	git push -f --set-upstream origin $MGAVER
+fi
+
+git push -f --set-upstream origin $MGAVER
+git checkout -f master
+# Backup rpm list for next run
+cp $WORKDIR/rpm-qa rpm-qa-$MGAVER
+cp $WORKDIR/rpm-qa $HOME/rpm-qa-$MGAVER
+git add rpm-qa-$MGAVER
+git commit -m "update Mageia $MGAVER RPM list"
+git push
+
+# done in caller
+#rm -rf $WORKDIR
+
+exit 0
+# Not sure wether it's still useful
+cd $OFFDIR/library 2>/dev/null 1>/dev/null
+if [ $? -ne 0 ]; then
+	echo "$OFFDIR doesn't exist, creating it"
+	mkdir -p $OFFDIR/library
+	cd $OFFDIR/library
+	git clone $GITURL/official-images .
+fi
+
+git remote update
+perl -pi -e 'undef $/; s|(/'$MGAVER'\nGitCommit:) [a-f0-9]+|$1 '$CID'|' mageia
+git add mageia
+git commit -m "update Mageia commit ID to $CID"
+git push origin
