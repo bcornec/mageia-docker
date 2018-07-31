@@ -31,7 +31,7 @@ findutils-4.6.0-1.mga6
 gawk-4.2.1-1.mga7
 genhdlist2-7.02-1.mga7
 gettext-base-0.19.8.1-2.mga7
-glibc-2.27-13.mga7
+glibc-2.27-14.mga7
 gpg-pubkey-80420f66-4d4fe123
 grep-3.1-1.mga7
 grub2-2.02.0-7.mga7
@@ -80,10 +80,10 @@ lib64ext2fs2-1.44.1-1.mga7
 lib64fdisk1-2.32-6.mga7
 lib64ffi6-3.2.1-6.mga7
 lib64freetype6-2.9.1-1.mga7
-lib64fuse2-2.9.7-5.mga7
+lib64fuse2-2.9.8-1.mga7
 lib64gcrypt20-1.8.3-1.mga7
-lib64gdbm6-1.15-1.mga7
-lib64gdbm_compat4-1.15-1.mga7
+lib64gdbm6-1.17-1.mga7
+lib64gdbm_compat4-1.17-1.mga7
 lib64glib2.0_0-2.56.1-1.mga7
 lib64gmp10-6.1.2-2.mga7
 lib64gnutls30-3.6.3-2.mga7
