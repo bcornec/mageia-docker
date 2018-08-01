@@ -80,7 +80,7 @@ lib64ext2fs2-1.44.1-1.mga7
 lib64fdisk1-2.32-6.mga7
 lib64ffi6-3.2.1-6.mga7
 lib64freetype6-2.9.1-1.mga7
-lib64fuse2-2.9.8-1.mga7
+lib64fuse2-2.9.8-2.mga7
 lib64gcrypt20-1.8.3-1.mga7
 lib64gdbm6-1.17-1.mga7
 lib64gdbm_compat4-1.17-1.mga7
@@ -132,8 +132,8 @@ lib64python2.7-2.7.15-6.mga7
 lib64python2.7-stdlib-2.7.15-6.mga7
 lib64qrencode4-4.0.2-1.mga7
 lib64readline7-7.0-1.mga7
-lib64rpm8-4.14.2-0.rc1.1.mga7
-lib64rpmbuild8-4.14.2-0.rc1.1.mga7
+lib64rpm8-4.14.2-0.rc1.2.mga7
+lib64rpmbuild8-4.14.2-0.rc1.2.mga7
 lib64samba1-4.7.6-1.mga7
 lib64samba-dc0-4.7.6-1.mga7
 lib64sasl2_3-2.1.26-15.mga7
@@ -218,11 +218,11 @@ resolvconf-1.79-2.mga7
 rmt-0.4b46-4.mga7
 rootcerts-20180411.00-1.mga7
 rootfiles-11.0-14.mga6
-rpm-4.14.2-0.rc1.1.mga7
+rpm-4.14.2-0.rc1.2.mga7
 rpm-helper-0.24.17-4.mga6
 rpm-mageia-setup-2.28-1.mga7
-rpm-plugin-syslog-4.14.2-0.rc1.1.mga7
-rpm-plugin-systemd-inhibit-4.14.2-0.rc1.1.mga7
+rpm-plugin-syslog-4.14.2-0.rc1.2.mga7
+rpm-plugin-systemd-inhibit-4.14.2-0.rc1.2.mga7
 run-parts-4.8.4-1.mga7
 samba-client-4.7.6-1.mga7
 samba-common-4.7.6-1.mga7
