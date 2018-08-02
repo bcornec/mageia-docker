@@ -160,11 +160,11 @@ lib64wbclient0-4.7.6-1.mga7
 lib64xml2_2-2.9.8-2.mga7
 lib64zlib1-1.2.11-6.mga7
 lib64zstd1-1.3.4-1.mga7
-libgcc1-8.2.1-0.20180727.1.mga7
+libgcc1-8.2.1-0.20180727.3.mga7
 libgpg-error-common-1.31-1.mga7
 libidn2-i18n-2.0.5-1.mga7
 libnl3-config-3.4.0-2.mga7
-libstdc++6-8.2.1-0.20180727.1.mga7
+libstdc++6-8.2.1-0.20180727.3.mga7
 libuser-0.62-12.mga7
 libutempter-1.1.6-5.mga6
 lockdev-1.0.4-0.120111007git.12.mga6
@@ -240,7 +240,7 @@ timezone-2018d-2.mga7
 traceroute-2.1.0-1.mga6
 urpmi-8.112-1.mga7
 util-linux-2.32-6.mga7
-vim-minimal-8.1.055-1.mga7
+vim-minimal-8.1.229-1.mga7
 which-2.21-3.mga6
 xz-5.2.4-1.mga7
 zstd-1.3.4-1.mga7
