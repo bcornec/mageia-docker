@@ -75,7 +75,7 @@ lib64dbus1_3-1.13.2-2.mga7
 lib64devmapper1.02-1.02.137-3.mga7
 lib64devmapper-event1.02-1.02.137-3.mga7
 lib64elfutils1-0.173-1.mga7
-lib64expat1-2.2.5-1.mga7
+lib64expat1-2.2.6-1.mga7
 lib64ext2fs2-1.44.1-1.mga7
 lib64fdisk1-2.32-6.mga7
 lib64ffi6-3.2.1-6.mga7
@@ -143,7 +143,7 @@ lib64smartcols1-2.32-6.mga7
 lib64smbclient0-4.7.6-1.mga7
 lib64sqlite3_0-3.24.0-1.mga7
 lib64ssh2_1-1.8.0-1.mga7
-lib64ssh4-0.7.5-1.mga6
+lib64ssh4-0.8.1-1.mga7
 lib64sysfs2-2.1.0-22.mga6
 lib64systemd0-236-7.mga7
 lib64talloc2-2.1.13-2.mga7
