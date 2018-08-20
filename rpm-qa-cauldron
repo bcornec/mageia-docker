@@ -38,7 +38,7 @@ grub2-2.02.0-7.mga7
 grub2-common-2.02.0-7.mga7
 gzip-1.9-2.mga7
 hostname-3.20-1.mga7
-icu59-data-59.1-6.mga7
+icu62-data-62.1-1.mga7
 ifmetric-0.3-17.mga6
 ifplugd-0.28-20.mga6
 info-install-6.5-3.mga7
@@ -89,7 +89,7 @@ lib64gmp10-6.1.2-2.mga7
 lib64gnutls30-3.6.3-2.mga7
 lib64gpg-error0-1.31-1.mga7
 lib64hogweed4-3.4-1.mga7
-lib64icu59-59.1-6.mga7
+lib64icu62-62.1-1.mga7
 lib64idn12-1.35-1.mga7
 lib64idn2_0-2.0.5-1.mga7
 lib64intl8-0.19.8.1-2.mga7
@@ -141,7 +141,7 @@ lib64seccomp2-2.3.3-1.mga7
 lib64sigsegv2-2.12-1.mga7
 lib64smartcols1-2.32-6.mga7
 lib64smbclient0-4.7.6-1.mga7
-lib64sqlite3_0-3.24.0-1.mga7
+lib64sqlite3_0-3.24.0-2.mga7
 lib64ssh2_1-1.8.0-1.mga7
 lib64ssh4-0.8.1-1.mga7
 lib64sysfs2-2.1.0-22.mga6
