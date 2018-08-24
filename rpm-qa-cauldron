@@ -22,7 +22,7 @@ dmidecode-3.1-1.mga6
 dmsetup-1.02.137-3.mga7
 dracut-046-4.mga7
 drakxtools-backend-17.98-2.mga7
-e2fsprogs-1.44.1-1.mga7
+e2fsprogs-1.44.4-1.mga7
 etcskel-1.63-34.mga6
 ethtool-4.16-1.mga7
 file-5.33-2.mga7
@@ -31,7 +31,7 @@ findutils-4.6.0-1.mga6
 gawk-4.2.1-1.mga7
 genhdlist2-7.02-1.mga7
 gettext-base-0.19.8.1-2.mga7
-glibc-2.28-4.mga7
+glibc-2.28-5.mga7
 gpg-pubkey-80420f66-4d4fe123
 grep-3.1-1.mga7
 grub2-2.02.0-7.mga7
@@ -47,7 +47,7 @@ ipcalc-0.2.0-4.mga7
 iproute2-4.14.1-1.mga7
 iputils-20161105-3.mga7
 kbd-2.0.4-1.mga7
-kernel-desktop-4.18.4-1.mga7-1-1.mga7
+kernel-desktop-4.18.5-1.mga7-1-1.mga7
 kernel-firmware-20180606-1.mga7
 kmod-24-2.mga6
 krb5-1.16-2.mga7
@@ -76,7 +76,7 @@ lib64devmapper1.02-1.02.137-3.mga7
 lib64devmapper-event1.02-1.02.137-3.mga7
 lib64elfutils1-0.173-1.mga7
 lib64expat1-2.2.6-1.mga7
-lib64ext2fs2-1.44.1-1.mga7
+lib64ext2fs2-1.44.4-1.mga7
 lib64fdisk1-2.32-6.mga7
 lib64ffi6-3.2.1-6.mga7
 lib64freetype6-2.9.1-1.mga7
