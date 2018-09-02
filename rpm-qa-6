@@ -108,8 +108,8 @@ lib64nl3_200-3.3.0-1.mga6
 lib64nl-genl3_200-3.3.0-1.mga6
 lib64nspr4-4.19-1.mga6
 lib64nss3-3.28.6-1.4.mga6
-lib64openssl1.0.0-1.0.2o-1.mga6
-lib64openssl-engines1.0.0-1.0.2o-1.mga6
+lib64openssl1.0.0-1.0.2p-1.mga6
+lib64openssl-engines1.0.0-1.0.2p-1.mga6
 lib64p11-kit0-0.23.2-2.mga6
 lib64pam0-1.3.0-5.mga6
 lib64pam_userpass1-1.0.2-13.mga6
