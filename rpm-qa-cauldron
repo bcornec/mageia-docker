@@ -52,7 +52,7 @@ krb5-1.16-2.mga7
 ldetect-lst-0.4.9-2.mga7
 less-533-1.mga7
 lib64acl1-2.2.52-8.mga7
-lib64archive13-3.3.2-4.mga7
+lib64archive13-3.3.3-1.mga7
 lib64attr1-2.4.48-1.mga7
 lib64audit1-2.8.4-1.mga7
 lib64avahi-client3-0.7-2.mga7
@@ -217,7 +217,7 @@ rootcerts-20180411.00-1.mga7
 rootfiles-11.0-14.mga6
 rpm-4.14.2-1.mga7
 rpm-helper-0.24.17-4.mga6
-rpm-mageia-setup-2.31-1.mga7
+rpm-mageia-setup-2.32-1.mga7
 rpm-plugin-syslog-4.14.2-1.mga7
 rpm-plugin-systemd-inhibit-4.14.2-1.mga7
 run-parts-4.8.4-1.mga7
