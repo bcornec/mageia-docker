@@ -188,7 +188,7 @@ pam_tcb-1.1-8.mga7
 passwd-0.79-6.mga6
 perl-5.28.0-3.mga7
 perl-base-5.28.0-3.mga7
-perl-Config-IniFiles-2.980.0-2.mga7
+perl-Config-IniFiles-3.0.0-1.mga7
 perl-File-FnMatch-0.20.0-25.mga7
 perl-File-Sync-0.110.0-25.mga7
 perl-Filesys-Df-0.920.0-25.mga7
@@ -235,7 +235,7 @@ tcb-1.1-8.mga7
 time-1.9-2.mga7
 timezone-2018d-2.mga7
 traceroute-2.1.0-1.mga6
-urpmi-8.112-2.mga7
+urpmi-8.113-1.mga7
 util-linux-2.32-8.mga7
 vim-minimal-8.1.328-1.mga7
 which-2.21-4.mga7
