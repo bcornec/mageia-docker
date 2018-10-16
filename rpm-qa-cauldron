@@ -84,7 +84,7 @@ lib64gdbm6-1.17-3.mga7
 lib64gdbm_compat4-1.17-3.mga7
 lib64glib2.0_0-2.58.1-1.mga7
 lib64gmp10-6.1.2-3.mga7
-lib64gnutls30-3.6.3-3.mga7
+lib64gnutls30-3.6.4-1.mga7
 lib64gpg-error0-1.32-1.mga7
 lib64hogweed4-3.4-2.mga7
 lib64icu62-62.1-2.mga7
@@ -141,7 +141,7 @@ lib64smartcols1-2.32-8.mga7
 lib64smbclient0-4.7.6-2.mga7
 lib64sqlite3_0-3.25.2-1.mga7
 lib64ssh2_1-1.8.0-2.mga7
-lib64ssh4-0.8.3-1.mga7
+lib64ssh4-0.8.4-1.mga7
 lib64sysfs2-2.1.0-23.mga7
 lib64systemd0-236-9.mga7
 lib64talloc2-2.1.13-3.mga7
