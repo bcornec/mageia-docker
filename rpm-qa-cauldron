@@ -49,7 +49,8 @@ kbd-2.0.4-2.mga7
 kernel-desktop-4.18.16-2.mga7-1-1.mga7
 kernel-firmware-20180606-2.mga7
 kmod-24-3.mga7
-krb5-1.16-3.mga7
+krb5-1.16.1-1.mga7
+ldb-utils-1.4.2-1.mga7
 ldetect-lst-0.5.2-1.mga7
 less-533-1.mga7
 lib64acl1-2.2.52-9.mga7
@@ -96,11 +97,13 @@ lib64iptables12-1.6.1-4.mga7
 lib64jansson4-2.11-2.mga7
 lib64json-c4-0.13.1-2.mga7
 lib64kdc-samba4_2-4.7.6-2.mga7
+lib64keyutils1-1.5.10-2.mga7
 lib64kmod2-24-3.mga7
-lib64krb53-1.16-3.mga7
+lib64krb53-1.16.1-1.mga7
 lib64ldap2.4_2-2.4.46-2.mga7
-lib64ldb1-1.3.2-2.mga7
+lib64ldb1-1.4.2-1.mga7
 lib64ldetect0.12-0.12.8-4.mga7
+lib64lmdb0-0.9.22-2.mga7
 lib64lua5.3-5.3.4-6.mga7
 lib64lz4_1-1.8.3-1.mga7
 lib64lzma5-5.2.4-2.mga7
@@ -125,7 +128,7 @@ lib64png16_16-1.6.35-1.mga7
 lib64popt0-1.16-14.mga7
 lib64procps6-3.3.12-2.mga7
 lib64psl5-0.20.2-2.mga7
-lib64pytalloc-util2-2.1.13-3.mga7
+lib64pytalloc-util2-2.1.14-1.mga7
 lib64python2.7-2.7.15-6.mga7
 lib64python2.7-stdlib-2.7.15-6.mga7
 lib64qrencode4-4.0.2-2.mga7
@@ -144,10 +147,10 @@ lib64ssh2_1-1.8.0-2.mga7
 lib64ssh4-0.8.4-1.mga7
 lib64sysfs2-2.1.0-23.mga7
 lib64systemd0-236-9.mga7
-lib64talloc2-2.1.13-3.mga7
+lib64talloc2-2.1.14-1.mga7
 lib64tasn1_6-4.13-2.mga7
 lib64tcb0-1.1-9.mga7
-lib64tdb1-1.3.15-2.mga7
+lib64tdb1-1.3.16-1.mga7
 lib64tevent0-0.9.37-2.mga7
 lib64udev1-236-9.mga7
 lib64unistring2-0.9.10-2.mga7
