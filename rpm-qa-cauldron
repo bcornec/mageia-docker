@@ -19,7 +19,7 @@ dash-static-0.5.9.1-2.mga7
 dbus-1.13.2-3.mga7
 diffutils-3.6-2.mga7
 dmidecode-3.1-2.mga7
-dracut-046-5.mga7
+dracut-046-6.mga7
 drakxtools-backend-18.3-1.mga7
 e2fsprogs-1.44.4-2.mga7
 etcskel-1.63-35.mga7
@@ -41,7 +41,7 @@ icu62-data-62.1-2.mga7
 ifmetric-0.3-18.mga7
 ifplugd-0.28-21.mga7
 info-install-6.5-4.mga7
-initscripts-9.78-8.mga7
+initscripts-9.78-9.mga7
 ipcalc-0.2.0-5.mga7
 iproute2-4.18.0-1.mga7
 iputils-20161105-4.mga7
@@ -171,8 +171,8 @@ libuser-0.62-13.mga7
 libutempter-1.1.6-6.mga7
 logrotate-3.14.0-2.mga7
 lsb-release-2.0-54.mga7
-mageia-release-common-7-0.5.mga7
-mageia-release-Default-7-0.5.mga7
+mageia-release-common-7-0.6.mga7
+mageia-release-Default-7-0.6.mga7
 mageia-repos-7-0.0.3.mga7
 mageia-repos-cauldron-7-0.0.3.mga7
 mageia-repos-keys-7-0.0.3.mga7
