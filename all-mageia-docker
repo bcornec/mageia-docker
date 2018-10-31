@@ -1,0 +1,44 @@
+#!/bin/bash
+#
+# Script to automate all mageia docker images creation.
+#
+
+APPNAME=${APPNAME:=mageia-docker}
+
+# Variables management
+if [ -f $HOME/.$APPNAME ]; then
+	. $HOME/.$APPNAME
+fi
+GITDIRRW=$HOME/tmp/rw-$APPNAME
+
+# Cleanup before doing anything
+sudo rm -rf $GITDIRRW
+
+# Clone again from git
+git clone -q $GITURLRW $GITDIRRW
+if [ $? -ne 0 ]; then
+	exit -1
+fi
+
+opt=""
+# Detect mirror server if any
+if [ _"$1" = _"-f" ]; then
+	opt="-f"
+	shift
+fi
+
+if [ _"$1" != _"" ]; then
+	opt="$opt -m $1"
+fi
+
+# Launch script
+for v in 5 6 cauldron; do
+	echo "---------------------------"
+	$GITDIRRW/$APPNAME -v $v $opt
+done
+
+# Clean after run in Docker
+sudo rm -rf $GITDIRRW
+docker container prune -f
+docker image prune -f
+docker images

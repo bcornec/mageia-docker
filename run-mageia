@@ -1,43 +1,73 @@
 #!/bin/bash
-mkdir -p /tmp/docker-mageia
-cd /tmp/docker-mageia
-if [ "`hostname -s`" = "victoria2" ]; then
-	RD="/users"
-	WD="$RD/bruno/prj/mageia/"
-	MR="ftp://ftp.home.musique-ancienne.org/pub/mageia"
-else
-	RD="/home"
-	WD="$RD/bruno/Maison/bruno/prj/mageia/"
-	MR="http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia"
+#
+# Create a Mageia Docker Image if needed and instantiate a container out of it
+#
+
+# Detect force mode
+if [ _"$1" = _"-f" ]; then
+	FORCE=1
+	shift
 fi
+
+# Support passing the distro to operate on as parameter
+if [ _"$1" != _"" ]; then
+	MGAVER=$1
+fi
+
+APPNAME=${APPNAME:=mageia-docker}
+
+# Support variable definitions from our own env
+if [ -f $HOME/.$APPNAME ]; then
+	. $HOME/.$APPNAME
+fi
+
+# Default distro to consider
+MGAVER=${MGAVER:=cauldron}
+# Default temporary directory
+TMPDM=${TMPDM:=$HOME/tmp/$APPNAME}
+# Default mirror
+MGAMIRROR=${MGAMIRROR:=http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia}
+# Default Working directory where you svn co mageia-pkg
+WORKDIR=${WORKDIR:=$HOME/mageia}
+# Default architecture
+MGAARCH=${MGAARCH:=x86_64}
+
+mkdir -p $TMPDM
+cd $TMPDM
+
+MUID=`getent passwd $USER | cut -d: -f3`
+MGID=`getent passwd $USER | cut -d: -f4`
+
+# Build the Dockerfile
 cat > Dockerfile << EOF
-FROM mageia:cauldron
+FROM mageiaofficial:$MGAVER
 MAINTAINER bcornec@mageia.org
-#RUN perl -pi -e 's|http://distro.ibiblio.org/mageia|$MR|' /etc/urpmi/urpmi.cfg
-#RUN urpmi.update -a -c -f
-RUN urpmi.removemedia -a
-RUN urpmi.addmedia --probe-hdlist --distrib mga $MR/distrib/cauldron/x86_64
+#RUN perl -pi -e 's|http://distro.ibiblio.org/mageia|$MGAMIRROR|' /etc/urpmi/urpmi.cfg
+RUN urpmi.update -a -c -f
+# Not useful if using mageiaofficial:$MGAVER
+#RUN urpmi.removemedia -a
+#RUN urpmi.addmedia --probe-hdlist --distrib mga $MGAMIRROR/$MGAVER/$MGAARCH
 RUN urpmi --auto --auto-select --no-recommends
 RUN urpmi --auto bm subversion mgarepo colordiff sudo
 RUN sed -i 's/users:x:.*$/users:x:501/' /etc/group
-RUN useradd bruno -u 600 -g 501 -N -M -d $RD/bruno
-RUN echo "bruno   ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
-WORKDIR $WD
-USER bruno
-CMD ln -sf /users/bruno /home
+RUN useradd $USER -u $MUID -g $MGID -N -M -d $HOME
+RUN echo "$USER   ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
+RUN mkdir -p $HOME
+WORKDIR $WORKDIR
+USER $USER
 CMD /bin/bash
 EOF
 
 stat=0
-docker inspect pb:mageiabuild 2>&1 > /dev/null
+docker inspect pb:mageiabuild$MGAVER 2>&1 > /dev/null
 if [ $? -eq 0 ]; then
-	if [ "$1" = "-f" ]; then
-		docker rmi pb:mageiabuild
+	if [ "$FORCE" = "1" ]; then
+		docker rmi pb:mageiabuild$MGAVER
 	fi
 else
-	docker build --file=Dockerfile -t pb:mageiabuild .
+	docker build --file=Dockerfile -t pb:mageiabuild$MGAVER .
 	stat=$?
 fi
 if [ $stat -eq 0 ]; then
-	docker run --rm -v "$SSH_AUTH_SOCK":/ssh-agent -v $RD/bruno:$RD/bruno -e SSH_AUTH_SOCK=/ssh-agent -ti pb:mageiabuild
+	docker run --rm -v "$SSH_AUTH_SOCK":/ssh-agent -v $HOME:$HOME -e SSH_AUTH_SOCK=/ssh-agent -ti pb:mageiabuild$MGAVER
 fi
