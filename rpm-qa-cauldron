@@ -20,7 +20,7 @@ dbus-1.13.2-3.mga7
 diffutils-3.6-2.mga7
 dmidecode-3.1-2.mga7
 dracut-046-7.mga7
-drakxtools-backend-18.4-1.mga7
+drakxtools-backend-18.5-1.mga7
 e2fsprogs-1.44.4-2.mga7
 etcskel-1.63-35.mga7
 ethtool-4.19-1.mga7
@@ -178,7 +178,7 @@ mageia-repos-cauldron-7-0.0.3.mga7
 mageia-repos-keys-7-0.0.3.mga7
 mageia-repos-pkgprefs-7-0.0.3.mga7
 makedev-4.4-23.2.mga7
-meta-task-7-0.10.mga7
+meta-task-7-0.11.mga7
 multiarch-utils-1.0.14-2.mga7
 ncurses-6.1-20180728.2.mga7
 net-tools-2.0-0.20150915git.5.mga7
