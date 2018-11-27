@@ -20,7 +20,7 @@ dbus-1.13.2-3.mga7
 diffutils-3.6-2.mga7
 dmidecode-3.1-2.mga7
 dracut-046-7.mga7
-drakxtools-backend-18.5-2.mga7
+drakxtools-backend-18.7-1.mga7
 e2fsprogs-1.44.4-2.mga7
 etcskel-1.63-35.mga7
 ethtool-4.19-1.mga7
@@ -46,7 +46,7 @@ ipcalc-0.2.0-5.mga7
 iproute2-4.19.0-1.mga7
 iputils-20161105-4.mga7
 kbd-2.0.4-2.mga7
-kernel-desktop-4.19.4-1.mga7-1-1.mga7
+kernel-desktop-4.19.5-1.mga7-1-1.mga7
 kernel-firmware-20180606-2.mga7
 kmod-25-1.mga7
 krb5-1.16.1-1.mga7
@@ -96,7 +96,7 @@ lib64ip4tc0-1.6.1-4.mga7
 lib64iptables12-1.6.1-4.mga7
 lib64jansson4-2.12-1.mga7
 lib64json-c4-0.13.1-2.mga7
-lib64kdc-samba4_2-4.9.2-1.mga7
+lib64kdc-samba4_2-4.9.3-1.mga7
 lib64keyutils1-1.5.10-2.mga7
 lib64kmod2-25-1.mga7
 lib64krb53-1.16.1-1.mga7
@@ -135,13 +135,13 @@ lib64qrencode4-4.0.2-2.mga7
 lib64readline7-7.0-3.mga7
 lib64rpm8-4.14.2.1-8.mga7
 lib64rpmbuild8-4.14.2.1-8.mga7
-lib64samba1-4.9.2-1.mga7
-lib64samba-dc0-4.9.2-1.mga7
+lib64samba1-4.9.3-1.mga7
+lib64samba-dc0-4.9.3-1.mga7
 lib64sasl2_3-2.1.26-16.mga7
 lib64seccomp2-2.3.3-2.mga7
 lib64sigsegv2-2.12-2.mga7
 lib64smartcols1-2.33-8.mga7
-lib64smbclient0-4.9.2-1.mga7
+lib64smbclient0-4.9.3-1.mga7
 lib64sqlite3_0-3.25.2-1.mga7
 lib64ssh2_1-1.8.0-2.mga7
 lib64ssh4-0.8.5-1.mga7
@@ -157,7 +157,7 @@ lib64unistring2-0.9.10-2.mga7
 lib64user1-0.62-13.mga7
 lib64uuid1-2.33-8.mga7
 lib64verto1-0.3.0-3.mga7
-lib64wbclient0-4.9.2-1.mga7
+lib64wbclient0-4.9.3-1.mga7
 lib64xcrypt1-4.2.3-2.mga7
 lib64xml2_2-2.9.8-3.mga7
 lib64zlib1-1.2.11-7.mga7
@@ -196,7 +196,7 @@ perl-Config-IniFiles-3.0.0-2.mga7
 perl-File-FnMatch-0.20.0-26.mga7
 perl-File-Sync-0.110.0-26.mga7
 perl-Filesys-Df-0.920.0-26.mga7
-perl-IO-stringy-2.111.0-4.mga7
+perl-IO-stringy-2.111.0-5.mga7
 perl-Locale-gettext-1.70.0-8.mga7
 perl-MDK-Common-1.2.34.2-3.mga7
 perl-MDV-Distribconf-4.101.0-2.mga7
@@ -225,8 +225,8 @@ rpm-mageia-setup-2.37-7.mga7
 rpm-plugin-syslog-4.14.2.1-8.mga7
 rpm-plugin-systemd-inhibit-4.14.2.1-8.mga7
 run-parts-4.8.4-2.mga7
-samba-client-4.9.2-1.mga7
-samba-common-4.9.2-1.mga7
+samba-client-4.9.3-1.mga7
+samba-common-4.9.3-1.mga7
 sash-3.8-7.mga7
 sed-4.5-2.mga7
 setup-2.7.24-2.mga7
