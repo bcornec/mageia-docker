@@ -4,7 +4,7 @@ bash-4.4-19.2.mga7
 bootloader-utils-1.16-8.mga7
 bridge-utils-1.6-2.mga7
 bzip2-1.0.6-12.mga7
-chkconfig-1.10-2.mga7
+chkconfig-1.10-3.mga7
 common-licenses-1.1-9.mga7
 console-setup-1.173-3.mga7
 coreutils-8.30-2.mga7
@@ -45,7 +45,7 @@ ipcalc-0.2.0-5.mga7
 iproute2-4.19.0-1.mga7
 iputils-20161105-4.mga7
 kbd-2.0.4-2.mga7
-kernel-desktop-4.19.5-3.mga7-1-1.mga7
+kernel-desktop-4.19.6-1.mga7-1-1.mga7
 kernel-firmware-20181026-1.mga7
 kmod-25-1.mga7
 krb5-1.16.1-1.mga7
@@ -100,8 +100,8 @@ lib64lzma5-5.2.4-2.mga7
 lib64magic1-5.35-2.mga7
 lib64microhttpd12-0.9.60-1.mga7
 lib64mount1-2.33-8.mga7
-lib64ncurses6-6.1-20181117.2.mga7
-lib64ncursesw6-6.1-20181117.2.mga7
+lib64ncurses6-6.1-20181117.3.mga7
+lib64ncursesw6-6.1-20181117.3.mga7
 lib64nettle6-3.4-3.mga7
 lib64nghttp2_14-1.34.0-1.mga7
 lib64nl3_200-3.4.0-3.mga7
@@ -141,11 +141,11 @@ lib64xcrypt1-4.2.3-2.mga7
 lib64xml2_2-2.9.8-3.mga7
 lib64zlib1-1.2.11-7.mga7
 lib64zstd1-1.3.7-1.mga7
-libgcc1-8.2.1-0.20181123.1.mga7
+libgcc1-8.2.1-0.20181130.1.mga7
 libgpg-error-common-1.32-1.mga7
 libidn2-i18n-2.0.5-2.mga7
 libnl3-config-3.4.0-3.mga7
-libstdc++6-8.2.1-0.20181123.1.mga7
+libstdc++6-8.2.1-0.20181130.1.mga7
 libuser-0.62-13.mga7
 libutempter-1.1.6-6.mga7
 logrotate-3.14.0-2.mga7
@@ -158,7 +158,7 @@ mageia-repos-keys-7-0.0.3.mga7
 mageia-repos-pkgprefs-7-0.0.3.mga7
 makedev-4.4-23.2.mga7
 meta-task-7-0.12.mga7
-ncurses-6.1-20181117.2.mga7
+ncurses-6.1-20181117.3.mga7
 net-tools-2.0-0.20150915git.5.mga7
 nmap-7.70-2.mga7
 nss-myhostname-236-9.mga7
