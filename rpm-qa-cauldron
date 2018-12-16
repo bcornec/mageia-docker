@@ -21,7 +21,7 @@ diffutils-3.6-2.mga7
 dmidecode-3.1-2.mga7
 dracut-046-7.mga7
 drakxtools-backend-18.7-2.mga7
-e2fsprogs-1.44.4-2.mga7
+e2fsprogs-1.44.5-1.mga7
 etcskel-1.63-35.mga7
 ethtool-4.19-1.mga7
 file-5.35-2.mga7
@@ -70,7 +70,7 @@ lib64dbus1_3-1.13.2-3.mga7
 lib64devmapper1.02-1.02.137-4.mga7
 lib64elfutils1-0.175-1.mga7
 lib64expat1-2.2.6-2.mga7
-lib64ext2fs2-1.44.4-2.mga7
+lib64ext2fs2-1.44.5-1.mga7
 lib64fdisk1-2.33-8.mga7
 lib64ffi6-3.2.1-7.mga7
 lib64freetype6-2.9.1-3.mga7
@@ -82,7 +82,7 @@ lib64glib2.0_0-2.58.1-1.mga7
 lib64gmp10-6.1.2-3.mga7
 lib64gnutls30-3.6.4-1.mga7
 lib64gpg-error0-1.32-1.mga7
-lib64hogweed4-3.4-3.mga7
+lib64hogweed4-3.4.1-1.mga7
 lib64idn12-1.35-2.mga7
 lib64idn2_0-2.0.5-2.mga7
 lib64intl8-0.19.8.1-4.mga7
@@ -102,7 +102,7 @@ lib64microhttpd12-0.9.60-1.mga7
 lib64mount1-2.33-8.mga7
 lib64ncurses6-6.1-20181117.3.mga7
 lib64ncursesw6-6.1-20181117.3.mga7
-lib64nettle6-3.4-3.mga7
+lib64nettle6-3.4.1-1.mga7
 lib64nghttp2_14-1.35.0-1.mga7
 lib64nl3_200-3.4.0-3.mga7
 lib64nl-genl3_200-3.4.0-3.mga7
