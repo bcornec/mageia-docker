@@ -48,7 +48,7 @@ kbd-2.0.4-2.mga7
 kernel-desktop-4.19.12-2.mga7-1-1.mga7
 kernel-firmware-20181026-1.mga7
 kmod-25-1.mga7
-krb5-1.16.1-1.mga7
+krb5-1.16.2-1.mga7
 ldetect-lst-0.5.3-2.mga7
 less-533-1.mga7
 lib64acl1-2.2.52-9.mga7
@@ -91,7 +91,7 @@ lib64iptables12-1.6.1-4.mga7
 lib64json-c4-0.13.1-2.mga7
 lib64keyutils1-1.6-1.mga7
 lib64kmod2-25-1.mga7
-lib64krb53-1.16.1-1.mga7
+lib64krb53-1.16.2-1.mga7
 lib64ldap2.4_2-2.4.47-1.mga7
 lib64ldetect0.12-0.12.8-4.mga7
 lib64lua5.3-5.3.4-6.mga7
