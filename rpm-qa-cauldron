@@ -1,6 +1,6 @@
 basesystem-7-0.4.mga7
 basesystem-minimal-7-0.4.mga7
-bash-4.4-19.2.mga7
+bash-4.4-23.1.mga7
 bootloader-utils-1.16-8.mga7
 bridge-utils-1.6-2.mga7
 bzip2-1.0.6-12.mga7
@@ -16,7 +16,7 @@ crypto-policies-20170606-2.mga7
 curl-7.62.0-2.mga7
 dash-0.5.10.2-1.mga7
 dash-static-0.5.10.2-1.mga7
-dbus-1.13.2-3.mga7
+dbus-1.13.8-1.mga7
 diffutils-3.6-2.mga7
 dmidecode-3.1-2.mga7
 dracut-046-7.mga7
@@ -51,7 +51,7 @@ kmod-25-1.mga7
 krb5-1.16.2-1.mga7
 ldetect-lst-0.5.3-2.mga7
 less-533-1.mga7
-lib64acl1-2.2.52-9.mga7
+lib64acl1-2.2.53-1.mga7
 lib64archive13-3.3.3-1.mga7
 lib64attr1-2.4.48-2.mga7
 lib64audit1-2.8.4-2.mga7
@@ -66,7 +66,7 @@ lib64cryptsetup12-2.0.6-1.mga7
 lib64curl4-7.62.0-2.mga7
 lib64daemon0-0.14-12.mga7
 lib64db5.3-5.3.28-17.mga7
-lib64dbus1_3-1.13.2-3.mga7
+lib64dbus1_3-1.13.8-1.mga7
 lib64devmapper1.02-1.02.137-4.mga7
 lib64elfutils1-0.175-1.mga7
 lib64expat1-2.2.6-2.mga7
@@ -94,7 +94,7 @@ lib64kmod2-25-1.mga7
 lib64krb53-1.16.2-1.mga7
 lib64ldap2.4_2-2.4.47-1.mga7
 lib64ldetect0.12-0.12.8-4.mga7
-lib64lua5.3-5.3.4-6.mga7
+lib64lua5.3-5.3.4-7.mga7
 lib64lz4_1-1.8.3-1.mga7
 lib64lzma5-5.2.4-2.mga7
 lib64magic1-5.35-2.mga7
@@ -150,8 +150,8 @@ libuser-0.62-13.mga7
 libutempter-1.1.6-6.mga7
 logrotate-3.14.0-2.mga7
 lsb-release-2.0-54.mga7
-mageia-release-common-7-0.9.mga7
-mageia-release-Default-7-0.9.mga7
+mageia-release-common-7-0.10.mga7
+mageia-release-Default-7-0.10.mga7
 mageia-repos-7-0.0.3.mga7
 mageia-repos-cauldron-7-0.0.3.mga7
 mageia-repos-keys-7-0.0.3.mga7
@@ -167,7 +167,7 @@ openldap-2.4.47-1.mga7
 p11-kit-0.23.14-1.mga7
 pam-1.3.0-8.mga7
 pam_tcb-1.1-9.mga7
-passwd-0.79-7.mga7
+passwd-0.80-1.mga7
 perl-5.28.1-2.mga7
 perl-base-5.28.1-2.mga7
 perl-Config-IniFiles-3.0.0-2.mga7
@@ -203,14 +203,14 @@ run-parts-4.8.4-2.mga7
 sash-3.8-7.mga7
 sed-4.7-1.mga7
 setup-2.7.24-2.mga7
-shadow-utils-4.4-6.mga7
+shadow-utils-4.6-1.mga7
 sysfsutils-2.1.0-23.mga7
 systemd-236-9.mga7
 systemd-units-236-9.mga7
 tar-1.30-3.mga7
 tcb-1.1-9.mga7
 time-1.9-2.mga7
-timezone-2018d-3.mga7
+timezone-2018g-1.mga7
 traceroute-2.1.0-2.mga7
 urpmi-8.114-2.mga7
 util-linux-2.33-8.mga7
