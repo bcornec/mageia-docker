@@ -4,7 +4,7 @@ bash-4.4-23.1.mga7
 bootloader-utils-1.16-8.mga7
 bridge-utils-1.6-2.mga7
 bzip2-1.0.6-12.mga7
-chkconfig-1.10-3.mga7
+chkconfig-1.11-1.mga7
 common-licenses-1.1-9.mga7
 console-setup-1.173-3.mga7
 coreutils-8.30-2.mga7
@@ -18,7 +18,7 @@ dash-0.5.10.2-1.mga7
 dash-static-0.5.10.2-1.mga7
 dbus-1.13.8-1.mga7
 diffutils-3.6-2.mga7
-dmidecode-3.1-2.mga7
+dmidecode-3.2-1.mga7
 dracut-046-7.mga7
 drakxtools-backend-18.9-1.mga7
 e2fsprogs-1.44.5-1.mga7
@@ -45,12 +45,12 @@ ipcalc-0.2.0-5.mga7
 iproute2-4.19.0-1.mga7
 iputils-20161105-4.mga7
 kbd-2.0.4-2.mga7
-kernel-desktop-4.19.12-2.mga7-1-1.mga7
+kernel-desktop-4.19.12-3.mga7-1-1.mga7
 kernel-firmware-20181026-1.mga7
 kmod-25-1.mga7
 krb5-1.16.2-1.mga7
 ldetect-lst-0.5.3-2.mga7
-less-533-1.mga7
+less-548-1.mga7
 lib64acl1-2.2.53-1.mga7
 lib64archive13-3.3.3-1.mga7
 lib64attr1-2.4.48-2.mga7
@@ -59,7 +59,7 @@ lib64blkid1-2.33-8.mga7
 lib64brotlicommon1-1.0.7-1.mga7
 lib64brotlidec1-1.0.7-1.mga7
 lib64bz2_1-1.0.6-12.mga7
-lib64cap2-2.25-3.mga7
+lib64cap2-2.26-1.mga7
 lib64cap-ng0-0.7.9-2.mga7
 lib64crack2-2.9.6-6.mga7
 lib64cryptsetup12-2.0.6-1.mga7
@@ -67,7 +67,7 @@ lib64curl4-7.62.0-2.mga7
 lib64daemon0-0.14-12.mga7
 lib64db5.3-5.3.28-17.mga7
 lib64dbus1_3-1.13.8-1.mga7
-lib64devmapper1.02-1.02.137-4.mga7
+lib64devmapper1.02-1.02.154-1.mga7
 lib64elfutils1-0.175-1.mga7
 lib64expat1-2.2.6-2.mga7
 lib64ext2fs2-1.44.5-1.mga7
@@ -86,8 +86,8 @@ lib64hogweed4-3.4.1-1.mga7
 lib64idn12-1.35-2.mga7
 lib64idn2_0-2.0.5-2.mga7
 lib64intl8-0.19.8.1-4.mga7
-lib64ip4tc0-1.6.1-4.mga7
-lib64iptables12-1.6.1-4.mga7
+lib64ip4tc0-1.6.2-1.mga7
+lib64iptables12-1.6.2-1.mga7
 lib64json-c4-0.13.1-2.mga7
 lib64keyutils1-1.6-1.mga7
 lib64kmod2-25-1.mga7
@@ -108,7 +108,7 @@ lib64nl3_200-3.4.0-3.mga7
 lib64nl-genl3_200-3.4.0-3.mga7
 lib64openssl1.1-1.1.0j-1.mga7
 lib64p11-kit0-0.23.14-1.mga7
-lib64pam0-1.3.0-8.mga7
+lib64pam0-1.3.1-1.mga7
 lib64pam_userpass1-1.0.2-14.mga7
 lib64parted2-3.2-10.mga7
 lib64pcap1-1.9.0-2.mga7
@@ -141,14 +141,14 @@ lib64xcrypt1-4.4.0-1.mga7
 lib64xml2_2-2.9.8-3.mga7
 lib64zlib1-1.2.11-7.mga7
 lib64zstd1-1.3.7-1.mga7
-libgcc1-8.2.1-0.20181221.1.mga7
+libgcc1-8.2.1-0.20181228.1.mga7
 libgpg-error-common-1.33-1.mga7
 libidn2-i18n-2.0.5-2.mga7
 libnl3-config-3.4.0-3.mga7
-libstdc++6-8.2.1-0.20181221.1.mga7
+libstdc++6-8.2.1-0.20181228.1.mga7
 libuser-0.62-13.mga7
 libutempter-1.1.6-6.mga7
-logrotate-3.14.0-2.mga7
+logrotate-3.15.0-1.mga7
 lsb-release-2.0-54.mga7
 mageia-release-common-7-0.10.mga7
 mageia-release-Default-7-0.10.mga7
@@ -165,7 +165,7 @@ nss-myhostname-236-9.mga7
 nss_tcb-1.1-9.mga7
 openldap-2.4.47-1.mga7
 p11-kit-0.23.14-1.mga7
-pam-1.3.0-8.mga7
+pam-1.3.1-1.mga7
 pam_tcb-1.1-9.mga7
 passwd-0.80-1.mga7
 perl-5.28.1-2.mga7
