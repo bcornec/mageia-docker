@@ -7,17 +7,17 @@ bzip2-1.0.6-12.mga7
 chkconfig-1.11-1.mga7
 common-licenses-1.1-9.mga7
 console-setup-1.173-3.mga7
-coreutils-8.30-2.mga7
+coreutils-8.30-3.mga7
 cpio-2.12-5.mga7
 cracklib-dicts-2.9.6-6.mga7
 cronie-1.5.2-2.mga7
 crontabs-1.10-23.mga7
 crypto-policies-20170606-2.mga7
-curl-7.62.0-2.mga7
+curl-7.63.0-1.mga7
 dash-0.5.10.2-1.mga7
 dash-static-0.5.10.2-1.mga7
 dbus-1.13.8-1.mga7
-diffutils-3.6-2.mga7
+diffutils-3.7-1.mga7
 dmidecode-3.2-1.mga7
 dracut-046-7.mga7
 drakxtools-backend-18.9-1.mga7
@@ -48,11 +48,11 @@ kbd-2.0.4-2.mga7
 kernel-desktop-4.19.13-1.mga7-1-1.mga7
 kernel-firmware-20181026-1.mga7
 kmod-25-1.mga7
-krb5-1.16.2-1.mga7
+krb5-1.16.2-2.mga7
 ldetect-lst-0.5.3-2.mga7
 less-548-1.mga7
 lib64acl1-2.2.53-1.mga7
-lib64archive13-3.3.3-1.mga7
+lib64archive13-3.3.3-2.mga7
 lib64attr1-2.4.48-2.mga7
 lib64audit1-2.8.4-2.mga7
 lib64blkid1-2.33-8.mga7
@@ -63,7 +63,7 @@ lib64cap2-2.26-1.mga7
 lib64cap-ng0-0.7.9-2.mga7
 lib64crack2-2.9.6-6.mga7
 lib64cryptsetup12-2.0.6-1.mga7
-lib64curl4-7.62.0-2.mga7
+lib64curl4-7.63.0-1.mga7
 lib64daemon0-0.14-12.mga7
 lib64db5.3-5.3.28-17.mga7
 lib64dbus1_3-1.13.8-1.mga7
@@ -91,7 +91,7 @@ lib64iptables12-1.6.2-3.mga7
 lib64json-c4-0.13.1-2.mga7
 lib64keyutils1-1.6-1.mga7
 lib64kmod2-25-1.mga7
-lib64krb53-1.16.2-1.mga7
+lib64krb53-1.16.2-2.mga7
 lib64ldap2.4_2-2.4.47-1.mga7
 lib64ldetect0.12-0.12.8-4.mga7
 lib64lua5.3-5.3.4-7.mga7
@@ -140,7 +140,7 @@ lib64verto1-0.3.0-3.mga7
 lib64xcrypt1-4.4.2-1.mga7
 lib64xml2_2-2.9.8-3.mga7
 lib64zlib1-1.2.11-7.mga7
-lib64zstd1-1.3.7-1.mga7
+lib64zstd1-1.3.8-1.mga7
 libgcc1-8.2.1-0.20181228.1.mga7
 libgpg-error-common-1.33-1.mga7
 libidn2-i18n-2.0.5-2.mga7
@@ -217,4 +217,4 @@ util-linux-2.33-8.mga7
 vim-minimal-8.1.575-1.mga7
 which-2.21-4.mga7
 xz-5.2.4-2.mga7
-zstd-1.3.7-1.mga7
+zstd-1.3.8-1.mga7
