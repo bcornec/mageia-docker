@@ -44,7 +44,7 @@ else
 fi
 
 # Mirror to consider, by default mirrorlist
-MGAMIRROR="https://mirrors.mageia.org/api/mageia.$MGAVER.x86_64.list"
+MGAMIRROR="https://mirrors.mageia.org/api/mageia.$MGAVER.$MGAARCH.list"
 
 # Get env var from the user home dir
 if [ -r $HOME/.$APPNAME ]; then
@@ -77,7 +77,7 @@ echo "Creating Mageia $MGAVER container on Docker Hub"
 
 # Reset mirror now we have the version, i case none was given
 if [ _"$MGAMIRROR" = _"" ]; then
-	MGAMIRROR="https://mirrors.mageia.org/api/mageia.$MGAVER.x86_64.list"
+	MGAMIRROR="https://mirrors.mageia.org/api/mageia.$MGAVER.$MGAARCH.list"
 fi
 
 cd $GITDIR 2>&1 > /dev/null
