@@ -63,7 +63,7 @@ if [ -r $HOME/.$APPNAME ]; then
 	. $HOME/.$APPNAME
 fi
 
-opt=$(getopt --options 'w:,v:,m:,h,f' --longoptions 'workdir:,version:,mirror:,help,force' --name $APPNAME -- "$@")
+opt=$(getopt --options 'v:,m:,h,f' --longoptions 'version:,mirror:,help,force' --name $APPNAME -- "$@")
 eval set -- "$opt"
 unset opt
 FORCE="false"
