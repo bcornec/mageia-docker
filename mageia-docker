@@ -27,7 +27,8 @@ SCPURL=${SCPURL:=localhost:/tmp}
 BIGURL=${BIGURL:=http://localhost/$APPNAME}
 MGAARCH=${MGAARCH:=x86_64}
 # Mirror to consider
-#MGAMIRROR=${MGAMIRROR:=http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia}
+#MGAMIRROR=${MGAMIRROR:=http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib}
+#ftp://ftp.free.fr/mirrors/mageia.org/distrib/6/armv7hl
 
 
 # What is our current date
