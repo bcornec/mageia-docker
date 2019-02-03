@@ -78,9 +78,9 @@ while true; do
         esac
 done
 
-echo "Creating Mageia $MGAVER container on Docker Hub"
+echo "Creating Mageia $MGAVER ($MGAARCH) container on Docker Hub"
 
-cd $GITDIRRO 2>&1 > /dev/null
+cd $GITDIRRO 2>/dev/null 1>/dev/null
 if [ $? -ne 0 ]; then
 	echo "$GITDIRRO doesn't exist, creating it"
 	mkdir -p $GITDIRRO
@@ -96,14 +96,14 @@ if [ $? -ne 0 ]; then
 	echo "Unable to checkout branch master"
 	exit -1
 fi
-git branch -D $MGAVER 2>/dev/null 1>/dev/null 
-git checkout -f --orphan $MGAVER
+git branch -D $MGAVER-$MGAARCH 2>/dev/null 1>/dev/null 
+git checkout -f --orphan $MGAVER-$MGAARCH
 if [ $? -ne 0 ]; then
-	echo "Unable to create branch $MGAVER"
+	echo "Unable to create branch $MGAVER-$MGAARCH"
 	exit -1
 fi
 
-TARGETDIR="$TMPDM/$MGAVER"
+TARGETDIR="$TMPDM/$MGAVER/$MGAARCH"
 echo "Cleanup $TARGETDIR first for idempotence"
 sudo rm -rf $TARGETDIR
 git rm --cached -r . 2>/dev/null 1>/dev/null
@@ -115,6 +115,7 @@ if [ $? -ne 0 ]; then
 	exit -1
 fi
 sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root "$TARGETDIR" basesystem urpmi 2>/dev/null 1>/dev/null
+# for armv7hl add --allow-force --force --force-key
 if [ $? -ne 0 ]; then
 	echo "Unable to prepare install dependencies in chroot"
 	exit -1
@@ -145,15 +146,15 @@ sudo install -m 0644 $TMPDM/resolv.conf "$TARGETDIR/etc/resolv.conf"
 rm $TMPDM/resolv.conf
 
 # Needs root access for dev files e.g.
-echo "Capturing that chroot content into mageia-$MGAVER-$DATE.tar.xz"
-sudo rm -f mageia-$MGAVER-$DATE.tar.xz
-sudo tar -C $TARGETDIR -cJf mageia-$MGAVER-$DATE.tar.xz .
-sudo chmod 644 mageia-$MGAVER-$DATE.tar.xz
-sudo chroot $TARGETDIR rpm -qa | sort -u > $TMPDM/rpm-qa
+echo "Capturing that chroot content into mageia-$MGAVER-$MGAARCH-$DATE.tar.xz"
+sudo rm -f mageia-$MGAVER-$MGAARCH-$DATE.tar.xz
+sudo tar -C $TARGETDIR -cJf mageia-$MGAVER-$MGAARCH-$DATE.tar.xz .
+sudo chmod 644 mageia-$MGAVER-$MGAARCH-$DATE.tar.xz
+sudo chroot $TARGETDIR rpm -qa | sort -u > /tmp/rpm-qa-$MGAARCH.$$
 # Cleanup
 sudo rm -rf $TARGETDIR
-if [ -r $HOME/rpm-qa-$MGAVER ]; then
-	diff -q $HOME/rpm-qa-$MGAVER $TMPDM/rpm-qa
+if [ -r $HOME/rpm-qa-$MGAVER-$MGAARCH ]; then
+	diff -q $HOME/rpm-qa-$MGAVER-$MGAARCH /tmp/rpm-qa-$MGAARCH.$$
 	if [ $? -eq 0 ]; then
 		echo "The list of RPMs packages didn't change so no need to build a new Docker image"
 		if [ $FORCE = "false" ]; then
@@ -162,43 +163,43 @@ if [ -r $HOME/rpm-qa-$MGAVER ]; then
 	fi
 fi
 
-cp $TMPDM/rpm-qa $HOME/rpm-qa-$MGAVER
-cp $TMPDM/rpm-qa rpm-qa-$MGAVER
+mv -f /tmp/rpm-qa-$MGAARCH.$$ $HOME/rpm-qa-$MGAVER-$MGAARCH
+cp $HOME/rpm-qa-$MGAVER-$MGAARCH rpm-qa-$MGAVER-$MGAARCH
 
 echo "Creating the appropriate Docker file"
 cat > Dockerfile << EOF
 FROM scratch
 MAINTAINER bcornec@mageia.org
 WORKDIR /
-ADD mageia-$MGAVER-$DATE.tar.xz /
-LABEL name="Mageia $MGAVER Base Image" \
+ADD mageia-$MGAVER-$MGAARCH-$DATE.tar.xz /
+LABEL name="Mageia $MGAVER Base Image Arch: $MGAARCH" \
     vendor="Mageia" \
     license="GPLv2" \
     build-date="$DATE"
 CMD /bin/bash
 EOF
 
-echo "Generating the docker image mageiaofficial:$MGAVER from it"
-docker build -t mageiaofficial:$MGAVER . 2>&1 >/dev/null
-docker images mageiaofficial:$MGAVER
-#docker tag mageiaofficial:$MGAVER bcornec/mageia:$MGAVER
+echo "Generating the docker image mageiaofficial:$MGAVER-$MGAARCH from it"
+docker build -t mageiaofficial:$MGAVER-$MGAARCH . 2>&1 >/dev/null
+docker images mageiaofficial:$MGAVER-$MGAARCH
+#docker tag mageiaofficial:$MGAVER-$MGAARCH bcornec/mageia:$MGAVER-$MGAARCH
 #docker login -u $MGAAC -p $MGAPWD
-#docker push bcornec/mageia:$MGAVER
+#docker push bcornec/mageia:$MGAVER-$MGAARCH
 
 if [ _"$MGAMODE" = _"hosted" ] || [ _"$MGAMODE" = _"local" ]; then
 	# We host ourselves somewhere on $BIGURL
-	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $BIGURL/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
+	perl -pi -e "s|ADD mageia-$MGAVER-$MGAARCH-$DATE.tar.xz|ADD $BIGURL/$MGAVER/$MGAARCH/mageia-$DATE.tar.xz|" Dockerfile
 	SSHDIR=`echo $SCPURL | cut -d: -f2`
 	if [ _"$MGAMODE" = _"hosted" ]; then
 		SSHHOST=`echo $SCPURL | cut -d: -f1`
 		echo "Transferring the big file onto $SCPURL"
-		ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER ; rm -f $SSHDIR/$MGAVER/mageia-$DATE.tar.xz"
-		scp -p mageia-$MGAVER-$DATE.tar.xz $SCPURL/$MGAVER/mageia-$DATE.tar.xz
+		ssh $SSHHOST "mkdir -p $SSHDIR/$MGAVER/$MGAARCH ; rm -f $SSHDIR/$MGAVER/$MGAARCH/mageia-$DATE.tar.xz"
+		scp -p mageia-$MGAVER-$MGAARCH-$DATE.tar.xz $SCPURL/$MGAVER/$MGAARCH/mageia-$DATE.tar.xz
 	else
 		if [ _"$KEEP" != _"0" ]; then
 			echo "Transferring the big file onto $SCPURL"
-			mkdir -p $SSHDIR/$MGAVER
-			sudo mv mageia-$MGAVER-$DATE.tar.xz $SSHDIR/$MGAVER/mageia-$DATE.tar.xz
+			mkdir -p $SSHDIR/$MGAVER/$MGAARCH
+			sudo mv mageia-$MGAVER-$MGAARCH-$DATE.tar.xz $SSHDIR/$MGAVER/$MGAARCH/mageia-$DATE.tar.xz
 		fi
 	fi
 else
@@ -206,18 +207,18 @@ else
 
 	# Automatic build in Docker Hub does not support Git LFS yet
 	# Cf: https://github.com/docker/hub-feedback/issues/500
-	perl -pi -e "s|ADD mageia-$MGAVER-$DATE.tar.xz|ADD $GITURLRO/$APPNAME/$MGAVER/mageia-$DATE.tar.xz|" Dockerfile
+	perl -pi -e "s|ADD mageia-$MGAVER-$MGAARCH-$DATE.tar.xz|ADD $GITURLRO/$APPNAME/$MGAVER/$MGAARCH/mageia-$DATE.tar.xz|" Dockerfile
 
 	# This requires git-lfs for managing large files
 	sudo urpmi -q git-lfs 1>/dev/null
 	git lfs track "*.tar.xz"
 	git add .gitattributes
-	git add mageia-$MGAVER-$DATE.tar.xz
+	git add mageia-$MGAVER-$MGAARCH-$DATE.tar.xz
 	# Remove old cached files
 	git lfs prune
 fi
 if [ -f mageia-$MGAVER-$DATE.tar.xz ]; then
-	sudo rm -f mageia-$MGAVER-$DATE.tar.xz
+	sudo rm -f mageia-$MGAVER-$MGAARCH-$DATE.tar.xz
 fi
 
 if [ _"$MGAMODE" = _"local" ]; then
@@ -226,7 +227,7 @@ fi
 
 echo "Commiting into our git repo"
 git add Dockerfile $APPNAME LICENSE README.md run-mageia rpm-qa-$MGAVER
-git commit -m "update Mageia $MGAVER - $DATE"
+git commit -m "update Mageia $MGAVER ($MGAARCH) - $DATE"
 
 CID=`git show | head -1 | cut -d' ' -f2`
 echo "New commit ID for latest commit is $CID"
@@ -239,14 +240,14 @@ fi
 git push -f --set-upstream origin $MGAVER
 git checkout -f master
 # Backup rpm list for next run
-cp $TMPDM/rpm-qa rpm-qa-$MGAVER
-cp $TMPDM/rpm-qa $HOME/rpm-qa-$MGAVER
-git add rpm-qa-$MGAVER
-git commit -m "update Mageia $MGAVER RPM list"
+cp $TMPDM/rpm-qa-$MGAARCH rpm-qa-$MGAVER-$MGAARCH
+cp $TMPDM/rpm-qa-$MGAARCH $HOME/rpm-qa-$MGAVER-$MGAARCH
+git add rpm-qa-$MGAVER-$MGAARCH
+git commit -m "update Mageia $MGAVER-$MGAARCH RPM list"
 git push
 
 # Doesn't seem to trigger a build with the webhook so forcing it
-curl -H "Content-Type: application/json" --data '{"source_type": "Branch", "source_name": "$MGAVER"}' -X POST https://registry.hub.docker.com/u/bcornec/mageia-docker/trigger/$DCKTRIG/
+curl -H "Content-Type: application/json" --data '{"source_type": "Branch", "source_name": "$MGAVER-$MGAARCH"}' -X POST https://registry.hub.docker.com/u/bcornec/mageia-docker/trigger/$DCKTRIG/
 
 rm -rf $TMPDM
 
