@@ -124,26 +124,26 @@ fi
 #
 if [ -d "$TARGETDIR/etc/sysconfig" ]; then
 	# allow networking init scripts inside the container to work without extra steps
-	echo 'NETWORKING=yes' > $TMPDM/network
-	sudo install -m 0644 $TMPDM/network "$TARGETDIR"/etc/sysconfig/network
-	rm $TMPDM/network
+	echo 'NETWORKING=yes' > /tmp/network$$
+	sudo install -m 0644 /tmp/network$$ "$TARGETDIR"/etc/sysconfig/network
+	rm -f /tmp/network$$
 fi
 
 #
 # Docker mounts tmpfs at /dev and procfs at /proc so we can remove them
 sudo rm -rf "$TARGETDIR/dev" "$TARGETDIR/proc"
-sudo install -m 0755 -p "$TARGETDIR/dev" "$TARGETDIR/proc"
+sudo install -m 0755 -d "$TARGETDIR/dev" "$TARGETDIR/proc"
 
 # Fix permissions for RPM system
 sudo chmod 644 "$TARGETDIR"/var/lib/rpm/[A-Z]* "$TARGETDIR"/var/lib/rpm/i*
 
 # make sure /etc/resolv.conf has something useful in it
-cat > $TMPDM/resolv.conf << EOF
+cat > /tmp/resolv.conf.$$ << EOF
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
-sudo install -m 0644 $TMPDM/resolv.conf "$TARGETDIR/etc/resolv.conf"
-rm $TMPDM/resolv.conf
+sudo install -m 0644 /tmp/resolv.conf.$$ "$TARGETDIR/etc/resolv.conf"
+rm -f /tmp/resolv.conf.$$
 
 # Needs root access for dev files e.g.
 echo "Capturing that chroot content into mageia-$MGAVER-$MGAARCH-$DATE.tar.xz"
