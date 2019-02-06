@@ -40,16 +40,16 @@ MGID=`getent passwd $USER | cut -d: -f4`
 
 # Build the Dockerfile
 cat > Dockerfile << EOF
-FROM mageiaofficial:$MGAVER
+FROM mageiaofficial:$MGAVER-$MGAARCH
 MAINTAINER bcornec@mageia.org
 #RUN perl -pi -e 's|http://distro.ibiblio.org/mageia|$MGAMIRROR|' /etc/urpmi/urpmi.cfg
 RUN urpmi.update -a -c -f
-# Not useful if using mageiaofficial:$MGAVER
+# Not useful if using mageiaofficial:$MGAVER-$MGAARCH
 #RUN urpmi.removemedia -a
 #RUN urpmi.addmedia --probe-hdlist --distrib mga $MGAMIRROR/$MGAVER/$MGAARCH
 RUN urpmi --auto --auto-select --no-recommends
 RUN urpmi --auto bm subversion mgarepo colordiff sudo
-RUN sed -i 's/users:x:.*$/users:x:501/' /etc/group
+RUN sed -i "s/users:x:.*$/users:x:$MGID/" /etc/group
 RUN useradd $USER -u $MUID -g $MGID -N -M -d $HOME
 RUN echo "$USER   ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
 RUN mkdir -p $HOME
@@ -59,15 +59,15 @@ CMD /bin/bash
 EOF
 
 stat=0
-docker inspect pb:mageiabuild$MGAVER 2>&1 > /dev/null
+docker inspect pb:mageiabuild$MGAVER-$MGAARCH 2>&1 > /dev/null
 if [ $? -eq 0 ]; then
 	if [ "$FORCE" = "1" ]; then
-		docker rmi pb:mageiabuild$MGAVER
+		docker rmi pb:mageiabuild$MGAVER-$MGAARCH
 	fi
 else
-	docker build --file=Dockerfile -t pb:mageiabuild$MGAVER .
+	docker build --file=Dockerfile -t pb:mageiabuild$MGAVER-$MGAARCH .
 	stat=$?
 fi
 if [ $stat -eq 0 ]; then
-	docker run --rm -v "$SSH_AUTH_SOCK":/ssh-agent -v $HOME:$HOME -e SSH_AUTH_SOCK=/ssh-agent -ti pb:mageiabuild$MGAVER
+	docker run --rm -v "$SSH_AUTH_SOCK":/ssh-agent -v $HOME:$HOME -e SSH_AUTH_SOCK=/ssh-agent -ti pb:mageiabuild$MGAVER-$MGAARCH
 fi
