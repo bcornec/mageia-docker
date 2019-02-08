@@ -136,8 +136,9 @@ sudo install -m 0755 -d "$TARGETDIR/dev" "$TARGETDIR/proc"
 
 # Fix permissions for RPM system
 list=`sudo ls "$TARGETDIR"/var/lib/rpm/ | grep -E '^[A-Zi]'`
-list2=`echo $list | perl -pi -e 's| |,|g'`
-sudo chmod 644 $list2
+for f in $list; do
+	sudo chmod 644 "$TARGETDIR"/var/lib/rpm/$f
+done
 
 # make sure /etc/resolv.conf has something useful in it
 cat > /tmp/resolv.conf.$$ << EOF
