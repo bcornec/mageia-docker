@@ -20,7 +20,7 @@ fi
 
 GITDIRRO=${GITDIRRO:=$HOME/tmp/ro-$APPNAME}
 GITURLRO=${GITURL:=https://github.com/bcornec}
-TMPDM=$HOME/tmp/tmp-$APPNAME
+TMPDM=${WORKDIR:=$HOME/tmp/tmp-$APPNAME}
 # By default we host ourselves
 MGAMODE=${MGAMODE:="hosted"}
 SCPURL=${SCPURL:=localhost:/tmp}
@@ -63,7 +63,7 @@ if [ -r $HOME/.$APPNAME ]; then
 	. $HOME/.$APPNAME
 fi
 
-opt=$(getopt --options 'v:,m:,h,f' --longoptions 'version:,mirror:,help,force' --name $APPNAME -- "$@")
+opt=$(getopt --options 'w:,v:,m:,h,f' --longoptions 'workdir:,version:,mirror:,help,force' --name $APPNAME -- "$@")
 eval set -- "$opt"
 unset opt
 FORCE="false"
@@ -73,10 +73,13 @@ while true; do
                 -v|--version) MGAVER="$2" ; shift 2 ;;
                 -m|--mirror) MGAMIRROR="$2" ; shift 2 ;;
                 -f|--force) FORCE="true" ; shift ;;
+                -w|--workdir) WORKDIR="$2" ; shift ;;
                 -h|--help) usage ;;
                  --) shift ; break ;;
         esac
 done
+
+TMPDM=${WORKDIR:=$TMPDM}
 
 echo "Creating Mageia $MGAVER ($MGAARCH) container on Docker Hub"
 
