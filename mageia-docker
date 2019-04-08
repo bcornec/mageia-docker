@@ -117,7 +117,7 @@ if [ $? -ne 0 ]; then
 	echo "Unable to prepare chroot"
 	exit -1
 fi
-sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root "$TARGETDIR" basesystem urpmi 2>/dev/null 1>/dev/null
+sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root "$TARGETDIR" --media release,updates --skip kernel,nmap,grub2-common,systemd basesystem urpmi 2>/dev/null 1>/dev/null
 # for armv7hl add --allow-force --force --force-key
 if [ $? -ne 0 ]; then
 	echo "Unable to prepare install dependencies in chroot"
@@ -232,7 +232,7 @@ if [ _"$MGAMODE" = _"local" ]; then
 fi
 
 echo "Commiting into our git repo"
-git add Dockerfile $APPNAME LICENSE README.md run-mageia rpm-qa-$MGAVER
+git add Dockerfile $APPNAME LICENSE README.md run-mageia rpm-qa-$MGAVER-$MGAARCH
 git commit -m "update Mageia $MGAVER ($MGAARCH) - $DATE"
 
 CID=`git show | head -1 | cut -d' ' -f2`
@@ -240,10 +240,10 @@ echo "New commit ID for latest commit is $CID"
 
 if [ _"$MGAMODE" != _"hosted" ]; then
 	# Seems we need to do it twice for everything to be pushed with LFS
-	git push -f --set-upstream origin $MGAVER
+	git push -f --set-upstream origin $MGAVER-$MGAARCH
 fi
 
-git push -f --set-upstream origin $MGAVER
+git push -f --set-upstream origin $MGAVER-$MGAARCH
 git checkout -f master
 # Backup rpm list for next run
 cp $TMPDM/rpm-qa-$MGAARCH rpm-qa-$MGAVER-$MGAARCH
@@ -253,7 +253,7 @@ git commit -m "update Mageia $MGAVER-$MGAARCH RPM list"
 git push
 
 # Doesn't seem to trigger a build with the webhook so forcing it
-curl -H "Content-Type: application/json" --data '{"source_type": "Branch", "source_name": "$MGAVER-$MGAARCH"}' -X POST https://registry.hub.docker.com/u/bcornec/mageia-docker/trigger/$DCKTRIG/
+#curl -H "Content-Type: application/json" --data '{"source_type": "Branch", "source_name": "$MGAVER-$MGAARCH"}' -X POST https://registry.hub.docker.com/u/bcornec/mageia-docker/trigger/$DCKTRIG/
 
 rm -rf $TMPDM
 
