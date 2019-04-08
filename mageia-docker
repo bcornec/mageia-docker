@@ -117,7 +117,8 @@ if [ $? -ne 0 ]; then
 	echo "Unable to prepare chroot"
 	exit -1
 fi
-sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root "$TARGETDIR" --media release,updates --skip kernel,nmap,grub2-common,systemd basesystem urpmi 2>/dev/null 1>/dev/null
+# We would like to remove kernel, nmap and upper deps, systemd which is not possible
+sudo LANG=C LANGUAGE=C /usr/sbin/urpmi -q --auto --no-recommends --urpmi-root "$TARGETDIR" --media release,updates --skip grub2,grub2-common basesystem urpmi 2>/dev/null 1>/dev/null
 # for armv7hl add --allow-force --force --force-key
 if [ $? -ne 0 ]; then
 	echo "Unable to prepare install dependencies in chroot"
