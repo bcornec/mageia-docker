@@ -73,7 +73,7 @@ while true; do
                 -v|--version) MGAVER="$2" ; shift 2 ;;
                 -m|--mirror) MGAMIRROR="$2" ; shift 2 ;;
                 -f|--force) FORCE="true" ; shift ;;
-                -w|--workdir) WORKDIR="$2" ; shift ;;
+                -w|--workdir) WORKDIR="$2" ; shift 2 ;;
                 -h|--help) usage ;;
                  --) shift ; break ;;
         esac
@@ -111,7 +111,7 @@ echo "Cleanup $TARGETDIR first for idempotence"
 sudo rm -rf $TARGETDIR
 git rm --cached -r . 2>/dev/null 1>/dev/null
 
-echo "Creating the chroot with latest Mageia $MGAVER content"
+echo "Creating the chroot with latest Mageia $MGAVER content from $MGAMIRROR/$MGAVER/$MGAARCH"
 sudo /usr/sbin/urpmi.addmedia --distrib --urpmi-root "$TARGETDIR" $MGAMIRROR/$MGAVER/$MGAARCH 2>/dev/null 1>/dev/null
 if [ $? -ne 0 ]; then
 	echo "Unable to prepare chroot"
