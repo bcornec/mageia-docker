@@ -228,10 +228,6 @@ if [ -f mageia-$MGAVER-$DATE.tar.xz ]; then
 	sudo rm -f mageia-$MGAVER-$MGAARCH-$DATE.tar.xz
 fi
 
-if [ _"$MGAMODE" = _"local" ]; then
-	exit 0
-fi
-
 echo "Commiting into our git repo"
 git add Dockerfile $APPNAME LICENSE README.md run-mageia rpm-qa-$MGAVER-$MGAARCH
 git commit -m "update Mageia $MGAVER ($MGAARCH) - $DATE"
@@ -257,6 +253,10 @@ git push
 #curl -H "Content-Type: application/json" --data '{"source_type": "Branch", "source_name": "$MGAVER-$MGAARCH"}' -X POST https://registry.hub.docker.com/u/bcornec/mageia-docker/trigger/$DCKTRIG/
 
 rm -rf $TMPDM
+
+if [ _"$MGAMODE" = _"local" ]; then
+	exit 0
+fi
 
 exit 0
 
