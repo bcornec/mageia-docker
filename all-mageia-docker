@@ -32,7 +32,7 @@ if [ _"$1" != _"" ]; then
 fi
 
 # Launch script
-for v in 5 6 cauldron; do
+for v in 5 6 7 cauldron; do
 	echo "---------------------------"
 	$GITDIRRW/$APPNAME -v $v $opt
 done
