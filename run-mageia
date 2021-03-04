@@ -38,36 +38,56 @@ cd $TMPDM
 MUID=`getent passwd $USER | cut -d: -f3`
 MGID=`getent passwd $USER | cut -d: -f4`
 
+DCKSRCIMG=${DCKSRCIMG:=mageia:$MGAVER}
+DCKBUILDIMG=pb:mageiabuild$MGAVER-$MGAARCH
+
 # Build the Dockerfile
 cat > Dockerfile << EOF
-FROM mageiaofficial:$MGAVER-$MGAARCH
+# Start from a good known image
+FROM $DCKSRCIMG
 MAINTAINER bcornec@mageia.org
+# In case there is an issue with that mirror
 #RUN perl -pi -e 's|http://distro.ibiblio.org/mageia|$MGAMIRROR|' /etc/urpmi/urpmi.cfg
-RUN urpmi.update -a -c -f
+# Point to the mirror we want
 # Not useful if using mageiaofficial:$MGAVER-$MGAARCH
-#RUN urpmi.removemedia -a
-#RUN urpmi.addmedia --probe-hdlist --distrib mga $MGAMIRROR/$MGAVER/$MGAARCH
+RUN urpmi.removemedia -a
+RUN urpmi.addmedia --probe-hdlist --distrib mga $MGAMIRROR/$MGAVER/$MGAARCH
+# Update metadata just in case 2 previous lines are not used
+RUN urpmi.update -a -c -f
+# Update packages
 RUN urpmi --auto --auto-select --no-recommends
-RUN urpmi --auto bm subversion mgarepo colordiff sudo
+# install what we need to work
+RUN urpmi --auto --no-recommends bm subversion mgarepo colordiff sudo
+# if dnf is installed fix repo:
+#RUN perl -pi -e 's|mirrorlist=|#mirrorlist=|' /etc/yum.repos.d/*.repo
+#RUN perl -pi -e 's|#baseurl=https://mirrors.kernel.org/mageia/distrib|baseurl=$MGAMIRROR|' /etc/yum.repos.d/*.repo
+#RUN dnf makecache
+# Fix group id
 RUN sed -i "s/users:x:.*$/users:x:$MGID/" /etc/group
+# Add ourselves to the image
 RUN useradd $USER -u $MUID -g $MGID -N -M -d $HOME
+# give us sudo power
 RUN echo "$USER   ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
+# prepare home mount point
 RUN mkdir -p $HOME
 WORKDIR $WORKDIR
 USER $USER
 CMD /bin/bash
 EOF
 
+# Check whether the image already exist
 stat=0
-docker inspect pb:mageiabuild$MGAVER-$MGAARCH 2>&1 > /dev/null
+docker inspect $DCKBUILDIMG 2>&1 > /dev/null
 if [ $? -eq 0 ]; then
+	# remove it if we force with -f
 	if [ "$FORCE" = "1" ]; then
-		docker rmi pb:mageiabuild$MGAVER-$MGAARCH
+		docker rmi $DCKBUILDIMG
 	fi
 else
-	docker build --file=Dockerfile -t pb:mageiabuild$MGAVER-$MGAARCH .
+	# Build it as it doesn't exist yet
+	docker build --file=Dockerfile -t $DCKBUILDIMG .
 	stat=$?
 fi
 if [ $stat -eq 0 ]; then
-	docker run --rm -v "$SSH_AUTH_SOCK":/ssh-agent -v $HOME:$HOME -e SSH_AUTH_SOCK=/ssh-agent -ti pb:mageiabuild$MGAVER-$MGAARCH
+	docker run --rm -v "$SSH_AUTH_SOCK":/ssh-agent -v $HOME:$HOME -e SSH_AUTH_SOCK=/ssh-agent -ti $DCKBUILDIMG
 fi

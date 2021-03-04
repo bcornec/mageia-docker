@@ -81,6 +81,11 @@ done
 
 TMPDM=${WORKDIR:=$TMPDM}
 
+if [ _"$MGAVER" = _"" ]; then
+	echo "Please specify a version with -v"
+	exit -1
+fi
+
 echo "Creating Mageia $MGAVER ($MGAARCH) container on Docker Hub"
 
 cd $GITDIRRO 2>/dev/null 1>/dev/null
@@ -108,7 +113,12 @@ fi
 
 TARGETDIR="$TMPDM/$MGAVER/$MGAARCH"
 echo "Cleanup $TARGETDIR first for idempotence"
+echo "Press ^C if that's not what you want"
+sleep 5
 sudo rm -rf $TARGETDIR
+echo "Cleanup `pwd` then for git setup"
+echo "Press ^C if that's not what you want"
+sleep 5
 git rm --cached -r . 2>/dev/null 1>/dev/null
 
 echo "Creating the chroot with latest Mageia $MGAVER content from $MGAMIRROR/$MGAVER/$MGAARCH"
@@ -252,7 +262,8 @@ git push
 # Doesn't seem to trigger a build with the webhook so forcing it
 #curl -H "Content-Type: application/json" --data '{"source_type": "Branch", "source_name": "$MGAVER-$MGAARCH"}' -X POST https://registry.hub.docker.com/u/bcornec/mageia-docker/trigger/$DCKTRIG/
 
-rm -rf $TMPDM
+# This removes everything udner WORKDIR for me
+#rm -rf $TMPDM
 
 if [ _"$MGAMODE" = _"local" ]; then
 	exit 0
