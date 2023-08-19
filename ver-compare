@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# (c) Bruno Cornec for Mageia
+# licensed under the GPLv3
+# See https://www.gnu.org/licenses/gpl-3.0.fr.html#license-text
 
 MIRRORPATH="/users/ftp/pub/mageia"
 MGA8UPD="distrib/8/SRPMS/core/updates"
