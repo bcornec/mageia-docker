@@ -1,0 +1,107 @@
+#!/bin/bash
+
+MIRRORPATH="/users/ftp/pub/mageia"
+MGA8UPD="distrib/8/SRPMS/core/updates"
+CAULDRON="distrib/cauldron/SRPMS/core/release"
+
+LISTPKG="/tmp/listpkg$$"
+RESULTFILE="/tmp/ver-compare.txt"
+
+cd $MIRRORPATH/$MGA8UPD
+# Determine first the list of latest updates for each package
+pkgprev=""
+verprev=0
+relprev=0
+epcprev=0
+listpkg=""
+for p in *.rpm; do
+	pkg1=`rpm -q --qf '%{Name}\n' $p`
+	if [ _"$pkgprev" != _"$pkg1" ] && [ _"$pkgprev" != _"" ]; then
+		# If name is different then it's a new serie of packages
+		# So store the previous prev one as the last good one to add to list
+		echo "Adding $pkgprev-$verprev-$relprev.src.rpm to list to compare"
+		listpkg="$listpkg $pkgprev-$verprev-$relprev.src.rpm"
+		pkgprev=""
+		verprev=0
+		relprev=0
+		epcprev=0
+	fi
+	ver=`rpm -q --qf '%{Version}\n' $p`
+	ver1=`echo $ver | sed 's|\.mga8||'`
+	rel1=`rpm -q --qf '%{Release}\n' $p`
+	epc1=`rpm -q --qf '%{Epoch}\n' $p`
+	if [ _"$epc1" = _"(none)" ]; then
+		epc1=0
+	fi
+	echo -n "Analyzing $pkg1 ($ver1 $rel1 $epc1)"
+	ret=`rpmdev-vercmp $epc1 $ver1 $rel1 $epcprev $verprev $relprev`
+	if [ $? -eq 11 ]; then
+		echo " which is newer than previous package ($pkgprev $verprev $relprev $epcprev)"
+		# We have a newer package so use it instead
+		pkgprev="$pkg1"
+		verprev="$ver1"
+		relprev="$rel1"
+		epcprev="$epc1"
+	else
+		echo " which is older than previous package ($pkgprev $verprev $relprev $epcprev)"
+	fi
+done
+echo "----------------------------"
+echo "Keeping updates for $listpkg under $LISTPKG"
+echo "----------------------------"
+echo $listpkg > $LISTPKG
+			
+
+# Then compare that list to what we have in cauldron
+
+for p in `cat $LISTPKG`; do
+	pkg1=`rpm -q --qf '%{Name}\n' $p`
+	ver1=`rpm -q --qf '%{Version}\n' $p`
+	rel=`rpm -q --qf '%{Release}\n' $p`
+	rel1=`echo $rel | sed 's|\.mga8||'`
+	epc1=`rpm -q --qf '%{Epoch}\n' $p`
+	if [ _"$epc1" = _"(none)" ]; then
+		epc1=0
+	fi
+	pkgfound=""
+	for p2 in $MIRRORPATH/$CAULDRON/$pkg1-*.rpm; do
+		pkg2=`rpm -q --qf '%{Name}\n' $p2`
+		if [ _"$pkg2" != _"$pkg1" ]; then
+			continue
+		else
+			pkgfound=$pkg2
+		fi
+		# There is only one package of each name here 
+		# so test the version now
+		ver2=`rpm -q --qf '%{Version}\n' $p2`
+		rel=`rpm -q --qf '%{Release}\n' $p2`
+		rel2=`echo $rel | sed 's|\.mga9||'`
+		epc2=`rpm -q --qf '%{Epoch}\n' $p2`
+		if [ _"$epc2" = _"(none)" ]; then
+			epc2=0
+		fi
+		#echo "Comparing $epc1 $ver1 $rel1 vs $epc2 $ver2 $rel2"
+		ret=`rpmdev-vercmp $epc1 $ver1 $rel1 $epc2 $ver2 $rel2`
+		res=$?
+		if [ $res -eq 11 ]; then
+			echo "Update $p is newer than package in Cauldron `basename $p2`" | tee -a $RESULTFILE
+		elif [ $res -eq 12 ]; then
+			echo "Update $p is older than package in Cauldron `basename $p2`" | tee -a $RESULTFILE
+		elif [ $res -eq 0 ]; then
+			echo "Update $p is also available in Cauldron as `basename $p2`" | tee -a $RESULTFILE
+		else
+			echo "Error occured : $ret" | tee -a $RESULTFILE
+		fi
+		break
+	done
+	if [ _"$pkgfound" = _"" ]; then
+		echo "Update $p is not found in Cauldron" | tee -a $RESULTFILE
+	fi
+done
+rm -f $LISTPKG
+echo "Result summary:"
+echo "MGA 8 Updates has `grep -w older $RESULTFILE | wc -l` older packages then Cauldron"
+echo "MGA 8 Updates has `grep -w available $RESULTFILE | wc -l` similar packages as Cauldron"
+echo "MGA 8 Updates has `grep -w found $RESULTFILE | wc -l` packages not found in Cauldron"
+echo "MGA 8 Updates has `grep -w newer $RESULTFILE | wc -l` newer packages then Cauldron:"
+grep -w newer $RESULTFILE
