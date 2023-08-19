@@ -26,7 +26,7 @@ MGAVER=${MGAVER:=cauldron}
 # Default temporary directory
 TMPDM=${TMPDM:=$HOME/tmp/$APPNAME}
 # Default mirror
-MGAMIRROR=${MGAMIRROR:=http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia}
+MGAMIRROR=${MGAMIRROR:=http://distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/distrib}
 # Default Working directory where you svn co mageia-pkg
 WORKDIR=${WORKDIR:=$HOME/mageia}
 # Default architecture
@@ -39,6 +39,7 @@ MUID=`getent passwd $USER | cut -d: -f3`
 MGID=`getent passwd $USER | cut -d: -f4`
 
 DCKSRCIMG=${DCKSRCIMG:=mageia:$MGAVER}
+#DCKBUILDIMG=mageiaofficial:$MGAVER-$MGAARCH
 DCKBUILDIMG=pb:mageiabuild$MGAVER-$MGAARCH
 
 # Build the Dockerfile
@@ -53,9 +54,11 @@ MAINTAINER bcornec@mageia.org
 RUN urpmi.removemedia -a
 RUN urpmi.addmedia --probe-hdlist --distrib mga $MGAMIRROR/$MGAVER/$MGAARCH
 # Update metadata just in case 2 previous lines are not used
-RUN urpmi.update -a -c -f
+RUN echo "urpmi.update -a -c -f" > /usr/local/bin/upd
 # Update packages
-RUN urpmi --auto --auto-select --no-recommends
+RUN echo "urpmi --auto --auto-select --no-recommends" >> /usr/local/bin/upd
+RUN chmod 755 /usr/local/bin/upd
+RUN /usr/local/bin/upd
 # install what we need to work
 RUN urpmi --auto --no-recommends bm subversion mgarepo colordiff sudo
 # if dnf is installed fix repo:
@@ -89,5 +92,5 @@ else
 	stat=$?
 fi
 if [ $stat -eq 0 ]; then
-	docker run --rm -v "$SSH_AUTH_SOCK":/ssh-agent -v $HOME:$HOME -e SSH_AUTH_SOCK=/ssh-agent -ti $DCKBUILDIMG
+	docker run --rm -v "$SSH_AUTH_SOCK":/ssh-agent -v $HOME:$HOME -v /var/run/libvirt:/var/run/libvirt -e SSH_AUTH_SOCK=/ssh-agent -ti -u $USER -w $WORKDIR $DCKBUILDIMG
 fi
