@@ -122,7 +122,10 @@ EOF
 cd $WORKDIR/$p
 bm -l
 if [ \$? -eq 0 ]; then
-	mgarepo submit $MGAREPOSOPT
+	echo "Do a svn ci -m '' and then "
+	echo "mgarepo submit $MGAREPOSOPT"
+	#echo "docker rm ctn$MGAVER-$p"
+	echo "docker rmi $DCKBUILDIMG-$p"
 fi
 EOF
 			chmod 755 $TMPDM/$p.build
@@ -131,7 +134,8 @@ EOF
 			cd $WORKDIR/$p
 			mgarepo sync -d
 			docker buildx build --file=$TMPDM/Dockerfile.$p -t $DCKBUILDIMG-$p .
-			docker run $DOCKEROPT $DCKBUILDIMG-$p $TMPDM/$p.build
+			docker rm ctn$MGAVER-$p
+			docker run $DOCKEROPT --name ctn$MGAVER-$p $DCKBUILDIMG-$p $TMPDM/$p.build
 			rm -f $TMPDM/$p.build $TMPDM/Dockerfile.$p
 		done
 	else
