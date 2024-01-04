@@ -12,6 +12,12 @@ fi
 # Support passing the distro to operate on as parameter
 if [ _"$1" != _"" ]; then
 	MGAVER=$1
+	shift
+fi
+
+# Support passing the package to rebuild on as parameter
+if [ _"$1" != _"" ]; then
+	PACKAGEL=$*
 fi
 
 APPNAME=${APPNAME:=mageia-docker}
@@ -91,6 +97,45 @@ else
 	docker build --file=Dockerfile -t $DCKBUILDIMG .
 	stat=$?
 fi
+
 if [ $stat -eq 0 ]; then
-	docker run --rm -v "$SSH_AUTH_SOCK":/ssh-agent -v $HOME:$HOME -v /var/run/libvirt:/var/run/libvirt -e SSH_AUTH_SOCK=/ssh-agent -ti -u $USER -w $WORKDIR $DCKBUILDIMG
+	DOCKEROPT="--rm -v $SSH_AUTH_SOCK:/ssh-agent -v $HOME:$HOME -v $TMPDM:$TMPDM -v /var/run/libvirt:/var/run/libvirt -e SSH_AUTH_SOCK=/ssh-agent -ti -u $USER -w $WORKDIR"
+	if [ _"$PACKAGEL" != _"" ]; then
+		if [ _"$MGAVER" != _"cauldron" ]; then
+			MGAREPOCOPT="-d $MGAVER"
+			MGAREPOSOPT="--define section=core/updates_testing"
+		else
+			MGAREPOCOPT=""
+			MGAREPOSOPT=""
+		fi
+		for p in $PACKAGEL; do
+			cat > $TMPDM/Dockerfile.$p << EOF
+# Start from a good known image
+FROM $DCKBUILDIMG
+MAINTAINER bcornec@mageia.org
+RUN sudo urpmi --auto --auto-select --no-requires
+COPY SPECS/$p.spec /tmp
+RUN sudo urpmi --auto /tmp/$p.spec
+EOF
+			cat > $TMPDM/$p.build << EOF
+#!/bin/bash
+cd $WORKDIR/$p
+bm -l
+if [ \$? -eq 0 ]; then
+	mgarepo submit $MGAREPOSOPT
+fi
+EOF
+			chmod 755 $TMPDM/$p.build
+			cd $WORKDIR
+			mgarepo co $MGAREPOCOPT $p
+			cd $WORKDIR/$p
+			mgarepo sync -d
+			docker buildx build --file=$TMPDM/Dockerfile.$p -t $DCKBUILDIMG-$p .
+			docker run $DOCKEROPT $DCKBUILDIMG-$p $TMPDM/$p.build
+			rm -f $TMPDM/$p.build $TMPDM/Dockerfile.$p
+		done
+	else
+		# Nothing to build - interactive mode
+		docker run $DOCKEROPT $DCKBUILDIMG
+	fi
 fi
